@@ -19,9 +19,8 @@ gcl git@github.com:NielsDegrande/dotfiles.git
 bash install.sh
 
 # Restore configuration.
-mv "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg"
+ln -s git/dotfiles/mackup/.mackup.cfg .mackup.cfg
 mackup restore
-mackup backup
 ```
 
 Create parity with remote:

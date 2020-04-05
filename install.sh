@@ -43,7 +43,7 @@ command -v rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |
 [ -d  "$ZSH_CUSTOM/themes/spaceship-prompt" ] || git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"  # Starship.
 
 # Configure installed applications and binaries.
-# hyper i hyper-one-dark  # Hyper theme.
-hyper i hyper-solarized-light  # Hyper theme.
+hyper i hyper-one-dark  # Hyper theme.
+# hyper i hyper-solarized-light  # Hyper theme.
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" || true  # Starship theme.
 mkdir -p "$HOME/.vim/undodir"  # Vim undo directory.

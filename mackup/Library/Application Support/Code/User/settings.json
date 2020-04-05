@@ -1,0 +1,40 @@
+{
+    "workbench.colorTheme": "Solarized Light",
+    "window.zoomLevel": 0,
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "editor.fontSize": 14,
+    "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "workbench.startupEditor": "newUntitledFile",
+    "files.autoSave": "afterDelay",
+    "files.insertFinalNewline": true,
+    "workbench.editor.showTabs": true,
+    "[python]": {
+        "editor.rulers": [
+            72,
+            79
+        ]
+    },
+    "python.formatting.blackArgs": [
+        "--line-length=79"
+    ],
+    "cSpell.userWords": [
+        "fillna",
+        "groupby",
+        "inplace",
+        "isna",
+        "niels",
+        "numpy",
+        "parallelization",
+        "pytest",
+        "reindex",
+        "xdist"
+    ],
+    "workbench.iconTheme": "vscode-icons",
+    "files.associations": {
+        "*.rmd": "markdown",
+        "*.Brewfile": "shellscript"
+    },
+    "cSpell.enableFiletypes": [
+        "r"
+    ]
+}

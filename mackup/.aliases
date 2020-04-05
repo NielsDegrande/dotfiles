@@ -1,0 +1,9 @@
+# Aliases are configured here and sourced from ~/.zshrc.
+
+
+# Brew.
+alias overbrew='brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"'
+
+# Fasd.
+alias v='f -e vim'       # Open in VIM.
+alias o='a -e open'      # Open with default.

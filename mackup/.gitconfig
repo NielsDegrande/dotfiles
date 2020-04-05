@@ -1,0 +1,16 @@
+[user]
+	name = Niels Degrande
+	email = niels@degran.de
+[alias]
+	lol = log --oneline --graph --decorate --all
+	s = status -s
+	glods = log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short
+	cm = commit -m
+	co = checkout
+	br = branch
+[credential]
+	helper = osxkeychain
+[core]
+	excludesfile = ~/git/.gitignore
+[pull]
+	rebase = true

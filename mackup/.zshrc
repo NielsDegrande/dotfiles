@@ -111,10 +111,13 @@ unsetopt PROMPT_SP
 
 # Tweak Spaceship theme.
 SPACESHIP_TIME_SHOW=true
+SPACESHIP_KUBECTL_SHOW=true
+SPACESHIP_KUBECTL_VERSION_SHOW=false
 
 # Source aliases and paths.
 source ~/.aliases
 source ~/.path
+[ -f ~/.client ] && source ~/.client
 
 # Setup applications and binaries. 
 autoload -U compinit && compinit  # Add more completion scripts, not available in zsh yet.

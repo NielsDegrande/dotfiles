@@ -13,7 +13,7 @@ Restore on a new machine:
 ```bash
 # Get the latest dotfiles.
 mkdir -p "$HOME/git"
-gcl git@github.com:NielsDegrande/dotfiles.git
+gcl --recurse-submodules -j8 git@github.com:NielsDegrande/dotfiles.git
 
 # Use script to install all applications and binaries.
 bash install.sh

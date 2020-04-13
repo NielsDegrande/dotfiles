@@ -3,7 +3,7 @@
 : '
 
 Install scripts for configuring a new machine.
-One should also be able to runb this script on an existing machine
+One should also be able to run this script on an existing machine
 
 '
 

@@ -8,6 +8,7 @@ tap "homebrew/core"
 
 # Binaries.
 brew "bat"
+brew "exa"
 brew "fasd"
 brew "fd"
 brew "fzf"

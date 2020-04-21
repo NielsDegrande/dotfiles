@@ -61,3 +61,6 @@ command -v rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |
 hyper install hyper-one-dark  # Hyper theme.
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" || true  # Starship theme.
 mkdir -p "$HOME/.vim/undodir"  # Vim undo directory.
+
+# Install VS Code extensions.
+cat "$HOME/.vscode/extensions.txt" | xargs  -I % sh -c "code --install-extension % || true"

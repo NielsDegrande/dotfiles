@@ -14,6 +14,5 @@ oderwat.indent-rainbow
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 Tyriar.sort-lines
-vscode-icons-team.vscode-icons
 vscodevim.vim
 wayou.vscode-todo-highlight

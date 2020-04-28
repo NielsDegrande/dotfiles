@@ -46,7 +46,6 @@
         "xdist",
         "xlabel"
     ],
-    "workbench.iconTheme": "vscode-icons",
     "files.associations": {
         "*.rmd": "markdown",
         "*.Brewfile": "shellscript"

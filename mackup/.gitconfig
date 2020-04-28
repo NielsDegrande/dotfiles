@@ -1,6 +1,7 @@
 [user]
 	name = Niels Degrande
 	email = niels@degran.de
+
 [alias]
 	lol = log --oneline --graph --decorate --all
 	s = status -s
@@ -8,9 +9,13 @@
 	cm = commit -m
 	co = checkout
 	br = branch
+
 [credential]
 	helper = osxkeychain
+
 [core]
 	excludesfile = ~/git/.gitignore
+        pager = delta --dark
+
 [pull]
 	rebase = true

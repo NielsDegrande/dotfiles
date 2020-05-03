@@ -1,5 +1,5 @@
 ﻿###
-###  vlc 3.0.9.2
+###  vlc 3.0.10
 ###
 
 ###
@@ -522,7 +522,7 @@ macosx-continue-playback=1
 #sout-avi-subject=
 
 # Encoder (string)
-#sout-avi-encoder=VLC Media Player - 3.0.9.2 Vetinari
+#sout-avi-encoder=VLC Media Player - 3.0.10 Vetinari
 
 # Keywords (string)
 #sout-avi-keywords=
@@ -1783,7 +1783,7 @@ macosx-continue-playback=1
 [auhal] # HAL AudioUnit output
 
 # Audio volume (integer)
-auhal-volume=269
+#auhal-volume=256
 
 # Last audio device (string)
 auhal-audio-device=0

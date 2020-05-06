@@ -1,20 +1,20 @@
 # Install: `brew bundle --file macWork.Brewfile`.
 
 # Taps.
-tap "microsoft/mssql-release"  # TODO: Temporary.
+tap "bazelbuild/tap"
 
 # Binaries.
-brew "azure-cli"  # TODO: Temporary.
+brew "bazelbuild/tap/bazel"
+brew "hadolint"
 brew "helm"
+brew "jq"
 brew "kubernetes-cli"
-brew "microsoft/mssql-release/msodbcsql17"  # TODO: Temporary.
-brew "microsoft/mssql-release/mssql-tools"  # TODO: Temporary.
 
 # Applications.
 cask "adoptopenjdk"
 cask "dbeaver-community"
+cask "docker"
 cask "insomnia"
 cask "pycharm"
 
 # Mac App Store applications.
-mas "Microsoft Remote Desktop", id: 1295203466  # TODO: Temporary.

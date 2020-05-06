@@ -21,7 +21,9 @@
         "CPUs",
         "POSIX",
         "Unmarshalling",
+        "ansible",
         "astype",
+        "bazel",
         "brewfile",
         "chipset",
         "dotfiles",
@@ -67,5 +69,8 @@
     },
     "cSpell.enableFiletypes": [
         "r"
-    ]
+    ],
+    "[markdown]": {
+        "editor.tabSize": 2
+    }
 }

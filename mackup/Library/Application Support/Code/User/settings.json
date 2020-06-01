@@ -24,8 +24,10 @@
         "ansible",
         "astype",
         "bazel",
+        "bresenham",
         "brewfile",
         "chipset",
+        "discretize",
         "dotfiles",
         "dtype",
         "fillna",
@@ -52,7 +54,9 @@
         "parallelization",
         "pyplot",
         "pytest",
+        "quadrotor",
         "reindex",
+        "roadmap",
         "rwlock",
         "scipy",
         "setp",
@@ -60,6 +64,7 @@
         "swappable",
         "tolist",
         "unmarshal",
+        "voxel",
         "xdist",
         "xlabel"
     ],
@@ -73,5 +78,10 @@
     "[markdown]": {
         "editor.tabSize": 2
     },
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "/usr/local/bin/python3"
 }

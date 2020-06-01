@@ -143,6 +143,7 @@
                         "description": "Launch apps (a, b, d, m, p, t, v).",
                         "manipulators": [
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "a",
                                     "modifiers": {
@@ -158,10 +159,10 @@
                                     {
                                         "shell_command": "open '/System/Applications/Utilities/Activity Monitor.app'"
                                     }
-                                ],
-                                "type": "basic"
+                                ]
                             },
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": {
@@ -177,10 +178,10 @@
                                     {
                                         "shell_command": "open '/Applications/Firefox.app'"
                                     }
-                                ],
-                                "type": "basic"
+                                ]
                             },
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
@@ -196,10 +197,10 @@
                                     {
                                         "shell_command": "open '/System/Applications/Dictionary.app'"
                                     }
-                                ],
-                                "type": "basic"
+                                ]
                             },
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": {
@@ -213,12 +214,12 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/System/Library/CoreServices/Finder.app'"
+                                        "shell_command": "open ~"
                                     }
-                                ],
-                                "type": "basic"
+                                ]
                             },
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "m",
                                     "modifiers": {
@@ -234,10 +235,10 @@
                                     {
                                         "shell_command": "open '/System/Applications/Music.app'"
                                     }
-                                ],
-                                "type": "basic"
+                                ]
                             },
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
@@ -253,10 +254,10 @@
                                     {
                                         "shell_command": "open '/Applications/KeePassXC.app'"
                                     }
-                                ],
-                                "type": "basic"
+                                ]
                             },
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "t",
                                     "modifiers": {
@@ -272,10 +273,10 @@
                                     {
                                         "shell_command": "open '/Applications/Hyper.app'"
                                     }
-                                ],
-                                "type": "basic"
+                                ]
                             },
                             {
+                                "type": "basic",
                                 "from": {
                                     "key_code": "v",
                                     "modifiers": {
@@ -291,8 +292,7 @@
                                     {
                                         "shell_command": "open '/Applications/Visual Studio Code.app'"
                                     }
-                                ],
-                                "type": "basic"
+                                ]
                             }
                         ]
                     }

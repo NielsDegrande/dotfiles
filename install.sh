@@ -31,10 +31,16 @@ brew bundle install --file brew/shared.Brewfile
 # Machine specific installation and configuration.
 case "$(HOSTNAME)" in
     "Nielss-MacBook-Air.local" )
+        # Install brew bundle for home.
         brew bundle install --file brew/macHome.Brewfile
+        # Set screenshot location to Downloads.
+        defaults write com.apple.screencapture location "$HOME/Downloads"
         ;;
     "STK-XQ2PWJGH5" )
+        # Install brew bundle for work.
         brew bundle install --file brew/macWork.Brewfile
+        # Set screenshot location to Downloads.
+        defaults write com.apple.screencapture location "$HOME/Egnyte/Private/degrande.niels/Downloads"
         ;;    
     * )
         echo "Machine name not recognized: no action taken."

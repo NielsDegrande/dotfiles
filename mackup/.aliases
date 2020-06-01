@@ -4,6 +4,9 @@
 # Brew.
 alias overbrew='brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"'
 
+# Custom.
+alias exa='exa -la' # Always use list and show all.
+
 # Fasd.
 alias v='f -e vim'       # Open in VIM.
 alias o='a -e open'      # Open with default.

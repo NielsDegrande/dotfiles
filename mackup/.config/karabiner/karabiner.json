@@ -140,7 +140,7 @@
                         ]
                     },
                     {
-                        "description": "Launch apps (a, b, d, m, p, t, v).",
+                        "description": "Launch apps (a, b, c, d, f, g, m, o, p, s, t, v).",
                         "manipulators": [
                             {
                                 "from": {
@@ -176,6 +176,25 @@
                                 "to": [
                                     {
                                         "shell_command": "open '/Applications/Firefox.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/PyCharm.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -220,6 +239,25 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "g",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/System/Library/CoreServices/Finder.app' $HOME/Egnyte/Private/degrande.niels/Downloads"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "m",
                                     "modifiers": {
                                         "mandatory": [
@@ -233,6 +271,44 @@
                                 "to": [
                                     {
                                         "shell_command": "open '/System/Applications/Music.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Microsoft Outlook.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Slack.app'"
                                     }
                                 ],
                                 "type": "basic"

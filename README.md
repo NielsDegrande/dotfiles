@@ -66,11 +66,6 @@ cd "$HOME/git/dotfiles"
 git add --all ; git commit --message "Back up machine configuration" ; git push
 ```
 
-## Currently not supported
-
-- Python environments: ensure proper dependency management at a project level,
-  do not rely on the system environment(!).
-
 ## How to deal with data and other types of configuration
 
 - `iCloud` for syncing most Apple related settings.
@@ -80,3 +75,4 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
 - `PyCharm` has version numbers in its path,
   see: <https://github.com/lra/mackup/blob/master/mackup/applications/pycharm.cfg.>.
   Currently using Pycharm Pro's Sync IDE Settings including plugin option.
+- Python environments: a `requirements.txt` file is available to bootstrap your venv.

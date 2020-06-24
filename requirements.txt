@@ -1,0 +1,22 @@
+ansible
+autopep8
+bandit
+black
+Click
+flake8
+flake8_commas
+flake8-blind-except
+flake8-bugbear
+flake8-builtins
+flake8-docstrings
+flake8-import-order
+flake8-logging-format
+flake8-module-name
+flake8-rst-docstrings
+ipython
+isort
+jupyter
+mypy
+# poetry
+pylint
+pytest-cov

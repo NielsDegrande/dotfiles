@@ -11,7 +11,7 @@
 	br = branch
 
 [credential]
-	helper = osxkeychain
+	helper = manager
 
 [core]
 	excludesfile = ~/git/.gitignore

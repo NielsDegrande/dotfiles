@@ -3,6 +3,7 @@
 
 # Brew.
 alias overbrew='brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"'
+alias brewdump='brew bundle dump ; cat Brewfile ; rm Brewfile'
 
 # Custom.
 alias exa='exa -la' # Always use list and show all.

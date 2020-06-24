@@ -95,5 +95,76 @@
     },
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "sonarlint.rules": {
+        "python:S139": {
+            "level": "on"
+        },
+        "python:S1717": {
+            "level": "on"
+        },
+        "python:S2733": {
+            "level": "on"
+        },
+        "python:S2712": {
+            "level": "on"
+        },
+        "python:ClassComplexity": {
+            "level": "on"
+        },
+        "python:S134": {
+            "level": "on"
+        },
+        "python:S1720": {
+            "level": "on"
+        },
+        "python:S113": {
+            "level": "on"
+        },
+        "python:FileComplexity": {
+            "level": "on"
+        },
+        "python:S104": {
+            "level": "on"
+        },
+        "python:FunctionComplexity": {
+            "level": "on"
+        },
+        "python:S1142": {
+            "level": "on"
+        },
+        "python:S5439": {
+            "level": "on"
+        },
+        "python:LineLength": {
+            "level": "on"
+        },
+        "python:S1131": {
+            "level": "on"
+        },
+        "python:LongIntegerWithLowercaseSuffixUsage": {
+            "level": "on"
+        },
+        "python:S2325": {
+            "level": "on"
+        },
+        "python:S1578": {
+            "level": "on"
+        },
+        "python:S1722": {
+            "level": "on"
+        },
+        "python:S1721": {
+            "level": "on"
+        },
+        "python:ParsingError": {
+            "level": "on"
+        },
+        "python:OneStatementPerLine": {
+            "level": "on"
+        },
+        "python:S1707": {
+            "level": "on"
+        }
     }
 }

@@ -1,6 +1,11 @@
+adpyke.vscode-sql-formatter
 CoenraadS.bracket-pair-colorizer-2
+DavidAnson.vscode-markdownlint
 eamodio.gitlens
 EditorConfig.EditorConfig
+esbenp.prettier-vscode
+golang.Go
+hashicorp.terraform
 ivory-lab.jenkinsfile-support
 lextudio.restructuredtext
 mechatroner.rainbow-csv
@@ -9,9 +14,9 @@ ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
 ms-vscode-remote.remote-containers
 ms-vscode.cpptools
-ms-vscode.Go
 oderwat.indent-rainbow
 redhat.vscode-yaml
+SonarSource.sonarlint-vscode
 streetsidesoftware.code-spell-checker
 Tyriar.sort-lines
 vscodevim.vim

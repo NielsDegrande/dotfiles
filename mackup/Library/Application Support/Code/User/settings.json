@@ -152,7 +152,7 @@
             "level": "on"
         },
         "python:S1722": {
-            "level": "on"
+            "level": "off"
         },
         "python:S1721": {
             "level": "on"

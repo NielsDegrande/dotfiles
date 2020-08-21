@@ -25,7 +25,6 @@ brew "tldr"
 brew "tmux"
 brew "watch"
 brew "yank"
-brew "zsh"
 
 # Applications.
 cask "amethyst"

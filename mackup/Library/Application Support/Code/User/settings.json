@@ -52,6 +52,7 @@
         "numpy",
         "nunique",
         "parallelization",
+        "pylint",
         "pyplot",
         "pytest",
         "quadrotor",
@@ -60,13 +61,15 @@
         "rwlock",
         "scipy",
         "setp",
+        "sociodemographics",
         "stateful",
         "swappable",
         "tolist",
         "unmarshal",
         "voxel",
         "xdist",
-        "xlabel"
+        "xlabel",
+        "xlsx"
     ],
     "files.associations": {
         "*.rmd": "markdown",

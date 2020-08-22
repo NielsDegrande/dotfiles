@@ -1,0 +1,6 @@
+[submodule "mackup/.vim/pack/plugins/start/lightline"]
+	path = mackup/.vim/pack/plugins/start/lightline
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule "mackup/.vim/pack/vendor/start/ctrlp.vim"]
+	path = mackup/.vim/pack/vendor/start/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git

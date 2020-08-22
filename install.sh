@@ -15,7 +15,8 @@ xcode-select --install || true
 
 # Get the latest dotfiles.
 mkdir -p "$HOME/git"
-git clone git@github.com:NielsDegrande/dotfiles.git "$HOME/git" || true
+# Recurse submodules to download VIM plugins. The `-j8` option parallelizes that.
+git clone --recurse-submodules -j8 git@github.com:NielsDegrande/dotfiles.git "$HOME/git" || true
 cd "$HOME/git/dotfiles"
 
 # Install Homebrew.
@@ -57,6 +58,8 @@ mackup restore --force
 # Install additional binaries and applications
 [ -d "$HOME/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"  # oh-my-zsh.
 command -v rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  # Rust.
+# NOTE: oh-my-zsh plugins and themes are not submodules as they are nested under `.oh-my-zsh/custom` which we install above.
+#       Using submodules in dotfiles for the below, is causing problems as oh-my-zsh is a git repo itself.
 [ -d  "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] || git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
 [ -d  "$ZSH_CUSTOM/plugins/zsh-completions" ] || git clone https://github.com/zsh-users/zsh-completions.git "$ZSH_CUSTOM/plugins/zsh-completions"
 [ -d  "$ZSH_CUSTOM/plugins/zsh-history-substring-search" ] || git clone https://github.com/zsh-users/zsh-history-substring-search.git "$ZSH_CUSTOM/plugins/zsh-history-substring-search"

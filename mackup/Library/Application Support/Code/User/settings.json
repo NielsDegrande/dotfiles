@@ -171,5 +171,6 @@
         "python:S1707": {
             "level": "on"
         }
-    }
+    },
+    "python.languageServer": "Pylance"
 }

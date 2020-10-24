@@ -20,5 +20,6 @@ redhat.vscode-yaml
 SonarSource.sonarlint-vscode
 streetsidesoftware.code-spell-checker
 Tyriar.sort-lines
+usernamehw.errorlens
 vscodevim.vim
 wayou.vscode-todo-highlight

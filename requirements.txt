@@ -2,7 +2,8 @@ ansible
 autopep8
 bandit
 black
-Click
+click
+coloredlogs
 flake8
 flake8_commas
 flake8-blind-except
@@ -13,10 +14,21 @@ flake8-import-order
 flake8-logging-format
 flake8-module-name
 flake8-rst-docstrings
+# hyperopt
 ipython
 isort
-jupyter
+# joblib
+jupyterlab
+# more-itertools
 mypy
+# pip-tools
 # poetry
+pre-commit
+# prospector
+tenacity
+# tqdm
 pylint
+pylint-fail-under
 pytest-cov
+pytest-mock
+# xenon

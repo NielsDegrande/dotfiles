@@ -36,3 +36,7 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Integrate FZF with VIM.
 set rtp+=/usr/local/opt/fzf
+
+" Add shortcut for commenting.
+map <C-C> :norm 0i# <Esc> 
+map <C-T> :norm 02x<Esc>

@@ -2,8 +2,8 @@
 
 # Taps.
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
 # Binaries.
@@ -23,7 +23,9 @@ brew "parallel"
 brew "shellcheck"
 brew "tldr"
 brew "tmux"
+brew "tree"
 brew "watch"
+brew "wget"
 brew "yank"
 
 # Applications.
@@ -38,7 +40,7 @@ cask "lulu"
 cask "onyx"
 cask "rectangle"
 cask "the-unarchiver"
-cask "visual-studio-code"
+cask "visual-studio-code" # vscodium
 
 # Mac App Store applications.
 mas "Amphetamine", id: 937984704

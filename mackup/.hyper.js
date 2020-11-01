@@ -52,7 +52,13 @@ module.exports = {
     borderColor: '#333',
 
     // custom CSS to embed in the main window
-    css: '',
+    css: `
+      .line {
+        font-size: 0.7rem;
+        color: white;
+        background-color: #282C34;
+      }`
+    ,
 
     // custom CSS to embed in the terminal window
     termCSS: '',
@@ -67,7 +73,7 @@ module.exports = {
     showWindowControls: '',
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
-    padding: '12px 14px',
+    padding: '14px 14px 28px 14px',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
@@ -137,6 +143,17 @@ module.exports = {
     // rendering (slower, but supports transparent backgrounds)
     webGLRenderer: true,
 
+    hyperline: {                                                                 
+      plugins: [
+        "hostname",
+        "cpu",
+        "memory",
+        "network",
+        "ip",
+        "battery",
+      ]                                                                          
+    },
+
     // for advanced config flags please refer to https://hyper.is/#cfg
   },
 
@@ -147,8 +164,9 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    // "hyper-solarized-light"
-    "hyper-one-dark"
+    // "hyper-solarized-dark"
+    "hyper-one-dark",
+    "hyperline",
   ],
 
   // in development, you can create a directory under

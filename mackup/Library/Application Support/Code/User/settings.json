@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "Solarized Dark",
     "window.zoomLevel": 0,
     "python.dataScience.sendSelectionToInteractiveWindow": true,
     "editor.fontSize": 14,
@@ -169,8 +168,12 @@
             "level": "on"
         },
         "python:S1707": {
-            "level": "on"
+            "level": "off"
         }
     },
-    "python.languageServer": "Pylance"
+    "python.languageServer": "Pylance",
+    "workbench.colorTheme": "Solarized Dark",
+    "autoDocstring.docstringFormat": "sphinx",
+    "autoDocstring.guessTypes": false,
+    "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache"
 }

@@ -19,7 +19,7 @@ brew "htop"
 brew "mackup"
 brew "mas"
 brew "parallel"
-# brew "python" # Part of developer tools since Catalina.
+# brew "python" # Part of developer tools since Catalina (outdated version though).
 brew "shellcheck"
 brew "tldr"
 brew "tmux"

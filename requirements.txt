@@ -2,7 +2,7 @@ ansible
 autopep8
 bandit
 black
-click
+click # typer
 coloredlogs
 flake8
 flake8_commas
@@ -23,12 +23,15 @@ jupyterlab
 mypy
 # pip-tools
 # poetry
+pretty_errors
 pre-commit
 # prospector
-tenacity
-# tqdm
 pylint
 pylint-fail-under
 pytest-cov
 pytest-mock
+rich
+# scalene
+tenacity
+# tqdm
 # xenon

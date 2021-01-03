@@ -1,6 +1,5 @@
 {
     "window.zoomLevel": 0,
-    "python.dataScience.sendSelectionToInteractiveWindow": true,
     "editor.fontSize": 14,
     "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
     "workbench.startupEditor": "newUntitledFile",
@@ -13,22 +12,27 @@
             79
         ]
     },
-    "python.formatting.blackArgs": [
-        "--line-length=79"
-    ],
     "cSpell.userWords": [
         "CPUs",
         "POSIX",
         "Unmarshalling",
         "ansible",
+        "asctime",
         "astype",
         "bazel",
         "bresenham",
         "brewfile",
         "chipset",
+        "coloredlogs",
+        "cyclomatic",
+        "dataclasses",
+        "dataframes",
+        "degrande",
         "discretize",
         "dotfiles",
+        "dropna",
         "dtype",
+        "dtypes",
         "fillna",
         "frecency",
         "groupby",
@@ -37,20 +41,29 @@
         "inplace",
         "isin",
         "isna",
+        "isort",
         "issubset",
+        "iter",
+        "iterr",
+        "iterrows",
         "itertools",
         "journaling",
+        "levelname",
+        "lflow",
+        "m",
         "mackup",
         "malloc",
         "multithreaded",
         "multithreading",
         "mutex",
         "mutexes",
+        "mypy",
         "ndarray",
         "niels",
         "numpy",
         "nunique",
         "parallelization",
+        "pydantic",
         "pylint",
         "pyplot",
         "pytest",
@@ -60,13 +73,17 @@
         "rwlock",
         "scipy",
         "setp",
+        "setuptools",
         "sociodemographics",
         "softmax",
         "stateful",
+        "sublanguages",
         "swappable",
+        "timeit",
         "tolist",
         "trello",
         "unmarshal",
+        "vectorize",
         "voxel",
         "xdist",
         "xlabel",
@@ -175,5 +192,24 @@
     "workbench.colorTheme": "Solarized Dark",
     "autoDocstring.docstringFormat": "sphinx",
     "autoDocstring.guessTypes": false,
-    "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache"
+    "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "jupyter.sendSelectionToInteractiveWindow": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
 }

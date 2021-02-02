@@ -73,6 +73,7 @@ plugins=(
   colored-man-pages
   git
   history-substring-search
+  osx
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
@@ -109,6 +110,9 @@ source $ZSH/oh-my-zsh.sh
 # Get rid of % sign on startup.
 unsetopt PROMPT_SP
 
+# Print a new line before a new command, to ensure output of last command is safeguarded.
+precmd() { print "" }
+
 # Tweak Spaceship theme.
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_KUBECTL_SHOW=true
@@ -122,5 +126,10 @@ source ~/.path
 # Setup applications and binaries. 
 autoload -U compinit && compinit  # Add more completion scripts, not available in zsh yet.
 eval "$(fasd --init auto)"  # fasd: Open folders and files fast.
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh  # fzf: Fuzzy finder.
+# fzf: Fuzzy finder. Source and use ag.
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+
+# Bind ç to fzf ALT-C key.
+bindkey "ç" fzf-cd-widget
 

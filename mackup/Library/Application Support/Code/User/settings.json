@@ -18,6 +18,7 @@
         "Unmarshalling",
         "ansible",
         "asctime",
+        "asdict",
         "astype",
         "bazel",
         "bresenham",
@@ -29,6 +30,7 @@
         "dataframes",
         "degrande",
         "discretize",
+        "docstrings",
         "dotfiles",
         "dropna",
         "dtype",
@@ -36,6 +38,9 @@
         "fillna",
         "frecency",
         "groupby",
+        "gunicorn",
+        "hardcode",
+        "hardcoding",
         "hspace",
         "iloc",
         "inplace",
@@ -63,9 +68,13 @@
         "numpy",
         "nunique",
         "parallelization",
+        "post",
+        "postgres",
+        "postgresql",
         "pydantic",
         "pylint",
         "pyplot",
+        "pystan",
         "pytest",
         "quadrotor",
         "reindex",
@@ -74,6 +83,7 @@
         "scipy",
         "setp",
         "setuptools",
+        "sklearn",
         "sociodemographics",
         "softmax",
         "stateful",
@@ -83,6 +93,7 @@
         "tolist",
         "trello",
         "unmarshal",
+        "uvicorn",
         "vectorize",
         "voxel",
         "xdist",
@@ -97,7 +108,8 @@
         "r"
     ],
     "[markdown]": {
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "python.formatting.provider": "black",
     "python.linting.pylintEnabled": false,
@@ -200,16 +212,18 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "workbench.editorAssociations": [],
     "[typescriptreact]": {
+        "editor.tabSize": 2,
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "[javascript]": {
+        "editor.tabSize": 2,
         "editor.defaultFormatter": "vscode.typescript-language-features"
-    }
+    },
+    "[javascriptreact]": {
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "jupyter.askForKernelRestart": false
 }

@@ -7,6 +7,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
 # Binaries.
+brew "ag"
 brew "bat"
 brew "exa"
 brew "fasd"

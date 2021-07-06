@@ -9,6 +9,7 @@ tap "homebrew/core"
 # Binaries.
 brew "ag"
 brew "bat"
+brew "bluesnooze"
 brew "exa"
 brew "fasd"
 brew "fd"

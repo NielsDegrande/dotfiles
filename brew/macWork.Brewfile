@@ -5,6 +5,7 @@
 
 # Binaries.
 # brew "bazelbuild/tap/bazel"
+brew "azure-cli"
 brew "hadolint"
 brew "helm"
 brew "jq"

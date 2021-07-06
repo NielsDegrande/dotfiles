@@ -1,229 +1,185 @@
 {
-    "window.zoomLevel": 0,
-    "editor.fontSize": 14,
-    "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
-    "workbench.startupEditor": "newUntitledFile",
-    "files.autoSave": "afterDelay",
-    "files.insertFinalNewline": true,
-    "workbench.editor.showTabs": true,
-    "[python]": {
-        "editor.rulers": [
-            72,
-            79
-        ]
-    },
-    "cSpell.userWords": [
-        "CPUs",
-        "POSIX",
-        "Unmarshalling",
-        "ansible",
-        "asctime",
-        "asdict",
-        "astype",
-        "bazel",
-        "bresenham",
-        "brewfile",
-        "chipset",
-        "coloredlogs",
-        "cyclomatic",
-        "dataclasses",
-        "dataframes",
-        "degrande",
-        "discretize",
-        "docstrings",
-        "dotfiles",
-        "dropna",
-        "dtype",
-        "dtypes",
-        "fillna",
-        "frecency",
-        "groupby",
-        "gunicorn",
-        "hardcode",
-        "hardcoding",
-        "hspace",
-        "iloc",
-        "inplace",
-        "isin",
-        "isna",
-        "isort",
-        "issubset",
-        "iter",
-        "iterr",
-        "iterrows",
-        "itertools",
-        "journaling",
-        "levelname",
-        "lflow",
-        "m",
-        "mackup",
-        "malloc",
-        "multithreaded",
-        "multithreading",
-        "mutex",
-        "mutexes",
-        "mypy",
-        "ndarray",
-        "niels",
-        "numpy",
-        "nunique",
-        "parallelization",
-        "post",
-        "postgres",
-        "postgresql",
-        "pydantic",
-        "pylint",
-        "pyplot",
-        "pystan",
-        "pytest",
-        "quadrotor",
-        "reindex",
-        "roadmap",
-        "rwlock",
-        "scipy",
-        "setp",
-        "setuptools",
-        "sklearn",
-        "sociodemographics",
-        "softmax",
-        "stateful",
-        "sublanguages",
-        "swappable",
-        "timeit",
-        "tolist",
-        "trello",
-        "unmarshal",
-        "uvicorn",
-        "vectorize",
-        "voxel",
-        "xdist",
-        "xlabel",
-        "xlsx"
-    ],
-    "files.associations": {
-        "*.rmd": "markdown",
-        "*.Brewfile": "shellscript"
-    },
-    "cSpell.enableFiletypes": [
-        "r"
-    ],
-    "[markdown]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "python.formatting.provider": "black",
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": true,
-    "python.linting.enabled": true,
-    "python.pythonPath": "/usr/local/bin/python3",
-    "telemetry.enableCrashReporter": false,
-    "gitlens.advanced.telemetry.enabled": false,
-    "telemetry.enableTelemetry": false,
-    "[yaml]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[sql]": {
-        "editor.tabSize": 2
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "sonarlint.rules": {
-        "python:S139": {
-            "level": "on"
-        },
-        "python:S1717": {
-            "level": "on"
-        },
-        "python:S2733": {
-            "level": "on"
-        },
-        "python:S2712": {
-            "level": "on"
-        },
-        "python:ClassComplexity": {
-            "level": "on"
-        },
-        "python:S134": {
-            "level": "on"
-        },
-        "python:S1720": {
-            "level": "on"
-        },
-        "python:S113": {
-            "level": "on"
-        },
-        "python:FileComplexity": {
-            "level": "on"
-        },
-        "python:S104": {
-            "level": "on"
-        },
-        "python:FunctionComplexity": {
-            "level": "on"
-        },
-        "python:S1142": {
-            "level": "on"
-        },
-        "python:S5439": {
-            "level": "on"
-        },
-        "python:LineLength": {
-            "level": "on"
-        },
-        "python:S1131": {
-            "level": "on"
-        },
-        "python:LongIntegerWithLowercaseSuffixUsage": {
-            "level": "on"
-        },
-        "python:S2325": {
-            "level": "on"
-        },
-        "python:S1578": {
-            "level": "on"
-        },
-        "python:S1722": {
-            "level": "off"
-        },
-        "python:S1721": {
-            "level": "on"
-        },
-        "python:ParsingError": {
-            "level": "on"
-        },
-        "python:OneStatementPerLine": {
-            "level": "on"
-        },
-        "python:S1707": {
-            "level": "off"
-        }
-    },
-    "python.languageServer": "Pylance",
-    "workbench.colorTheme": "Solarized Dark",
-    "autoDocstring.docstringFormat": "sphinx",
-    "autoDocstring.guessTypes": false,
-    "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "jupyter.sendSelectionToInteractiveWindow": true,
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "workbench.editorAssociations": [],
-    "[typescriptreact]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "[javascript]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "[javascriptreact]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "jupyter.askForKernelRestart": false
+  "editor.fontSize": 14,
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+  "editor.lineHeight": 24,
+  "errorLens.excludePatterns": ["**/*.{md}"],
+  "explorer.confirmDelete": false,
+  "files.associations": {
+    "*.Brewfile": "shellscript"
+  },
+  "files.autoSave": "afterDelay",
+  "files.insertFinalNewline": true,
+  "jupyter.askForKernelRestart": false,
+  "jupyter.sendSelectionToInteractiveWindow": true,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "redhat.telemetry.enabled": false,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "workbench.editor.decorations.colors": false,
+  "workbench.editor.decorations.badges": false,
+  "workbench.editor.showTabs": true,
+  "workbench.editor.untitled.hint": "hidden",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "newUntitledFile",
+
+  "cSpell.userWords": [
+    "CPUs",
+    "POSIX",
+    "Unmarshalling",
+    "ansible",
+    "asctime",
+    "asdict",
+    "astype",
+    "bazel",
+    "bresenham",
+    "brewfile",
+    "chipset",
+    "coloredlogs",
+    "cyclomatic",
+    "dataclasses",
+    "dataframes",
+    "decentral",
+    "degrande",
+    "discretize",
+    "docstrings",
+    "dotfiles",
+    "dropna",
+    "dtype",
+    "dtypes",
+    "fillna",
+    "frecency",
+    "groupby",
+    "gunicorn",
+    "hardcode",
+    "hardcoding",
+    "hspace",
+    "iloc",
+    "inplace",
+    "isin",
+    "isna",
+    "isort",
+    "issubset",
+    "iter",
+    "iterr",
+    "iterrows",
+    "itertools",
+    "journaling",
+    "levelname",
+    "mlflow",
+    "mackup",
+    "malloc",
+    "mlflow",
+    "multithreaded",
+    "multithreading",
+    "mutex",
+    "mutexes",
+    "mypy",
+    "ndarray",
+    "niels",
+    "numpy",
+    "nunique",
+    "parallelization",
+    "post",
+    "postgres",
+    "postgresql",
+    "pydantic",
+    "pylint",
+    "pyodbc",
+    "pyplot",
+    "pystan",
+    "pytest",
+    "quadrotor",
+    "reindex",
+    "roadmap",
+    "rwlock",
+    "scip",
+    "scipy",
+    "setp",
+    "setuptools",
+    "sklearn",
+    "sociodemographics",
+    "softmax",
+    "stateful",
+    "struct",
+    "sublanguages",
+    "swappable",
+    "timeit",
+    "tolist",
+    "trello",
+    "typer",
+    "unmarshal",
+    "uvicorn",
+    "vectorize",
+    "voxel",
+    "xdist",
+    "xgboost",
+    "xlabel",
+    "xlsx",
+    "xticks"
+  ],
+  "cSpell.enableFiletypes": ["r"],
+  "cSpell.language": "en,en-US",
+
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[markdown]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[python]": {
+    "editor.rulers": [72, 79]
+  },
+  "python.formatting.provider": "black",
+  "python.languageServer": "Pylance",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.pythonPath": "/usr/local/bin/python3",
+  "python.showStartPage": false,
+  "autoDocstring.docstringFormat": "sphinx",
+  "autoDocstring.guessTypes": false,
+  "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
+
+  "[sql]": {
+    "editor.tabSize": 2
+  },
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

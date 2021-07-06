@@ -143,7 +143,7 @@ module.exports = {
     // rendering (slower, but supports transparent backgrounds)
     webGLRenderer: true,
 
-    hyperline: {                                                                 
+    hyperline: {
       plugins: [
         "hostname",
         "cpu",
@@ -151,7 +151,7 @@ module.exports = {
         "network",
         "ip",
         "battery",
-      ]                                                                          
+      ]
     },
 
     // for advanced config flags please refer to https://hyper.is/#cfg
@@ -163,11 +163,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [
-    // "hyper-solarized-dark"
-    "hyper-one-dark",
-    "hyperline",
-  ],
+  plugins: ["hyper-one-dark", "hyperline"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

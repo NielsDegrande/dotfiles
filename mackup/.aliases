@@ -7,6 +7,7 @@ alias brewdump='brew bundle dump ; cat Brewfile ; rm Brewfile'
 
 # Custom.
 alias exa='exa -la' # Always use list and show all.
+alias sourcev='source venv/bin/activate' # Activate venv in current folder.
 
 # Fasd.
 alias v='f -e vim'       # Open in VIM.

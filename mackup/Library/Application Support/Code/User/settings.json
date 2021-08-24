@@ -4,10 +4,19 @@
   "editor.lineHeight": 24,
   "errorLens.excludePatterns": ["**/*.{md}"],
   "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
   "files.associations": {
     "*.Brewfile": "shellscript"
   },
   "files.autoSave": "afterDelay",
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/env/**": true,
+    "**/node_modules/**": true,
+    "**/venv/**": true,
+    "env-*": true
+  },
   "files.insertFinalNewline": true,
   "jupyter.askForKernelRestart": false,
   "jupyter.sendSelectionToInteractiveWindow": true,
@@ -16,6 +25,13 @@
     "jupyter-notebook": "left"
   },
   "redhat.telemetry.enabled": false,
+  "search.exclude": {
+    "**/bower_components": true,
+    "**/env": true,
+    "**/node_modules": true,
+    "**/venv": true
+  },
+  "security.workspace.trust.enabled": false,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "workbench.colorTheme": "One Dark Pro",
@@ -53,6 +69,7 @@
     "dropna",
     "dtype",
     "dtypes",
+    "evar",
     "fillna",
     "frecency",
     "groupby",
@@ -71,11 +88,12 @@
     "iterrows",
     "itertools",
     "journaling",
+    "kpis",
     "levelname",
-    "mlflow",
     "mackup",
     "malloc",
     "mlflow",
+    "mssql",
     "multithreaded",
     "multithreading",
     "mutex",
@@ -83,14 +101,17 @@
     "mypy",
     "ndarray",
     "niels",
+    "nrows",
     "numpy",
     "nunique",
+    "openpyxl",
     "parallelization",
     "post",
     "postgres",
     "postgresql",
     "pydantic",
     "pylint",
+    "pymssql",
     "pyodbc",
     "pyplot",
     "pystan",
@@ -162,7 +183,6 @@
   "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": false,
   "python.pythonPath": "/usr/local/bin/python3",
-  "python.showStartPage": false,
   "autoDocstring.docstringFormat": "sphinx",
   "autoDocstring.guessTypes": false,
   "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
@@ -181,5 +201,5 @@
 
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
 }

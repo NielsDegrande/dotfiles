@@ -23,6 +23,7 @@ brew "mas"
 brew "parallel"
 # brew "python" # Part of developer tools since Catalina (outdated version though).
 brew "shellcheck"
+brew "starship"
 brew "tldr"
 brew "tmux"
 brew "tree"

@@ -9,7 +9,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,15 +107,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Get rid of % sign on startup.
-unsetopt PROMPT_SP
+# unsetopt PROMPT_SP
 
-# Print a new line before a new command, to ensure output of last command is safeguarded.
-precmd() { print "" }
-
-# Tweak Spaceship theme.
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_KUBECTL_SHOW=true
-SPACESHIP_KUBECTL_VERSION_SHOW=false
+# Load starship theme.
+eval "$(starship init zsh)"
 
 # Source aliases and paths.
 source ~/.aliases
@@ -129,7 +123,3 @@ eval "$(fasd --init auto)"  # fasd: Open folders and files fast.
 # fzf: Fuzzy finder. Source and use ag.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
-
-# Bind ç to fzf ALT-C key.
-bindkey "ç" fzf-cd-widget
-

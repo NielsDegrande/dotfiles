@@ -12,7 +12,7 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: '"JetBrains Mono", "Fira Code", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"JetBrains Mono", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -153,6 +153,8 @@ module.exports = {
         "battery",
       ]
     },
+
+    modifierKeys: { altIsMeta: true }
 
     // for advanced config flags please refer to https://hyper.is/#cfg
   },

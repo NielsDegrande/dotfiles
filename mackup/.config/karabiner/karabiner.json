@@ -166,6 +166,26 @@
                                     "key_code": "b",
                                     "modifiers": {
                                         "mandatory": [
+                                            "right_command",
+                                            "option"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Safari.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": {
+                                        "mandatory": [
                                             "right_command"
                                         ],
                                         "optional": [
@@ -194,7 +214,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/PyCharm.app'"
+                                        "shell_command": "open '/Applications/Visual Studio Code.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -243,6 +263,26 @@
                                     "key_code": "f",
                                     "modifiers": {
                                         "mandatory": [
+                                            "right_command",
+                                            "option"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/System/Library/CoreServices/Finder.app' $HOME/OneDrive/Downloads"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                        "mandatory": [
                                             "right_command"
                                         ],
                                         "optional": [
@@ -259,10 +299,11 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "g",
+                                    "key_code": "m",
                                     "modifiers": {
                                         "mandatory": [
-                                            "right_command"
+                                            "right_command",
+                                            "option"
                                         ],
                                         "optional": [
                                             "any"
@@ -271,7 +312,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/System/Library/CoreServices/Finder.app' $HOME/Egnyte/Private/degrande.niels/Downloads"
+                                        "shell_command": "open '/System/Applications/Messages.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -337,6 +378,25 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "r",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Insomnia.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
@@ -378,7 +438,8 @@
                                     "key_code": "t",
                                     "modifiers": {
                                         "mandatory": [
-                                            "right_command"
+                                            "right_command",
+                                            "option"
                                         ],
                                         "optional": [
                                             "any"
@@ -387,14 +448,14 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Hyper.app'"
+                                        "shell_command": "open '/Applications/Microsoft Teams.app'"
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
                                 "from": {
-                                    "key_code": "v",
+                                    "key_code": "t",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_command"
@@ -406,7 +467,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Visual Studio Code.app'"
+                                        "shell_command": "open '/Applications/Hyper.app'"
                                     }
                                 ],
                                 "type": "basic"

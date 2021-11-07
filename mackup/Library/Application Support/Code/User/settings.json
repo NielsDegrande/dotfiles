@@ -46,9 +46,6 @@
   "workbench.startupEditor": "newUntitledFile",
 
   "cSpell.userWords": [
-    "CPUs",
-    "POSIX",
-    "Unmarshalling",
     "ansible",
     "asctime",
     "asdict",
@@ -58,6 +55,7 @@
     "brewfile",
     "chipset",
     "coloredlogs",
+    "CPUs",
     "cyclomatic",
     "dataclasses",
     "dataframes",
@@ -104,8 +102,10 @@
     "nrows",
     "numpy",
     "nunique",
+    "odbc",
     "openpyxl",
     "parallelization",
+    "POSIX",
     "post",
     "postgres",
     "postgresql",
@@ -127,6 +127,7 @@
     "sklearn",
     "sociodemographics",
     "softmax",
+    "starlette",
     "stateful",
     "struct",
     "sublanguages",
@@ -136,6 +137,7 @@
     "trello",
     "typer",
     "unmarshal",
+    "Unmarshalling",
     "uvicorn",
     "vectorize",
     "voxel",
@@ -202,4 +204,5 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "window.zoomLevel": 1,
 }

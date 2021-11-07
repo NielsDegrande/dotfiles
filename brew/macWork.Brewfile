@@ -6,6 +6,7 @@
 # Binaries.
 # brew "bazelbuild/tap/bazel"
 brew "azure-cli"
+brew "gcloud"
 brew "hadolint"
 brew "helm"
 brew "jq"
@@ -20,6 +21,5 @@ cask "adoptopenjdk"
 cask "dbeaver-community"
 cask "docker"
 cask "insomnia"
-# cask "pycharm"
 
 # Mac App Store applications.

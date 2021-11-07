@@ -106,9 +106,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Get rid of % sign on startup.
-# unsetopt PROMPT_SP
-
 # Load starship theme.
 eval "$(starship init zsh)"
 

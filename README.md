@@ -72,7 +72,4 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
   TODO: Is this true? E.g. Caps Lock = ESC, hot corners, desktop background, etc.
 - `Google Drive` and/or `Egnyte` for synchronizing data.
 - `Firefox Sync` for synchronizing bookmarks, settings and extensions (not secrets!).
-- `PyCharm` has version numbers in its path,
-  see: <https://github.com/lra/mackup/blob/master/mackup/applications/pycharm.cfg.>.
-  Currently using Pycharm Pro's Sync IDE Settings including plugin option.
 - Python environments: a `requirements.txt` file is available to bootstrap your venv.

@@ -19,3 +19,8 @@ alias fzfp="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {
 # Search aliases and bindkeys.
 alias searchalias="alias | fzf"
 alias searchbindkey="bindkey | fzf"
+
+# Git aliases.
+alias gsp="git stash && gl && git stash apply"
+alias gspd="git stash && gco develop && gl && git stash apply"
+alias gspm="git stash && gco master && gl && git stash apply"

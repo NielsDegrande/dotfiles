@@ -72,7 +72,7 @@ plugins=(
   colored-man-pages
   git
   history-substring-search
-  osx
+  macos
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting

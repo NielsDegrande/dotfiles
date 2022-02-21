@@ -40,7 +40,6 @@
   },
   "workbench.editor.decorations.colors": false,
   "workbench.editor.decorations.badges": false,
-  "workbench.editor.showTabs": true,
   "workbench.editor.untitled.hint": "hidden",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "newUntitledFile",
@@ -204,5 +203,13 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 1,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "bracket-pair-colorizer-2.depreciation-notice": false,
 }

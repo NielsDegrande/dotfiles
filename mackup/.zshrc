@@ -120,3 +120,8 @@ eval "$(fasd --init auto)"  # fasd: Open folders and files fast.
 # fzf: Fuzzy finder. Source and use ag.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+
+# Rosetta terminal setup.
+alias brew86="arch -x86_64 /usr/local/bin/brew"
+alias python86="arch -x86_64 /usr/local/bin/python3"
+

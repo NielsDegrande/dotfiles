@@ -15,9 +15,11 @@
 
 [core]
 	excludesfile = ~/git/.gitignore
-        pager = delta --dark
+    pager = delta --dark
 
 [pull]
 	rebase = true
 [init]
 	defaultBranch = main
+[push]
+	autoSetupRemote = true

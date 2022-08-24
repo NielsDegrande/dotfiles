@@ -8,7 +8,7 @@ set shortmess+=I
 syntax on
 set scrolloff=5
 set showmatch
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " UI tweaks.
 set backspace=indent,eol,start
@@ -30,13 +30,15 @@ set ruler
 set undodir=~/.vim/undodir
 set undofile
 
-" Configure plugins.
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
 " Integrate FZF with VIM.
 set rtp+=/usr/local/opt/fzf
 
 " Add shortcut for commenting.
 map <C-C> :norm 0i# <Esc> 
 map <C-T> :norm 02x<Esc>
+
+" Install vim-plug if not found.
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif

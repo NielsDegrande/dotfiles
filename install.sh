@@ -37,11 +37,11 @@ case "$(HOSTNAME)" in
         # Set screenshot location to Downloads.
         defaults write com.apple.screencapture location "$HOME/Downloads"
         ;;
-    "STK-XQ2PWJGH5" )
+    "STK-3G6T093VW" )
         # Install brew bundle for work.
         brew bundle install --file brew/macWork.Brewfile
         # Set screenshot location to Downloads.
-        defaults write com.apple.screencapture location "$HOME/Egnyte/Private/degrande.niels/Downloads"
+        defaults write com.apple.screencapture location "$HOME/Library/CloudStorage/OneDrive-TheBostonConsultingGroup,Inc/Downloads"
         ;;    
     * )
         echo "Machine name not recognized: no action taken."
@@ -55,9 +55,11 @@ brew cleanup
 ln -s "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg" || true
 mackup restore --force
 
-# Install additional binaries and applications
-[ -d "$HOME/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"  # oh-my-zsh.
-command -v rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  # Rust.
+# Install additional binaries and applications.
+# oh-my-zsh.
+[ -d "$HOME/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Rust.
+command -v rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # NOTE: oh-my-zsh plugins and themes are not submodules as they are nested under `.oh-my-zsh/custom` which we install above.
 #       Using submodules in dotfiles for the below, is causing problems as oh-my-zsh is a git repo itself.
 [ -d  "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] || git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
@@ -66,7 +68,11 @@ command -v rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |
 [ -d  "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
 
 # Configure installed applications and binaries.
-mkdir -p "$HOME/.vim/undodir"  # Vim undo directory.
+# Vim undo directory.
+mkdir -p "$HOME/.vim/undodir"
 
 # Install VS Code extensions.
 cat "$HOME/.vscode/extensions.txt" | xargs  -I % sh -c "code --install-extension % || true"
+
+# Install fzf keybindings.
+/opt/homebrew/opt/fzf/install

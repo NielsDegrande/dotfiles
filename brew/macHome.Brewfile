@@ -15,4 +15,4 @@ cask "virtualbox-extension-pack"
 cask "vlc"
 
 # Mac App Store applications.
-mas "NordVPN IKE", id: 1116599239
+mas "NordVPN: VPN Fast & Secure", id: 905953485

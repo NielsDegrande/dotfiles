@@ -73,6 +73,7 @@ plugins=(
   git
   history-substring-search
   macos
+  vi-mode
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
@@ -121,7 +122,11 @@ eval "$(fasd --init auto)"  # fasd: Open folders and files fast.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
 
-# Rosetta terminal setup.
-alias brew86="arch -x86_64 /usr/local/bin/brew"
-alias python86="arch -x86_64 /usr/local/bin/python3"
+# M1 related setup.
+export DOCKER_DEFAULT_PLATFORM=linux/arm64/v8
 
+# Ensure ESC does not wait by setting key time out to 0.01s.
+export KEYTIMEOUT=1
+
+# Re-load hyper config to get transparancy right.
+touch ~/.hyper.js

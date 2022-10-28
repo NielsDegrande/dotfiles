@@ -19,6 +19,9 @@ mkdir -p "$HOME/git"
 git clone --recurse-submodules -j8 git@github.com:NielsDegrande/dotfiles.git "$HOME/git" || true
 cd "$HOME/git/dotfiles"
 
+# Load mac configuration (this file should hold all mac config).
+bash macos.sh
+
 # Install Homebrew.
 command -v brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
@@ -66,6 +69,9 @@ command -v rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |
 [ -d  "$ZSH_CUSTOM/plugins/zsh-completions" ] || git clone https://github.com/zsh-users/zsh-completions.git "$ZSH_CUSTOM/plugins/zsh-completions"
 [ -d  "$ZSH_CUSTOM/plugins/zsh-history-substring-search" ] || git clone https://github.com/zsh-users/zsh-history-substring-search.git "$ZSH_CUSTOM/plugins/zsh-history-substring-search"
 [ -d  "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+
+# Install tmux plugins.
+[ -d  "~/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Configure installed applications and binaries.
 # Vim undo directory.

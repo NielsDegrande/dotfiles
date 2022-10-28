@@ -1,5 +1,4 @@
 {
-  "editor.experimental.stickyScroll.enabled": true,
   "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "editor.inlineSuggest.enabled": true,
   "editor.lineHeight": 20,
@@ -56,6 +55,7 @@
 
   "cSpell.userWords": [
     "ansible",
+    "aptering",
     "arange",
     "asctime",
     "asdict",
@@ -80,6 +80,7 @@
     "dtype",
     "dtypes",
     "evar",
+    "fastapi",
     "fillna",
     "financials",
     "Formik",
@@ -134,6 +135,7 @@
     "pytest",
     "pywraplp",
     "quadrotor",
+    "redoc",
     "reindex",
     "roadmap",
     "rwlock",
@@ -150,6 +152,7 @@
     "sublanguages",
     "swappable",
     "timeit",
+    "timespan",
     "tolist",
     "trello",
     "typer",
@@ -226,4 +229,6 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "tabnine.experimentalAutoImports": true,
+  "editor.stickyScroll.enabled": true,
 }

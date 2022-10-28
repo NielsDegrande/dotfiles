@@ -1,10 +1,11 @@
 adpyke.vscode-sql-formatter
-CoenraadS.bracket-pair-colorizer-2
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 eamodio.gitlens
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
+GitHub.copilot
+ivan-bocharov.stan-vscode
 mechatroner.rainbow-csv
 ms-python.python
 ms-python.vscode-pylance
@@ -16,6 +17,7 @@ oderwat.indent-rainbow
 PKief.material-icon-theme
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
+TabNine.tabnine-vscode
 usernamehw.errorlens
 VisualStudioExptTeam.vscodeintellicode
 wayou.vscode-todo-highlight

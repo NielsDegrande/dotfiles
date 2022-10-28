@@ -1,5 +1,8 @@
 # Aliases are configured here and sourced from ~/.zshrc.
 
+# Rosetta terminal setup.
+alias brew86="arch -x86_64 /usr/local/bin/brew"
+alias python86="arch -x86_64 /usr/local/bin/python3"
 
 # Brew.
 alias overbrew='brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"'
@@ -14,9 +17,8 @@ alias dstop="docker ps | awk 'NR>1{ print $1 }' | parallel docker stop {}" # Sto
 alias ll='exa -la --icons --git' # Always use list and show all, add icons and git status info.
 alias llt='exa --icons --tree --git-ignore' # Show tree with icons.
 
-
 # Fasd.
-alias v='f -e vim'       # Open in VIM.
+alias v='f -e nvim'       # Open in VIM.
 alias o='a -e open'      # Open with default.
 
 # FZF.

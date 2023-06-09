@@ -3,6 +3,7 @@
 # Rosetta terminal setup.
 alias brew86="arch -x86_64 /usr/local/bin/brew"
 alias python86="arch -x86_64 /usr/local/bin/python3"
+alias conda86="arch -x86_64 /usr/local/bin/conda"
 
 # Brew.
 alias overbrew='brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"'
@@ -11,15 +12,13 @@ alias brewdump='brew bundle dump ; cat Brewfile ; rm Brewfile'
 
 # Custom.
 alias sourcev='source venv/bin/activate' # Activate venv in current folder.
+alias sourcez='source ~/.zshrc' # Source zshrc in current shell.
 alias dstop="docker ps | awk 'NR>1{ print $1 }' | parallel docker stop {}" # Stop all docker containers.
+alias retmux="tmux source-file ~/.tmux.conf"
 
 # Exa.
 alias ll='exa -la --icons --git' # Always use list and show all, add icons and git status info.
 alias llt='exa --icons --tree --git-ignore' # Show tree with icons.
-
-# Fasd.
-alias v='f -e nvim'       # Open in VIM.
-alias o='a -e open'      # Open with default.
 
 # FZF.
 alias fzfp="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'"
@@ -31,5 +30,5 @@ alias searchbindkey="bindkey | fzf"
 # Git aliases.
 alias gsp="git stash && gl && git stash apply"
 alias gspd="git stash && gco develop && gl && git stash apply"
-alias gspm="git stash && gco master && gl && git stash apply"
+alias gspm="git stash && gco main && gl && git stash apply"
 alias gpuo="git branch --show-current | xargs git push -u origin"

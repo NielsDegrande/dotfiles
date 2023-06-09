@@ -2,6 +2,7 @@
   "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "editor.inlineSuggest.enabled": true,
   "editor.lineHeight": 20,
+  "editor.stickyScroll.enabled": true,
   "editor.suggestSelection": "first",
   "errorLens.excludePatterns": ["**/*.{md}"],
   "explorer.confirmDelete": false,
@@ -27,7 +28,7 @@
   "files.insertFinalNewline": true,
   "git.mergeEditor": true,
   "jupyter.askForKernelRestart": false,
-  "jupyter.sendSelectionToInteractiveWindow": true,
+  "jupyter.interactiveWindow.textEditor.executeSelection": true,
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
@@ -79,6 +80,7 @@
     "dropna",
     "dtype",
     "dtypes",
+    "duckdb",
     "evar",
     "fastapi",
     "fillna",
@@ -102,6 +104,7 @@
     "itertools",
     "journaling",
     "kpis",
+    "lakehouse",
     "levelname",
     "mackup",
     "malloc",
@@ -162,6 +165,7 @@
     "uvicorn",
     "vectorize",
     "voxel",
+    "whitespaces",
     "xdist",
     "xgboost",
     "xlabel",
@@ -212,11 +216,12 @@
   "autoDocstring.docstringFormat": "sphinx",
   "autoDocstring.guessTypes": false,
   "autoDocstring.startOnNewLine": true,
-
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[sql]": {
     "editor.tabSize": 2
   },
-
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
@@ -225,10 +230,36 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
-
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "tabnine.experimentalAutoImports": true,
-  "editor.stickyScroll.enabled": true,
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
 }

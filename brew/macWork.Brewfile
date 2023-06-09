@@ -6,7 +6,7 @@
 # Binaries.
 # brew "bazelbuild/tap/bazel"
 # brew "azure-cli"
-# brew "gcloud"
+# brew "google-cloud-sdk"
 # brew "hadolint"
 # brew "helm"
 # brew "jq"
@@ -17,7 +17,7 @@
 # brew "yarn"
 
 # Applications.
-# cask "adoptopenjdk"
+# cask "temurin"
 cask "dbeaver-community"
 cask "docker"
 cask "insomnia"

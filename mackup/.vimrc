@@ -10,6 +10,16 @@ set scrolloff=5
 set showmatch
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+" Set folding settings.
+set foldmethod=syntax
+set foldcolumn=2
+highlight Folded ctermbg = NONE
+highlight FoldColumn ctermbg = NONE
+let g:markdown_folding = 1
+let g:markdown_enable_folding = 1
+set foldlevel=99
+au FileType markdown setlocal foldlevel=1
+
 " UI tweaks.
 set backspace=indent,eol,start
 set laststatus=2
@@ -33,7 +43,7 @@ set undofile
 " Integrate FZF with VIM.
 set rtp+=/usr/local/opt/fzf
 
-" Add shortcut for commenting.
+" Add shortcuts for commenting.
 map <C-C> :norm 0i# <Esc> 
 map <C-T> :norm 02x<Esc>
 

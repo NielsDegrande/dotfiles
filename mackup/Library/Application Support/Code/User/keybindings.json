@@ -38,5 +38,9 @@
   {
     "key": "ctrl+shift+p",
     "command": "workbench.panel.markers.view.focus"
+  },
+  {
+    "key": "alt+tab",
+    "command": "workbench.action.quickSwitchWindow"
   }
 ]

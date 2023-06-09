@@ -61,8 +61,6 @@ mackup restore --force
 # Install additional binaries and applications.
 # oh-my-zsh.
 [ -d "$HOME/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# Rust.
-command -v rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # NOTE: oh-my-zsh plugins and themes are not submodules as they are nested under `.oh-my-zsh/custom` which we install above.
 #       Using submodules in dotfiles for the below, is causing problems as oh-my-zsh is a git repo itself.
 [ -d  "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] || git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM/plugins/zsh-autosuggestions"

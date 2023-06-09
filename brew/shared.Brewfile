@@ -9,38 +9,45 @@ tap "homebrew/core"
 # Binaries.
 brew "ag"
 brew "bat"
+brew "bottom"
+# brew "broot" # Terminal file explorer.
+brew "eva" # Calculator.
 brew "exa"
-brew "fasd" # zoxide in rust?
 brew "fd"
-brew "firefox-profile-switcher-connector"
 brew "fzf"
 brew "git-delta"
 brew "git-quick-stats"
-brew "gnupg"
-brew "go"
+# brew "gnupg"
+# brew "go"
+# brew "helix"
 brew "htop"
 brew "mackup"
 brew "mas"
 brew "neovim"
 brew "parallel"
 # brew "python" # Part of developer tools since Catalina (outdated version though).
+brew "ripgrep" # Faster grep.
+# brew "rm-improved"
+brew "rust"
 brew "shellcheck"
 brew "starship"
 brew "tldr"
 brew "tmux"
-# brew "tree" # Use exa (llt) instead.
+brew "tokei" # Stats about code.
 brew "watch"
 brew "wget"
 brew "yank"
+brew "zoxide"
 
 # Applications.
+cask "alacritty"
 cask "amethyst"
 cask "bluesnooze"
+# cask "kap"
 cask "firefox"
 cask "font-jetbrains-mono-nerd-font"
 cask "hiddenbar"
-cask "hyper"
-cask "julia"
+# cask "julia"
 cask "karabiner-elements"
 cask "keepassxc"
 # cask "menumeters"

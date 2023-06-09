@@ -3,7 +3,8 @@
 
 # Go.
 export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
+# Below is hardcoded from $(brew --prefix golang) as it is slow.
+export GOROOT="/opt/homebrew/opt/go/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # Rust.

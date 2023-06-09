@@ -79,6 +79,8 @@ plugins=(
   zsh-syntax-highlighting
 )
 
+# Dump zsh completions in .cache.
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -114,13 +116,18 @@ eval "$(starship init zsh)"
 source ~/.aliases
 source ~/.path
 [ -f ~/.client ] && source ~/.client
+# Source venv if venv in current directory.
+[ -d venv ] && source venv/bin/activate; True
 
 # Setup applications and binaries. 
 autoload -U compinit && compinit  # Add more completion scripts, not available in zsh yet.
-eval "$(fasd --init auto)"  # fasd: Open folders and files fast.
+eval "$(zoxide init zsh)"  # zoxide: Open folders and files fast.
 # fzf: Fuzzy finder. Source and use ag.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden -p ~/.gitignore -g ""'
+export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1"
+# Set bat theme.
+export BAT_THEME=ansi
 
 # M1 related setup.
 export DOCKER_DEFAULT_PLATFORM=linux/arm64/v8
@@ -128,5 +135,16 @@ export DOCKER_DEFAULT_PLATFORM=linux/arm64/v8
 # Ensure ESC does not wait by setting key time out to 0.01s.
 export KEYTIMEOUT=1
 
-# Re-load hyper config to get transparancy right.
-touch ~/.hyper.js
+# Miniconda initialization.
+# __conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+#         . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+

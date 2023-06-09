@@ -48,9 +48,6 @@ ls $ZSH_CUSTOM/plugins
 ls $ZSH_CUSTOM/themes
 echo "Validate the above list for missing zsh plugins and themes."
 
-hyper list
-echo "Validate the above list for missing hyper plugins."
-
 # Save code extensions.
 code --list-extensions > "$HOME/.vscode/extensions.txt"
 

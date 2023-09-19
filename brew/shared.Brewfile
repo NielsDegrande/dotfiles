@@ -7,10 +7,11 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
 # Binaries.
-brew "ag"
 brew "bat"
 brew "bottom"
-# brew "broot" # Terminal file explorer.
+brew "broot" # Terminal file explorer.
+brew "deno" # JS and TS runtime.
+brew "duckdb"
 brew "eva" # Calculator.
 brew "exa"
 brew "fd"
@@ -30,20 +31,21 @@ brew "ripgrep" # Faster grep.
 # brew "rm-improved"
 brew "rust"
 brew "shellcheck"
+brew "koekeishiya/formulae/skhd"
 brew "starship"
+brew "the_silver_searcher" # ag.
 brew "tldr"
 brew "tmux"
 brew "tokei" # Stats about code.
 brew "watch"
 brew "wget"
+brew "koekeishiya/formulae/yabai"
 brew "yank"
 brew "zoxide"
 
 # Applications.
 cask "alacritty"
-cask "amethyst"
-cask "bluesnooze"
-# cask "kap"
+# cask "bluesnooze"
 cask "firefox"
 cask "font-jetbrains-mono-nerd-font"
 cask "hiddenbar"
@@ -54,9 +56,14 @@ cask "keepassxc"
 cask "lulu"
 cask "onyx"
 # cask "rectangle"
+cask sloth
 cask "the-unarchiver"
+cask "tor-browser"
+cask "utm"
 cask "visual-studio-code" # vscodium
+cask "vlc"
 
 # Mac App Store applications.
 mas "Amphetamine", id: 937984704
 mas "Flycut", id: 442160987
+mas "NordVPN: VPN Fast & Secure", id: 905953485

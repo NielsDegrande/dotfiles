@@ -10,7 +10,11 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 Plug 'pocco81/auto-save.nvim'
+Plug 'sbdchd/neoformat'
 call plug#end()
+
+" Configure fzf.
+set rtp+=/opt/homebrew/opt/fzf
 
 " Key mappings.
 " Telescope.

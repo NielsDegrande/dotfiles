@@ -116,24 +116,35 @@ eval "$(starship init zsh)"
 source ~/.aliases
 source ~/.path
 [ -f ~/.client ] && source ~/.client
+
 # Source venv if venv in current directory.
 [ -d venv ] && source venv/bin/activate; True
 
-# Setup applications and binaries. 
+# Set up applications and binaries. 
 autoload -U compinit && compinit  # Add more completion scripts, not available in zsh yet.
 eval "$(zoxide init zsh)"  # zoxide: Open folders and files fast.
 # fzf: Fuzzy finder. Source and use ag.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag --hidden -p ~/.gitignore -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden -p ~/git/.gitignore -g "" --ignore .git'
 export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Set bat theme.
 export BAT_THEME=ansi
+# Source broot.
+source /Users/degrandeniels/.config/broot/launcher/bash/br
 
+# Export additional environment variables.
 # M1 related setup.
 export DOCKER_DEFAULT_PLATFORM=linux/arm64/v8
-
 # Ensure ESC does not wait by setting key time out to 0.01s.
 export KEYTIMEOUT=1
+# Centralize Python cached files.
+export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"
+
+# Define functions.
+pyclean () {
+    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+}
 
 # Miniconda initialization.
 # __conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

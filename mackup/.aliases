@@ -15,6 +15,7 @@ alias sourcev='source venv/bin/activate' # Activate venv in current folder.
 alias sourcez='source ~/.zshrc' # Source zshrc in current shell.
 alias dstop="docker ps | awk 'NR>1{ print $1 }' | parallel docker stop {}" # Stop all docker containers.
 alias retmux="tmux source-file ~/.tmux.conf"
+alias reterm="cd $HOME; deactivate; clear"
 
 # Exa.
 alias ll='exa -la --icons --git' # Always use list and show all, add icons and git status info.

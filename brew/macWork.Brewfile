@@ -1,11 +1,10 @@
 # Install: `brew bundle --file macWork.Brewfile`.
 
 # Taps.
-# tap "bazelbuild/tap"
 
 # Binaries.
-# brew "bazelbuild/tap/bazel"
 # brew "azure-cli"
+brew "colima"
 # brew "google-cloud-sdk"
 # brew "hadolint"
 # brew "helm"
@@ -17,9 +16,9 @@
 # brew "yarn"
 
 # Applications.
-# cask "temurin"
 cask "dbeaver-community"
-cask "docker"
 cask "insomnia"
+# cask "microsoft-remote-desktop"
+# cask "temurin"
 
 # Mac App Store applications.

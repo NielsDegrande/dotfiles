@@ -9,10 +9,11 @@ syntax on
 set scrolloff=5
 set showmatch
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType markdown setlocal tabstop=2 shiftwidth=2
 
 " Set folding settings.
 set foldmethod=syntax
-set foldcolumn=2
+set foldcolumn=1
 highlight Folded ctermbg = NONE
 highlight FoldColumn ctermbg = NONE
 let g:markdown_folding = 1
@@ -33,7 +34,7 @@ set smartcase
 
 " Line numbers and ruler.
 set number
-set relativenumber
+" set relativenumber
 set ruler
 
 " Manage undo history.

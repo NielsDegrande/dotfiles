@@ -114,6 +114,7 @@ eval "$(starship init zsh)"
 
 # Source aliases and paths.
 source ~/.aliases
+source ~/.functions
 source ~/.path
 [ -f ~/.client ] && source ~/.client
 
@@ -131,7 +132,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Set bat theme.
 export BAT_THEME=ansi
 # Source broot.
-source /Users/degrandeniels/.config/broot/launcher/bash/br
+source "/Users/degrandeniels/Library/Application Support/org.dystroy.broot/launcher/bash/br"
 
 # Export additional environment variables.
 # M1 related setup.
@@ -140,11 +141,6 @@ export DOCKER_DEFAULT_PLATFORM=linux/arm64/v8
 export KEYTIMEOUT=1
 # Centralize Python cached files.
 export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"
-
-# Define functions.
-pyclean () {
-    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
-}
 
 # Miniconda initialization.
 # __conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

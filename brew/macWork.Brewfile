@@ -5,6 +5,9 @@
 # Binaries.
 # brew "azure-cli"
 brew "colima"
+# Still required with colima.
+brew "docker"
+brew "docker-compose"
 # brew "google-cloud-sdk"
 # brew "hadolint"
 # brew "helm"

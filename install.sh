@@ -68,12 +68,11 @@ mackup restore --force
 [ -d  "$ZSH_CUSTOM/plugins/zsh-history-substring-search" ] || git clone https://github.com/zsh-users/zsh-history-substring-search.git "$ZSH_CUSTOM/plugins/zsh-history-substring-search"
 [ -d  "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
 
+# Install alacritty theme.
+[ -d  "$HOME/.config/alacritty/themes" ] || (mkdir -p "$HOME/.config/alacritty/themes" && curl https://raw.githubusercontent.com/alacritty/alacritty-theme/master/themes/one_dark.yaml > ~/.config/alacritty/themes/one_dark.yaml)
+
 # Install tmux plugins.
 [ -d  "~/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Configure installed applications and binaries.
-# Vim undo directory.
-mkdir -p "$HOME/.vim/undodir"
 
 # Install VS Code extensions.
 cat "$HOME/.vscode/extensions.txt" | xargs  -I % sh -c "code --install-extension % || true"

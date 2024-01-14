@@ -17,3 +17,6 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
 # Disable tabs.
 defaults write NSGlobalDomain NSWindowTabbingEnabled -bool false
+
+# Set screenshot location to Downloads.
+defaults write com.apple.screencapture location "$HOME/Downloads"

@@ -20,7 +20,7 @@ git clone --recurse-submodules -j8 git@github.com:NielsDegrande/dotfiles.git "$H
 cd "$HOME/git/dotfiles"
 
 # Load mac configuration (this file should hold all mac config).
-bash macos.sh
+bash "$HOME/.macos"
 
 # Install Homebrew.
 command -v brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -37,14 +37,10 @@ case "$(HOSTNAME)" in
     "Nielss-MacBook-Air.local" )
         # Install brew bundle for home.
         brew bundle install --file brew/macHome.Brewfile
-        # Set screenshot location to Downloads.
-        defaults write com.apple.screencapture location "$HOME/Downloads"
         ;;
     "STK-3G6T093VW" )
         # Install brew bundle for work.
         brew bundle install --file brew/macWork.Brewfile
-        # Set screenshot location to Downloads.
-        defaults write com.apple.screencapture location "$HOME/Library/CloudStorage/OneDrive-TheBostonConsultingGroup,Inc/Downloads"
         ;;    
     * )
         echo "Machine name not recognized: no action taken."
@@ -53,6 +49,10 @@ esac
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+# Ensure docker can find buildx.
+mkdir -p ~/.docker/cli-plugins
+ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 
 # Restore configuration.
 ln -s "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg" || true
@@ -67,6 +67,7 @@ mackup restore --force
 [ -d  "$ZSH_CUSTOM/plugins/zsh-completions" ] || git clone https://github.com/zsh-users/zsh-completions.git "$ZSH_CUSTOM/plugins/zsh-completions"
 [ -d  "$ZSH_CUSTOM/plugins/zsh-history-substring-search" ] || git clone https://github.com/zsh-users/zsh-history-substring-search.git "$ZSH_CUSTOM/plugins/zsh-history-substring-search"
 [ -d  "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+[ -d  "$ZSH_CUSTOM/plugins/you-should-use" ] || git clone https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_CUSTOM/plugins/you-should-use"
 
 # Install alacritty theme.
 [ -d  "$HOME/.config/alacritty/themes" ] || (mkdir -p "$HOME/.config/alacritty/themes" && curl https://raw.githubusercontent.com/alacritty/alacritty-theme/master/themes/one_dark.yaml > ~/.config/alacritty/themes/one_dark.yaml)

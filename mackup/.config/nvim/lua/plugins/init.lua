@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {"akinsho/toggleterm.nvim", version = "*", config = true},
     "folke/which-key.nvim",
+    "gelguy/wilder.nvim",
     "itchyny/lightline.vim",
     {"neoclide/coc.nvim", branch = "release"},
     {"nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},

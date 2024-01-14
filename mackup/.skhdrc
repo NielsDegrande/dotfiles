@@ -113,7 +113,15 @@ lctrl + alt - l: yabai -m window --resize right:50:0; \
 lctrl + alt - s: yabai -m window --toggle split
 
 # Float / unfloat window and center on screen
-lctrl + alt - f: yabai -m window --toggle float --grid 4:4:1:1:2:2
+rshift + ralt - f: yabai -m window --toggle float --grid 4:4:1:1:2:2
 
-# Restar yabai.
+# Stack and BSP.
+shift + lalt - p: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus next || yabai -m window --focus first; fi
+shift + lalt - n: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus prev || yabai -m window --focus last; fi
+#shift + lalt - p: yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+#shift + lalt - n: yabai -m window --focus stack.next || yabai -m window --focus stack.first
+shift + lalt - b: yabai -m space --layout bsp
+shift + lalt - s: yabai -m space --layout stack
+
+# Restart yabai.
 lctrl + alt - r: yabai --restart-service

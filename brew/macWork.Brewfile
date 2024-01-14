@@ -8,6 +8,7 @@ brew "colima"
 # Still required with colima.
 brew "docker"
 brew "docker-compose"
+brew "docker-buildx"
 # brew "google-cloud-sdk"
 # brew "hadolint"
 # brew "helm"
@@ -20,8 +21,8 @@ brew "docker-compose"
 
 # Applications.
 cask "dbeaver-community"
-cask "insomnia"
 # cask "microsoft-remote-desktop"
+cask "postman" # "insomnia"
 # cask "temurin"
 
 # Mac App Store applications.

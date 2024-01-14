@@ -66,4 +66,5 @@ cask "vlc"
 # Mac App Store applications.
 mas "Amphetamine", id: 937984704
 mas "Flycut", id: 442160987
+mas "Next Meeting", id: 1017470484
 mas "NordVPN: VPN Fast & Secure", id: 905953485

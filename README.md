@@ -1,6 +1,7 @@
 # Dotfiles
 
-Back up and restore configuration easily. Automatically install applications and binaries.
+Back up and restore configuration easily.
+Automatically install applications and binaries.
 
 ## Building blocks
 
@@ -66,7 +67,7 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
 ## How to deal with data and other types of configuration
 
 - `iCloud` for syncing most Apple related settings.
-  TODO: Is this true? E.g. Caps Lock = ESC, hot corners, desktop background, etc.
-- `Google Drive` and/or `Egnyte` for synchronizing data.
+  TODO: Is this true? E.g. Caps Lock = ESC, hot corners, desktop background, etc. Move to `macos.sh`. See `defaults read`.
+- `Google Drive` and/or `OneDrive` for synchronizing data.
 - `Firefox Sync` for synchronizing bookmarks, settings and extensions (not secrets!).
 - Python environments: a `requirements.txt` file is available to bootstrap your venv.

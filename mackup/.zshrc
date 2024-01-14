@@ -74,6 +74,7 @@ plugins=(
   history-substring-search
   macos
   vi-mode
+  you-should-use
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
@@ -84,18 +85,6 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -141,17 +130,4 @@ export DOCKER_DEFAULT_PLATFORM=linux/arm64/v8
 export KEYTIMEOUT=1
 # Centralize Python cached files.
 export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"
-
-# Miniconda initialization.
-# __conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-#         . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
 

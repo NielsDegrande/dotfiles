@@ -1,23 +1,8 @@
 ansible
-autopep8
 bandit
 black
 click # typer
 coloredlogs
-flake8
-flake8-blind-except
-flake8-bugbear
-flake8-builtins
-flake8-comprehensions
-flake8-debugger
-flake8-docstrings
-flake8-eradicate
-flake8-import-order
-flake8-logging-format
-flake8-module-name
-flake8-print
-flake8-rst-docstrings
-flake8_commas
 # hyperopt
 ipython
 isort
@@ -25,21 +10,20 @@ isort
 jupyterlab
 # mlflow
 # more-itertools
-mypy
 # pip-tools
 # poetry
 pretty_errors
 pre-commit
 # prospector
 # pyarrow
-pylint
-pylint-fail-under
+pyright
 pytest-cov
 pytest-mock
 pytest-xdist
 python-box
 # pyyaml
 rich
+ruff
 safety
 # scalene
 # singleton_decorator 

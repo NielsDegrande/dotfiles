@@ -3,7 +3,9 @@
 # Taps.
 
 # Binaries.
+# brew "awscli"
 # brew "azure-cli"
+# brew "cloud-sql-proxy"
 brew "colima"
 # Still required with colima.
 brew "docker"
@@ -14,10 +16,11 @@ brew "docker-buildx"
 # brew "helm"
 # brew "jq"
 # brew "kubernetes-cli"
-# brew "node"
+# brew "libpq"
+brew "nvm"
 # brew "postgresql"
 # brew "terraform"
-# brew "yarn"
+# brew "yarn" # use corepack
 
 # Applications.
 cask "dbeaver-community"

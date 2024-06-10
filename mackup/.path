@@ -1,11 +1,22 @@
 # Paths are configured here and sourced from ~/.zshrc.
 
-
 # Go.
 export GOPATH="${HOME}/.go"
 # Below is hardcoded from $(brew --prefix golang) as it is slow.
 export GOROOT="/opt/homebrew/opt/go/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+# nvm.
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+# Python.
+# Load pyenv automatically by appending the following to
+# ~/.zprofile (for login shells) and ~/.zshrc (for interactive shells):
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Rust.
 export PATH="$PATH:$HOME/.cargo/bin"

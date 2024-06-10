@@ -205,6 +205,47 @@
                                     "key_code": "c",
                                     "modifiers": {
                                         "mandatory": [
+                                            "right_command",
+                                            "option",
+                                            "shift"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open 'https://outlook.office365.com/calendar/view/workweek'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "option"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/System/Applications/Calendar.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": [
                                             "right_command"
                                         ],
                                         "optional": [
@@ -215,6 +256,27 @@
                                 "to": [
                                     {
                                         "shell_command": "open '/Applications/Visual Studio Code.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "option",
+                                            "shift"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open 'https://bcgcloudeur-my.sharepoint.com/personal/degrande_niels_bcg_com/_layouts/15/onedrive.aspx?view=0'"
                                     }
                                 ],
                                 "type": "basic"
@@ -313,6 +375,27 @@
                                 "to": [
                                     {
                                         "shell_command": "open '/System/Library/CoreServices/Finder.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "option",
+                                            "shift"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open 'https://outlook.office365.com/mail/'"
                                     }
                                 ],
                                 "type": "basic"
@@ -488,7 +571,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Microsoft Teams classic.app'"
+                                        "shell_command": "open '/Applications/Microsoft Teams (work or school).app'"
                                     }
                                 ],
                                 "type": "basic"

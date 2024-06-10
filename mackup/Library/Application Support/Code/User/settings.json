@@ -1,6 +1,11 @@
 {
   "debug.toolBarLocation": "commandCenter",
+  "editor.accessibilitySupport": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
   "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
   "editor.inlineSuggest.showToolbar": "always",
   "editor.lineHeight": 20,
@@ -30,6 +35,7 @@
   },
   "files.insertFinalNewline": true,
   "git.mergeEditor": true,
+  "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
@@ -55,6 +61,8 @@
   "terminal.integrated.stickyScroll.enabled": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.commandCenter": true,
+  "window.title": "${rootName}${separator}(${folderPath})",
+  "workbench.activityBar.location": "top",
   "workbench.colorTheme": "One Dark Pro",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
@@ -66,6 +74,7 @@
   "workbench.startupEditor": "newUntitledFile",
 
   "cSpell.userWords": [
+    "acall",
     "acreate",
     "ansible",
     "anyio",
@@ -75,16 +84,20 @@
     "arun",
     "asctime",
     "asdict",
+    "astream",
     "astype",
+    "autofix",
     "autolog",
     "azureml",
     "bazel",
     "bindparams",
     "bresenham",
     "brewfile",
+    "bunx",
     "cachetools",
     "checkpw",
     "chipset",
+    "codespell",
     "coloredlogs",
     "CPUs",
     "cyclomatic",
@@ -110,6 +123,7 @@
     "Formik",
     "fract",
     "frecency",
+    "fromarray",
     "gcloud",
     "gensalt",
     "groupby",
@@ -130,13 +144,16 @@
     "iterrows",
     "itertools",
     "journaling",
+    "knip",
     "kpis",
+    "kwargs",
     "lakehouse",
     "langchain",
     "langsmith",
     "levelname",
     "mackup",
     "malloc",
+    "markdownlint",
     "MILP",
     "mlflow",
     "mssql",
@@ -152,6 +169,7 @@
     "nunique",
     "odbc",
     "OPENAI",
+    "openapi",
     "openpyxl",
     "ortools",
     "pandera",
@@ -175,6 +193,7 @@
     "redoc",
     "reindex",
     "reqwest",
+    "rerank",
     "rfind",
     "roadmap",
     "rwlock",
@@ -183,27 +202,34 @@
     "sessionmaker",
     "setp",
     "setuptools",
+    "shellcheck",
     "sklearn",
     "sociodemographics",
     "softmax",
     "sqlalchemy",
+    "sqlfluff",
     "sqlmodel",
     "starlette",
     "stateful",
     "struct",
     "sublanguages",
     "swappable",
+    "tanstack",
     "timeit",
     "timespan",
+    "toastify",
     "tolist",
+    "tomli",
     "trello",
     "typer",
     "unidecode",
     "unmarshal",
     "Unmarshalling",
     "unsanitize",
+    "usefixtures",
     "uvicorn",
     "vectorize",
+    "venv",
     "voxel",
     "WEAVIATE",
     "whitespaces",
@@ -211,7 +237,8 @@
     "xgboost",
     "xlabel",
     "xlsx",
-    "xticks"
+    "xticks",
+    "zustand"
   ],
   "cSpell.enableFiletypes": ["r"],
   "cSpell.language": "en,en-US",
@@ -247,33 +274,36 @@
   },
 
   "[python]": {
-    "editor.rulers": [
-      72,
-      79
-    ],
+    "editor.rulers": [72, 79],
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "python.languageServer": "Pylance",
   "python.testing.pytestArgs": ["--no-cov"],
   "python.testing.pytestEnabled": true,
-  "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
-  "autoDocstring.docstringFormat": "sphinx",
+  "autoDocstring.docstringFormat": "sphinx-notypes",
   "autoDocstring.guessTypes": false,
   "autoDocstring.startOnNewLine": true,
+  "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
+
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+
   "[sql]": {
     "editor.tabSize": 2
   },
+
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.suggest.includeCompletionsForImportStatements": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
+
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

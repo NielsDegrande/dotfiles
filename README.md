@@ -30,7 +30,7 @@ cd "$HOME/git/dotfiles"
 git pull  # Address conflicts as needed.
 
 # Use script to restore and install.
-bash install.sh
+MACHINE={home|work} bash install.sh
 
 # Warn user.
 echo "If changes were required, please push to remote. Be careful with credentials."
@@ -40,7 +40,6 @@ git status
 Back up the current machine:
 
 ```bash
-
 # Verify completeness of install.sh.
 brew bundle dump ; cat Brewfile ; rm Brewfile
 echo "Validate the above list for discrepancies with the relevant Brewfile."

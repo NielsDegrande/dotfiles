@@ -10,6 +10,7 @@ tap "homebrew/core"
 brew "bat"
 brew "bottom"
 brew "broot" # Terminal file explorer.
+brew "btop" # Alternative for htop.
 brew "deno" # JS and TS runtime.
 brew "duckdb"
 brew "eva" # Calculator.
@@ -17,6 +18,7 @@ brew "exa"
 brew "fd"
 brew "fzf"
 brew "git-delta"
+brew "git-lfs"
 brew "git-quick-stats"
 # brew "gnupg"
 # brew "go"
@@ -24,13 +26,16 @@ brew "git-quick-stats"
 brew "htop"
 brew "mackup"
 brew "mas"
+brew "MonitorControl"
 brew "neovim"
+brew "ollama"
 brew "parallel"
-# brew "python" # Part of developer tools since Catalina (outdated version though).
+brew "pyenv"
 brew "ripgrep" # Faster grep.
-# brew "rm-improved"
+brew "rm-improved"
 brew "rust"
 brew "shellcheck"
+brew "shortcat"
 brew "koekeishiya/formulae/skhd"
 brew "starship"
 brew "the_silver_searcher" # ag.
@@ -46,8 +51,10 @@ brew "zoxide"
 # Applications.
 cask "alacritty"
 # cask "bluesnooze"
+cask "discord"
 cask "firefox"
 cask "font-jetbrains-mono-nerd-font"
+cask "hammerspoon"
 cask "hiddenbar"
 # cask "julia"
 cask "karabiner-elements"
@@ -56,7 +63,7 @@ cask "keepassxc"
 cask "lulu"
 cask "onyx"
 # cask "rectangle"
-cask sloth
+cask "sloth"
 cask "the-unarchiver"
 cask "tor-browser"
 cask "utm"
@@ -65,6 +72,5 @@ cask "vlc"
 
 # Mac App Store applications.
 mas "Amphetamine", id: 937984704
-mas "Flycut", id: 442160987
 mas "Next Meeting", id: 1017470484
 mas "NordVPN: VPN Fast & Secure", id: 905953485

@@ -36,3 +36,4 @@ yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add label="Microsoft Teams" app="^Microsoft Teams$" title=".*" manage=off
 yabai -m rule --add label="Okta Verify" app="^Okta Verify$" title=".*" manage=off
+yabai -m rule --add label="Maccy" app"^Macy$" manage=off

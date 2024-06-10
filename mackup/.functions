@@ -2,6 +2,13 @@
 
 # Clean python artificats.
 pyclean () {
-    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+    find . -type f -name '*.py[co]' -delete
+    find . -type d -name __pycache__ -delete
 }
 
+envup () {
+  if [ -f .env ]
+  then
+    set -o allexport; source .env; set +o allexport
+  fi
+}

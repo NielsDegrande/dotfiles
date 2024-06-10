@@ -7,12 +7,12 @@ export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -23,17 +23,16 @@ export ZSH="$HOME/.oh-my-zsh"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -45,6 +44,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -64,8 +66,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
@@ -85,6 +87,18 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -107,21 +121,20 @@ source ~/.functions
 source ~/.path
 [ -f ~/.client ] && source ~/.client
 
-# Source venv if venv in current directory.
-[ -d venv ] && source venv/bin/activate; True
-
-# Set up applications and binaries. 
-autoload -U compinit && compinit  # Add more completion scripts, not available in zsh yet.
-eval "$(zoxide init zsh)"  # zoxide: Open folders and files fast.
+# Set up applications and binaries.
+# Add more completion scripts, not available in zsh yet.
+autoload -U compinit && compinit
+# Set bat theme.
+export BAT_THEME=ansi
+# Source broot.
+source "/Users/degrandeniels/Library/Application Support/org.dystroy.broot/launcher/bash/br"
 # fzf: Fuzzy finder. Source and use ag.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden -p ~/git/.gitignore -g "" --ignore .git'
 export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# Set bat theme.
-export BAT_THEME=ansi
-# Source broot.
-source "/Users/degrandeniels/Library/Application Support/org.dystroy.broot/launcher/bash/br"
+# zoxide: Open folders and files fast.
+eval "$(zoxide init zsh)"
 
 # Export additional environment variables.
 # M1 related setup.
@@ -130,4 +143,11 @@ export DOCKER_DEFAULT_PLATFORM=linux/arm64/v8
 export KEYTIMEOUT=1
 # Centralize Python cached files.
 export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"
+
+# Source venv if venv in current directory.
+[ -d venv ] && source venv/bin/activate
+True
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
 

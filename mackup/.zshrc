@@ -130,15 +130,10 @@ export BAT_THEME=ansi
 source "/Users/degrandeniels/Library/Application Support/org.dystroy.broot/launcher/bash/br"
 # fzf: Fuzzy finder. Source and use ag.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag --hidden -p ~/git/.gitignore -g "" --ignore .git'
-export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # zoxide: Open folders and files fast.
 eval "$(zoxide init zsh)"
 
 # Export additional environment variables.
-# M1 related setup.
-export DOCKER_DEFAULT_PLATFORM=linux/arm64/v8
 # Ensure ESC does not wait by setting key time out to 0.01s.
 export KEYTIMEOUT=1
 # Centralize Python cached files.

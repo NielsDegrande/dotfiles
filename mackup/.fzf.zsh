@@ -11,3 +11,9 @@ fi
 # Key bindings
 # ------------
 source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+
+# Exports
+# ------------
+export FZF_DEFAULT_COMMAND='ag --hidden -p ~/git/.gitignore -g "" --ignore .git'
+export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border --margin=1 --padding=1"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

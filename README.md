@@ -30,7 +30,7 @@ cd "$HOME/git/dotfiles"
 git pull  # Address conflicts as needed.
 
 # Use script to restore and install.
-MACHINE={home|work} bash install.sh
+bash install.sh
 
 # Warn user.
 echo "If changes were required, please push to remote. Be careful with credentials."
@@ -42,14 +42,11 @@ Back up the current machine:
 ```bash
 # Verify completeness of install.sh.
 brew bundle dump ; cat Brewfile ; rm Brewfile
-echo "Validate the above list for discrepancies with the relevant Brewfile."
+echo "Validate the above list for discrepancies with the Brewfile."
 
 ls $ZSH_CUSTOM/plugins
 ls $ZSH_CUSTOM/themes
 echo "Validate the above list for missing zsh plugins and themes."
-
-# Save code extensions.
-code --list-extensions > "$HOME/.vscode/extensions.txt"
 
 # Inspect for any discrepancies.
 mackup backup --dry-run
@@ -66,7 +63,6 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
 ## How to deal with data and other types of configuration
 
 - `iCloud` for syncing most Apple related settings.
-  TODO: Is this true? E.g. Caps Lock = ESC, hot corners, desktop background, etc. Move to `macos.sh`. See `defaults read`.
+  TODO: Move to `macos.sh`. See `defaults read`.
 - `Google Drive` and/or `OneDrive` for synchronizing data.
 - `Firefox Sync` for synchronizing bookmarks, settings and extensions (not secrets!).
-- Python environments: a `requirements.txt` file is available to bootstrap your venv.

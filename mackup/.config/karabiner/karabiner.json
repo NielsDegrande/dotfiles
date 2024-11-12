@@ -444,6 +444,25 @@
                                     "key_code": "o",
                                     "modifiers": {
                                         "mandatory": [
+                                            "right_command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/ChatGPT.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": [
                                             "right_command",
                                             "option"
                                         ],
@@ -571,7 +590,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Microsoft Teams (work or school).app'"
+                                        "shell_command": "open '/Applications/Microsoft Teams.app'"
                                     }
                                 ],
                                 "type": "basic"

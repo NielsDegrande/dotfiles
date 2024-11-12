@@ -9,3 +9,6 @@ Thumbs.db
 
 # venv
 venv
+
+# pyenv
+.python-version

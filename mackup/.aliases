@@ -12,8 +12,8 @@ alias retmux="tmux source-file ~/.tmux.conf"
 alias reterm="cd $HOME; deactivate; clear"
 
 # Exa.
-alias ll='exa -la --icons --git' # Always use list and show all, add icons and git status info.
-alias llt='exa --icons --tree --git-ignore' # Show tree with icons.
+alias ll='eza -la --icons --git' # Always use list and show all, add icons and git status info.
+alias llt='eza --icons --tree --git-ignore' # Show tree with icons.
 
 # FZF.
 alias fzfp="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'"

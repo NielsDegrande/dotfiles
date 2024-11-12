@@ -126,6 +126,7 @@
     "fromarray",
     "gcloud",
     "gensalt",
+    "Gradio",
     "groupby",
     "gunicorn",
     "hardcode",
@@ -149,6 +150,8 @@
     "kwargs",
     "lakehouse",
     "langchain",
+    "langfuse",
+    "langgraph",
     "langsmith",
     "levelname",
     "mackup",
@@ -168,6 +171,7 @@
     "numpy",
     "nunique",
     "odbc",
+    "ondelete",
     "OPENAI",
     "openapi",
     "openpyxl",
@@ -290,7 +294,8 @@
   },
 
   "[sql]": {
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
   },
 
   "[typescript]": {
@@ -336,4 +341,11 @@
     "!Split",
     "!Split sequence"
   ],
+  "interactiveWindow.executeWithShiftEnter": true,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "gitlens.telemetry.enabled": false,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.defaultInterpreterPath": "/Users/degrandeniels/git/client/randditt/api/venv",
 }

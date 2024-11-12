@@ -15,12 +15,8 @@ xcode-select --install || true
 
 # Get the latest dotfiles.
 mkdir -p "$HOME/git"
-# Recurse submodules to download VIM plugins. The `-j8` option parallelizes that.
-git clone --recurse-submodules -j8 git@github.com:NielsDegrande/dotfiles.git "$HOME/git" || true
+git clone git@github.com:NielsDegrande/dotfiles.git "$HOME/git" || true
 cd "$HOME/git/dotfiles"
-
-# Load mac configuration (this file should hold all mac config).
-bash "$HOME/.macos"
 
 # Install Homebrew.
 command -v brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -30,22 +26,7 @@ brew update
 brew upgrade # Step required: if formulae not up-to-date, then brew returns non-0 upon re-install below.
 
 # Install brew bundles.
-brew bundle install --file brew/shared.Brewfile
-
-# Machine specific installation and configuration.
-case "$MACHINE" in
-"home")
-    # Install brew bundle for home.
-    brew bundle install --file brew/macHome.Brewfile
-    ;;
-"work")
-    # Install brew bundle for work.
-    brew bundle install --file brew/macWork.Brewfile
-    ;;
-*)
-    echo "Machine name not recognized: no action taken."
-    ;;
-esac
+brew bundle install --file brew/base.Brewfile
 
 # Remove outdated versions from the cellar.
 brew cleanup
@@ -58,6 +39,9 @@ ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugi
 # Restore configuration.
 ln -s "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg" || true
 mackup restore --force
+
+# Load mac configuration (this file should hold all mac config).
+bash "$HOME/.macos"
 
 # Install additional binaries and applications.
 # oh-my-zsh.
@@ -75,9 +59,6 @@ mackup restore --force
 
 # Install tmux plugins.
 [ -d "~/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Install VS Code extensions.
-cat "$HOME/.vscode/extensions.txt" | xargs -I % sh -c "code --install-extension % || true"
 
 # Install fzf keybindings.
 /opt/homebrew/opt/fzf/install

@@ -112,7 +112,7 @@ lctrl + alt - l: yabai -m window --resize right:50:0; \
 # Toggle window split type.
 lctrl + alt - s: yabai -m window --toggle split
 
-# Float / unfloat window and center on screen
+# Float / unfloat window and center on screen.
 rshift + ralt - f: yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # Stack and BSP.

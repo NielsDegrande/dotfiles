@@ -1,19 +1,7 @@
 {
-    "global": {
-        "check_for_updates_on_startup": true,
-        "show_in_menu_bar": true,
-        "show_profile_name_in_menu_bar": false
-    },
     "profiles": [
         {
             "complex_modifications": {
-                "parameters": {
-                    "basic.simultaneous_threshold_milliseconds": 50,
-                    "basic.to_delayed_action_delay_milliseconds": 500,
-                    "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500,
-                    "mouse_motion_to_scroll.speed": 100
-                },
                 "rules": [
                     {
                         "description": "Change right command + h/j/k/l to arrow keys.",
@@ -22,76 +10,44 @@
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "left_arrow"
-                                    }
-                                ],
+                                "to": [{ "key_code": "left_arrow" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "down_arrow"
-                                    }
-                                ],
+                                "to": [{ "key_code": "down_arrow" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "up_arrow"
-                                    }
-                                ],
+                                "to": [{ "key_code": "up_arrow" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow"
-                                    }
-                                ],
+                                "to": [{ "key_code": "right_arrow" }],
                                 "type": "basic"
                             }
                         ]
@@ -103,38 +59,22 @@
                                 "from": {
                                     "key_code": "u",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "home"
-                                    }
-                                ],
+                                "to": [{ "key_code": "home" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "end"
-                                    }
-                                ],
+                                "to": [{ "key_code": "end" }],
                                 "type": "basic"
                             }
                         ]
@@ -146,538 +86,303 @@
                                 "from": {
                                     "key_code": "a",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/System/Applications/Utilities/Activity Monitor.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/System/Applications/Utilities/Activity Monitor.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Safari.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Safari.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "b",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Firefox.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Firefox.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option",
-                                            "shift"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option", "shift"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open 'https://outlook.office365.com/calendar/view/workweek'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open 'https://outlook.office365.com/calendar/view/workweek'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/System/Applications/Calendar.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/System/Applications/Calendar.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Visual Studio Code.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Visual Studio Code.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option",
-                                            "shift"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option", "shift"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open 'https://bcgcloudeur-my.sharepoint.com/personal/degrande_niels_bcg_com/_layouts/15/onedrive.aspx?view=0'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open 'https://bcgcloudeur-my.sharepoint.com/personal/degrande_niels_bcg_com/_layouts/15/onedrive.aspx?view=0'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/System/Applications/Dictionary.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/System/Applications/Dictionary.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/DBeaver.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/DBeaver.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "e",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Microsoft Excel.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Microsoft Excel.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/System/Library/CoreServices/Finder.app' $HOME/Downloads"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/System/Library/CoreServices/Finder.app' $HOME/Downloads" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "f",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/System/Library/CoreServices/Finder.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/System/Library/CoreServices/Finder.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "m",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option",
-                                            "shift"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option", "shift"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open 'https://outlook.office365.com/mail/'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open 'https://outlook.office365.com/mail/'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "m",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/System/Applications/Messages.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/System/Applications/Messages.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "m",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Superhuman.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Superhuman.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "o",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/ChatGPT.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/ChatGPT.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "o",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Microsoft Outlook.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Microsoft Outlook.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Microsoft PowerPoint.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Microsoft PowerPoint.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/KeePassXC.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/KeePassXC.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "r",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Postman.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Postman.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/System/Applications/System Settings.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/System/Applications/System Settings.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Slack.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Slack.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "t",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command",
-                                            "option"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Microsoft Teams.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Microsoft Teams.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "t",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Alacritty.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/Alacritty.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "v",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/UTM.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/UTM.app'" }],
                                 "type": "basic"
                             },
                             {
                                 "from": {
                                     "key_code": "z",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "right_command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
                                     }
                                 },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/zoom.us.app'"
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open '/Applications/zoom.us.app'" }],
                                 "type": "basic"
                             }
                         ]
                     }
                 ]
             },
-            "devices": [],
             "name": "Default profile",
-            "parameters": {
-                "delay_milliseconds_before_open_device": 1000
-            },
             "selected": true,
             "simple_modifications": [
                 {
-                    "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": [
-                        {
-                            "key_code": "escape"
-                        }
-                    ]
+                    "from": { "key_code": "caps_lock" },
+                    "to": [{ "key_code": "escape" }]
                 }
             ],
             "virtual_hid_keyboard": {
                 "country_code": 0,
-                "indicate_sticky_modifier_keys_state": true,
-                "mouse_key_xy_scale": 100
+                "keyboard_type_v2": "ansi"
             }
         }
     ]

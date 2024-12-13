@@ -348,4 +348,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "python.defaultInterpreterPath": "/Users/degrandeniels/git/client/randditt/api/venv",
+  "notebook.cellExecutionTimeVerbosity": "verbose",
 }

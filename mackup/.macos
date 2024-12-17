@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Useful references:
+# - https://macos-defaults.com/.
+# - https://macowners.club/posts/sane-defaults-for-macos/
+
 ###############################################################################
 # General                                                                     #
 ###############################################################################
@@ -18,5 +22,74 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Disable tabs.
 defaults write NSGlobalDomain NSWindowTabbingEnabled -bool false
 
+# Always show suffixes.
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Always search current folder.
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
 # Set screenshot location to Downloads.
 defaults write com.apple.screencapture location "$HOME/Downloads"
+
+# Show path bar and status bar.
+defaults write com.apple.finder "ShowStatusBar" -bool true
+defaults write com.apple.finder "ShowPathbar" -bool true
+
+# Set default view style to column.
+defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
+
+# Group windows by application.
+defaults write com.apple.dock "expose-group-apps" -bool "true"
+
+# Items to display on the desktop.
+defaults write com.apple.finder ShowHardDrivesOnDesktop -int 0
+defaults write com.apple.finder ShowMountedServersOnDesktop -int 0
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -int 0
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -int 0
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+# Kill Finder to apply changes.
+killall Finder
+
+
+###############################################################################
+# Dock                                                                        #
+###############################################################################
+
+# Remove everything.
+# dockutil --remove all > /dev/null 2>&1
+# dockutil --add ... > /dev/null 2>&1
+
+# Set minimize animation effect to Scale.
+defaults write com.apple.dock mineffect -string scale
+
+# Automatically hide the dock.
+defaults write com.apple.dock "autohide" -bool "true"
+
+# Make it popup faster.
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+# Do not show recents.
+defaults write com.apple.dock "show-recents" -bool "false"
+
+
+# Kill dock to apply changes.
+killall Dock
+
+
+###############################################################################
+# SystemUIServer                                                              #
+###############################################################################
+
+# Do not rearrange spaces based on most recent use.
+defaults write com.apple.dock "mru-spaces" -bool "false"
+
+# Different spaces for different displays.
+defaults write com.apple.spaces spans-displays -int 0
+
+
+# Kill SystemUIServer to apply changes.
+killall SystemUIServer

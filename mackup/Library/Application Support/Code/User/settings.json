@@ -4,6 +4,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
+  "editor.defaultFormatter": "ms-python.black-formatter",
   "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
@@ -43,8 +44,10 @@
     "scminput": false
   },
   "gitlens.graph.layout": "editor",
+  "gitlens.telemetry.enabled": false,
   "jupyter.askForKernelRestart": false,
   "jupyter.interactiveWindow.textEditor.executeSelection": true,
+  "notebook.cellExecutionTimeVerbosity": "verbose",
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
@@ -106,6 +109,7 @@
     "dataframes",
     "decentral",
     "degrande",
+    "degrandeniels",
     "discretize",
     "docstrings",
     "dotenv",
@@ -125,6 +129,7 @@
     "frecency",
     "fromarray",
     "gcloud",
+    "genai",
     "gensalt",
     "Gradio",
     "groupby",
@@ -185,6 +190,7 @@
     "postgres",
     "postgresql",
     "pydantic",
+    "pyenv",
     "pylint",
     "pymssql",
     "pyodbc",
@@ -194,6 +200,7 @@
     "pytest",
     "pywraplp",
     "quadrotor",
+    "quicktime",
     "redoc",
     "reindex",
     "reqwest",
@@ -244,8 +251,12 @@
     "xticks",
     "zustand"
   ],
-  "cSpell.enableFiletypes": ["r"],
+  "cSpell.enabledFiletypes": ["r"],
   "cSpell.language": "en,en-US",
+
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
@@ -281,6 +292,21 @@
     "editor.rulers": [72, 79],
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
+  "python.analysis.autoFormatStrings": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.completeFunctionParens": true,
+  "python.analysis.generateWithTypeAnnotation": true,
+  "python.analysis.inlayHints.callArgumentNames": "all",
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.pytestParameters": true,
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.supportRestructuredText": true,
+  "python.analysis.typeCheckingMode": "standard",
+  "python.analysis.typeEvaluation.deprecateTypingAliases": true,
+  "python.analysis.typeEvaluation.enableReachabilityAnalysis": true,
+  "python.analysis.typeEvaluation.strictDictionaryInference": true,
+  "python.analysis.typeEvaluation.strictListInference": true,
+  "python.analysis.typeEvaluation.strictSetInference": true,
   "python.languageServer": "Pylance",
   "python.testing.pytestArgs": ["--no-cov"],
   "python.testing.pytestEnabled": true,
@@ -341,12 +367,4 @@
     "!Split",
     "!Split sequence"
   ],
-  "interactiveWindow.executeWithShiftEnter": true,
-  "editor.unicodeHighlight.ambiguousCharacters": false,
-  "gitlens.telemetry.enabled": false,
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "python.defaultInterpreterPath": "/Users/degrandeniels/git/client/randditt/api/venv",
-  "notebook.cellExecutionTimeVerbosity": "verbose",
 }

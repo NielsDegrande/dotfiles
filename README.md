@@ -66,3 +66,50 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
   TODO: Move to `macos.sh`. See `defaults read`.
 - `Google Drive` and/or `OneDrive` for synchronizing data.
 - `Firefox Sync` for synchronizing bookmarks, settings and extensions (not secrets!).
+
+## Miscellaneous
+
+### Firefox
+
+#### KeePassXC-Browser
+
+To connect KeePassXC with Firefox: go to KeePassXC, Settings,
+Browser Integration and select Firefox.
+
+#### Multi-Account Containers
+
+To change the shortcuts:
+
+1. about:addons.
+1. Select "Manage Extension Shortcuts".
+1. Click the cogwheel, then "Manage Extension Shortcuts".
+
+### Install Tmux Plugins
+
+In Tmux, press `prefix` + `I` to install plugins.
+
+### Colima
+
+- 4 CPUs
+- 8 GB RAM
+- vmType: vz
+- mountType: virtiofs
+
+### nvm & pyenv
+
+Run the following and restart the shell:
+
+```bash
+node install latest
+pyenv install <version>
+pyenv global <version>
+```
+
+### File transfers
+
+- `.ssh` keys.
+- `.client` file.
+
+### Shortcuts
+
+- VerticalMonitorLayout

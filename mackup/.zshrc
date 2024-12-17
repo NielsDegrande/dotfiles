@@ -127,7 +127,7 @@ autoload -U compinit && compinit
 # Set bat theme.
 export BAT_THEME=ansi
 # Source broot.
-source "/Users/degrandeniels/Library/Application Support/org.dystroy.broot/launcher/bash/br"
+source /Users/degrandeniels/.config/broot/launcher/bash/br
 # fzf: Fuzzy finder. Source and use ag.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # zoxide: Open folders and files fast.
@@ -145,4 +145,3 @@ True
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
-

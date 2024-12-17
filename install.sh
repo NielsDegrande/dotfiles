@@ -19,7 +19,7 @@ git clone git@github.com:NielsDegrande/dotfiles.git "$HOME/git" || true
 cd "$HOME/git/dotfiles"
 
 # Install Homebrew.
-command -v brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+command -v brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Update Homebrew and upgrade formulae when this is not a 'clean install'.
 brew update

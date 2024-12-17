@@ -32,20 +32,14 @@ keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
 -- Mappings with `which-key.nvim`.
 local wk = require("which-key")
-wk.register({
-    b = {
-        name = "buffer",
-        s = {":ls<Cr>:b<Space>", "Switch Buffer"}
-    },
-    f = {
-        name = "file",
-        f = {"<cmd>Telescope find_files<cr>", "Find Files"},
-        b = {"<cmd>Telescope file_browser<cr>", "File Browser"}
-    },
-    t = {
-        name = "terminal",
-        t = {"<cmd>ToggleTerm<cr>", "Toggle Terminal"}
+wk.add(
+    {
+        { "<leader>b", group = "buffer" },
+        { "<leader>bs", ":ls<Cr>:b<Space>", desc = "Switch Buffer" },
+        { "<leader>f", group = "file" },
+        { "<leader>fb", "<cmd>Telescope file_browser<cr>", desc = "File Browser" },
+        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+        { "<leader>t", group = "terminal" },
+        { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
     }
-}, {
-    prefix = "<leader>"
-})
+)

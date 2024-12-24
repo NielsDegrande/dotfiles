@@ -113,3 +113,8 @@ pyenv global <version>
 ### Shortcuts
 
 - VerticalMonitorLayout
+
+### Hardcoded absolute paths
+
+A few paths have to be absolute and hardcoded.
+Search and replace if needed.

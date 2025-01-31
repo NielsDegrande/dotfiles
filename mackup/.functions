@@ -1,14 +1,28 @@
 # Functions are defined here and sourced from ~/.zshrc.
 
-# Clean python artificats.
+# Clean python artifacts.
 pyclean () {
     find . -type f -name '*.py[co]' -delete
     find . -type d -name __pycache__ -delete
 }
 
+# Load .env file.
 envup () {
   if [ -f .env ]
   then
     set -o allexport; source .env; set +o allexport
   fi
+}
+
+# Avoid accidentally pip installing in the base environment.
+pip() {
+    if [[ -z "$VIRTUAL_ENV" ]]; then
+        echo "WARNING: You are not in a virtual environment. Do you want to proceed (y/n)?"
+        read -r answer
+        if [[ "$answer" != "y" ]]; then
+            echo "Aborting pip command."
+            return 1
+        fi
+    fi
+    command pip "$@"
 }

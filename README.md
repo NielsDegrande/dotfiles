@@ -76,6 +76,9 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
 To connect KeePassXC with Firefox: go to KeePassXC, Settings,
 Browser Integration and select Firefox.
 
+Additionally, you might want to export and import the extension settings.
+You do so by going to KeePassXC, Manage Extension, Preferences, and scroll to the bottom.
+
 #### Multi-Account Containers
 
 To change the shortcuts:

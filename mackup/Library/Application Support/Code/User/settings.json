@@ -79,6 +79,7 @@
   "cSpell.userWords": [
     "acall",
     "acreate",
+    "alru",
     "ansible",
     "anyio",
     "apredict",
@@ -104,6 +105,7 @@
     "codespell",
     "coloredlogs",
     "CPUs",
+    "CSEK",
     "cyclomatic",
     "dataclasses",
     "dataframe",
@@ -291,6 +293,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  "[latex]": {
+    "editor.defaultFormatter": "mathematic.vscode-latex"
+  },
+
   "[python]": {
     "editor.rulers": [72, 79],
     "editor.defaultFormatter": "ms-python.black-formatter"
@@ -325,6 +331,10 @@
   "[sql]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  },
+
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
   },
 
   "[typescript]": {

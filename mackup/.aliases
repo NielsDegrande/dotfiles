@@ -27,3 +27,7 @@ alias gsp="git stash && gl && git stash apply"
 alias gspd="git stash && gco develop && gl && git stash apply"
 alias gspm="git stash && gco main && gl && git stash apply"
 alias gpuo="git branch --show-current | xargs git push -u origin"
+
+# VS Code.
+alias ci="code-insiders"
+alias code=ci

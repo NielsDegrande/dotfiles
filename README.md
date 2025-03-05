@@ -65,7 +65,7 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
 - `iCloud` for syncing most Apple related settings.
   TODO: Move to `macos.sh`. See `defaults read`.
 - `Google Drive` and/or `OneDrive` for synchronizing data.
-- `Firefox Sync` for synchronizing bookmarks, settings and extensions (not secrets!).
+- `Firefox Sync` for synchronizing bookmarks and extensions. Settings with a `user.js`.
 
 ## Miscellaneous
 
@@ -75,6 +75,9 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
 
 To connect KeePassXC with Firefox: go to KeePassXC, Settings,
 Browser Integration and select Firefox.
+
+Ensure the `Use a custom browser configuration location` under Browser Integration > Advanced
+is set to: `~/Library/Application Support/Librewolf/NativeMessagingHosts`.
 
 Additionally, you might want to export and import the extension settings.
 You do so by going to KeePassXC, Manage Extension, Preferences, and scroll to the bottom.
@@ -86,6 +89,10 @@ To change the shortcuts:
 1. about:addons.
 1. Select "Manage Extension Shortcuts".
 1. Click the cogwheel, then "Manage Extension Shortcuts".
+
+To load the containers: copy `containers.json`.
+To make edit to containers: `about:preferences#containers`.
+To copy over host to container mappings: use the pen icon in the Containerise addon (Open Extension > CSV Editor).
 
 ### Install Tmux Plugins
 

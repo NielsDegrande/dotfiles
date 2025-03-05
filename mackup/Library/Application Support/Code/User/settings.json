@@ -36,6 +36,7 @@
   },
   "files.insertFinalNewline": true,
   "git.mergeEditor": true,
+  "github.copilot.chat.edits.codesearch.enabled": true,
   "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": true,
@@ -43,6 +44,7 @@
     "markdown": true,
     "scminput": false
   },
+  "github.copilot.nextEditSuggestions.enabled": true,
   "gitlens.graph.layout": "editor",
   "gitlens.telemetry.enabled": false,
   "jupyter.askForKernelRestart": false,
@@ -66,7 +68,7 @@
   "window.commandCenter": true,
   "window.title": "${rootName}${separator}(${folderPath})",
   "workbench.activityBar.location": "top",
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "One Dark Pro Flat",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
   },

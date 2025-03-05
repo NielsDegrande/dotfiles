@@ -112,7 +112,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/Firefox.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/LibreWolf.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -123,7 +123,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open 'https://outlook.office365.com/calendar/view/workweek'" }],
+                                "to": [{ "shell_command": "/Applications/LibreWolf.app/Contents/MacOS/librewolf 'ext+container:name=BCG&url=https://outlook.office365.com/calendar'" }],
                                 "type": "basic"
                             },
                             {
@@ -145,7 +145,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/Visual Studio Code.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/Visual Studio Code - Insiders.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -156,7 +156,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open 'https://bcgcloudeur-my.sharepoint.com/personal/degrande_niels_bcg_com/_layouts/15/onedrive.aspx?view=0'" }],
+                                "to": [{ "shell_command": "/Applications/LibreWolf.app/Contents/MacOS/librewolf 'ext+container:name=BCG&url=https://bcgcloudeur-my.sharepoint.com/my'" }],
                                 "type": "basic"
                             },
                             {
@@ -222,7 +222,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open 'https://outlook.office365.com/mail/'" }],
+                                "to": [{ "shell_command": "/Applications/LibreWolf.app/Contents/MacOS/librewolf 'ext+container:name=BCG&url=https://outlook.office365.com/mail'" }],
                                 "type": "basic"
                             },
                             {

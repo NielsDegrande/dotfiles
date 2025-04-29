@@ -104,13 +104,14 @@ In Tmux, press `prefix` + `I` to install plugins.
 - 8 GB RAM
 - vmType: vz
 - mountType: virtiofs
+- rosetta: true
 
 ### nvm & pyenv
 
 Run the following and restart the shell:
 
 ```bash
-node install latest
+nvm install latest
 pyenv install <version>
 pyenv global <version>
 ```

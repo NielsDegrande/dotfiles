@@ -25,6 +25,7 @@ tap "koekeishiya/formulae"
 brew "bat"
 brew "bottom"
 brew "broot" # Terminal file explorer.
+brew "certifi" # Required to get certificates.
 brew "colima", restart_service: true
 brew "deno" # JS and TS runtime.
 # Still required with colima.
@@ -39,6 +40,7 @@ brew "gh"
 brew "git-delta"
 brew "git-quick-stats"
 brew "htop"
+brew "philocalyst/tap/infat"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
 brew "mackup"
@@ -58,12 +60,14 @@ brew "the_silver_searcher" # ag.
 brew "tldr"
 brew "tmux"
 brew "tokei" # Stats about code.
+brew "uv"
 brew "watch"
 brew "wget"
 brew "yank"
 brew "zoxide"
 
 # Applications.
+# cask "claude"
 # cask "cursor"
 # cask "discord"
 # cask "gimp"
@@ -88,7 +92,6 @@ cask "cyberduck"
 cask "dbeaver-community"
 cask "deskpad"
 cask "electrum"
-# cask "firefox"
 cask "font-jetbrains-mono-nerd-font"
 cask "hammerspoon"
 cask "hiddenbar"
@@ -105,7 +108,7 @@ cask "the-unarchiver"
 cask "tor-browser"
 cask "transmission"
 cask "utm"
-cask "visual-studio-code" # vscodium
+cask "visual-studio-code@insiders" # vscodium
 cask "vlc"
 cask "wireshark"
 

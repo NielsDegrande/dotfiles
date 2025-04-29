@@ -25,9 +25,14 @@ vim.api.nvim_set_keymap('v', '<A-k>', ':m \'<-2<CR>gv=gv', {
 })
 
 -- coc.nvim related keymappings.
+function _G.check_back_space()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
 local keyset = vim.keymap.set
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+keyset("i", "<Tab>", [[pumvisible() ? coc#pum#confirm() : v:lua.check_back_space() ? "\<Tab>" : coc#refresh()]], opts)
 keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
 -- Mappings with `which-key.nvim`.

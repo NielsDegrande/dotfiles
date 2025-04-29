@@ -138,10 +138,12 @@ eval "$(zoxide init zsh)"
 export KEYTIMEOUT=1
 # Centralize Python cached files.
 export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"
+# Point cert file to brew's Python's bundle.
+export SSL_CERT_FILE="/opt/homebrew/lib/python3.13/site-packages/certifi/cacert.pem"
 
 # Source venv if venv in current directory.
-[ -d venv ] && source venv/bin/activate
+([ -d venv ] && source venv/bin/activate) || ([ -d .venv ] && source .venv/bin/activate)
 True
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+# Force macos settings upon reboot. In general add to `~/.macos`.
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling" # Related to alternate pointer options.

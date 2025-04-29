@@ -47,6 +47,9 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -int 0
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -int 0
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -int 0
 
+# Show scroll bars when scrolling.
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+
 # Show the ~/Library folder
 chflags nohidden ~/Library
 

@@ -1,4 +1,8 @@
 {
+  "chat.promptFilesLocations": {
+    "/Users/degrandeniels/git/prompts": true
+  },
+  "dataWrangler.experiments.copilot.enabled": true,
   "debug.toolBarLocation": "commandCenter",
   "editor.accessibilitySupport": "off",
   "editor.codeActionsOnSave": {
@@ -36,8 +40,8 @@
   },
   "files.insertFinalNewline": true,
   "git.mergeEditor": true,
-  "github.copilot.chat.edits.codesearch.enabled": true,
-  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,

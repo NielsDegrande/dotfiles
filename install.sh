@@ -64,4 +64,11 @@ bash "$HOME/.macos"
 /opt/homebrew/opt/fzf/install
 
 # Add cron jobs.
+# Requires additional permissions to give crontab full disk access.
 echo "* 11 * * * /Users/degrandeniels/git/dotfiles/scripts/notes_archiver.sh" | crontab -
+
+# Install Alacritty terminfo.
+curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
+
+# Set default applications.
+infat --config ~/.config/infat/config.toml

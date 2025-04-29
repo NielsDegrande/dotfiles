@@ -5,7 +5,7 @@ alias overbrew='brew leaves | xargs brew deps --installed --for-each | sed "s/^.
 alias brewdump='brew bundle dump ; cat Brewfile ; rm Brewfile'
 
 # Custom.
-alias sourcev='source venv/bin/activate' # Activate venv in current folder.
+alias sourcev='source venv/bin/activate >/dev/null 2>&1 || source .venv/bin/activate >/dev/null 2>&1 || echo "Error: Failed to activate virtual environment."' # Activate venv in current folder.
 alias sourcez='source ~/.zshrc' # Source zshrc in current shell.
 alias dstop="docker ps | awk 'NR>1{ print $1 }' | parallel docker stop {}" # Stop all docker containers.
 alias retmux="tmux source-file ~/.tmux.conf"

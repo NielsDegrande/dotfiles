@@ -26,3 +26,9 @@ pip() {
     fi
     command pip "$@"
 }
+
+# Set SSL_CERT_FILE to the path of certifi's certificate bundle.
+certifi() {
+  export SSL_CERT_FILE=$(python3 -m certifi)
+  echo "SSL_CERT_FILE set to $SSL_CERT_FILE"
+}

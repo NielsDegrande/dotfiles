@@ -69,7 +69,7 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
 
 ## Miscellaneous
 
-### Firefox
+### Firefox / LibreWolf
 
 #### KeePassXC-Browser
 
@@ -94,6 +94,10 @@ To load the containers: copy `containers.json`.
 To make edit to containers: `about:preferences#containers`.
 To copy over host to container mappings: use the pen icon in the Containerise addon (Open Extension > CSV Editor).
 
+#### Enhanced Tracking Protection
+
+To avoid sign out loops on Microsoft web applications, disable enhanced tracking protection.
+
 ### Install Tmux Plugins
 
 In Tmux, press `prefix` + `I` to install plugins.
@@ -109,6 +113,7 @@ In Tmux, press `prefix` + `I` to install plugins.
 ### nvm & pyenv
 
 Run the following and restart the shell:
+TODO: pyenv obsolete given `uv`?
 
 ```bash
 nvm install latest
@@ -129,3 +134,12 @@ pyenv global <version>
 
 A few paths have to be absolute and hardcoded.
 Search and replace if needed.
+
+### Calendar
+
+Set calendars to be refreshed every X minutes and not `Push`.
+
+### cron
+
+To allow the cron job to run, you need to ensure `/usr/sbin/cron` has Full Disk Access.
+System Settings > Privacy & Security > Full Disk Access > + > /usr/sbin/cron.

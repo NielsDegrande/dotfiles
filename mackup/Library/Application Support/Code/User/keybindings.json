@@ -42,5 +42,21 @@
   {
     "key": "alt+tab",
     "command": "workbench.action.quickSwitchWindow"
-  }
+  },
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+        "text": "\\\r\n"
+    },
+    "when": "terminalFocus"
+},
+{
+  "key": "ctrl+shift+f7",
+  "command": "aichat.insertselectionintochat"
+},
+{
+  "key": "shift+cmd+l",
+  "command": "-aichat.insertselectionintochat"
+}
 ]

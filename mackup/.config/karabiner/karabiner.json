@@ -145,7 +145,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/Visual Studio Code - Insiders.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/Cursor.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -350,11 +350,33 @@
                                 "from": {
                                     "key_code": "v",
                                     "modifiers": {
-                                        "mandatory": ["right_command"],
+                                        "mandatory": ["right_command", "option"],
                                         "optional": ["any"]
                                     }
                                 },
                                 "to": [{ "shell_command": "open '/Applications/UTM.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": ["right_command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "open '/System/Applications/Preview.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "mandatory": ["right_command", "option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Microsoft Word.app'" }],
                                 "type": "basic"
                             },
                             {

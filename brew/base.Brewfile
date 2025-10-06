@@ -25,7 +25,7 @@ tap "koekeishiya/formulae"
 brew "bat"
 brew "bottom"
 brew "broot" # Terminal file explorer.
-brew "certifi" # Required to get certificates.
+# brew "certifi" # Required to get Mozilla certificates.
 brew "colima", restart_service: true
 brew "deno" # JS and TS runtime.
 # Still required with colima.
@@ -38,6 +38,7 @@ brew "fd"
 brew "fzf"
 brew "gh"
 brew "git-delta"
+brew "git-lfs"
 brew "git-quick-stats"
 brew "htop"
 brew "philocalyst/tap/infat"
@@ -49,6 +50,7 @@ brew "neovim"
 brew "nvm"
 brew "ollama"
 brew "parallel"
+brew "presenterm"
 brew "pyenv"
 brew "ripgrep" # Faster grep.
 brew "rm-improved"
@@ -74,6 +76,7 @@ brew "zoxide"
 # cask "google-backup-and-sync"
 # cask "google-chrome"
 # cask "google-cloud-sdk"
+# cask "inkscape"
 # cask "julia"
 # cask "keybase"
 # cask "libreoffice"
@@ -83,10 +86,12 @@ brew "zoxide"
 # cask "ngrok"
 # cask "shortcat"
 # cask "temurin"
+# cask "tunnelblick"
 # cask "webtorrent"
 # cask "znotch"
 cask "alacritty"
 cask "arduino-ide"
+cask "bruno"
 cask "chatgpt"
 cask "cyberduck"
 cask "dbeaver-community"
@@ -100,8 +105,9 @@ cask "keepassxc"
 cask "librewolf"
 cask "lulu"
 cask "maccy"
+cask "meetingbar"
+cask "nordvpn"
 cask "onyx"
-cask "postman"
 cask "sloth"
 cask "superhuman"
 cask "the-unarchiver"
@@ -114,8 +120,6 @@ cask "wireshark"
 
 # Mac App Store applications.
 mas "Amphetamine", id: 937984704
-mas "Next Meeting", id: 1017470484
-mas "NordVPN: VPN Fast & Secure", id: 905953485
 
 # VSCode extensions.
 # vscode "github.vscode-pull-request-github"

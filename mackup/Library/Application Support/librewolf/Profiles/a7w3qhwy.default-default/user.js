@@ -9,3 +9,6 @@ user_pref("media.autoplay.blocking_policy", 2);
 
 // Enable WebGL.
 user_pref("webgl.disabled", false);
+
+// Disable OCSP hard fail and accept "SEC_ERROR_OCSP_SERVER_ERROR".
+user_pref("security.OCSP.require", false);

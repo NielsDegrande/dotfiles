@@ -132,18 +132,15 @@ source /Users/degrandeniels/.config/broot/launcher/bash/br
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # zoxide: Open folders and files fast.
 eval "$(zoxide init zsh)"
+# Set auto suggest higlight style.
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5c6370'
 
 # Export additional environment variables.
 # Ensure ESC does not wait by setting key time out to 0.01s.
 export KEYTIMEOUT=1
 # Centralize Python cached files.
 export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"
-# Point cert file to brew's Python's bundle.
-export SSL_CERT_FILE="/opt/homebrew/lib/python3.13/site-packages/certifi/cacert.pem"
 
 # Source venv if venv in current directory.
-([ -d venv ] && source venv/bin/activate) || ([ -d .venv ] && source .venv/bin/activate)
+[ -d venv ] && source venv/bin/activate || [ -d .venv ] && source .venv/bin/activate
 True
-
-# Force macos settings upon reboot. In general add to `~/.macos`.
-defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling" # Related to alternate pointer options.

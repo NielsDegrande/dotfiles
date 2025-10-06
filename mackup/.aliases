@@ -18,16 +18,21 @@ alias llt='eza --icons --tree --git-ignore' # Show tree with icons.
 # FZF.
 alias fzfp="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'"
 
-# Search aliases and bindkeys.
-alias searchalias="alias | fzf"
-alias searchbindkey="bindkey | fzf"
-
 # Git aliases.
 alias gsp="git stash && gl && git stash apply"
 alias gspd="git stash && gco develop && gl && git stash apply"
 alias gspm="git stash && gco main && gl && git stash apply"
 alias gpuo="git branch --show-current | xargs git push -u origin"
 
+# Python.
+alias pydep="where python3 | parallel 'echo {} && {} -m pip list && echo'"
+
+# Search aliases and bindkeys.
+alias searchalias="alias | fzf"
+alias searchbindkey="bindkey | fzf"
+
 # VS Code.
 alias ci="code-insiders"
 alias code=ci
+alias cur="cursor"
+alias curd="cursor ."

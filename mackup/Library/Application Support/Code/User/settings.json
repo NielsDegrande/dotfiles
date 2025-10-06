@@ -2,8 +2,13 @@
   "chat.promptFilesLocations": {
     "/Users/degrandeniels/git/prompts": true
   },
+  "cursor-retrieval.canAttemptGithubLogin": false,
   "dataWrangler.experiments.copilot.enabled": true,
   "debug.toolBarLocation": "commandCenter",
+  "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.renderSideBySide": true,
+  "docker.extension.enableComposeLanguageServer": false,
+  "editor.aiStats.enabled": true,
   "editor.accessibilitySupport": "off",
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
@@ -49,8 +54,11 @@
     "scminput": false
   },
   "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.nextEditSuggestions.fixes": true,
   "gitlens.graph.layout": "editor",
   "gitlens.telemetry.enabled": false,
+  "inlineChat.enableV2": true,
+  "inlineChat.hideOnRequest": true,
   "jupyter.askForKernelRestart": false,
   "jupyter.interactiveWindow.textEditor.executeSelection": true,
   "notebook.cellExecutionTimeVerbosity": "verbose",
@@ -85,6 +93,8 @@
   "cSpell.userWords": [
     "acall",
     "acreate",
+    "agentic",
+    "agentops",
     "alru",
     "ansible",
     "anyio",
@@ -110,6 +120,7 @@
     "chipset",
     "codespell",
     "coloredlogs",
+    "coverprofile",
     "CPUs",
     "CSEK",
     "cyclomatic",
@@ -129,20 +140,28 @@
     "dtype",
     "dtypes",
     "duckdb",
+    "dylib",
     "evar",
     "faiss",
     "fastapi",
+    "figsize",
     "fillna",
     "financials",
     "Formik",
     "fract",
     "frecency",
     "fromarray",
+    "fumpt",
+    "functionals",
     "gcloud",
     "genai",
     "gensalt",
+    "gofumpt",
+    "golangci",
+    "GOPATH",
     "Gradio",
     "groupby",
+    "GRPO",
     "gunicorn",
     "hardcode",
     "hardcoding",
@@ -174,6 +193,7 @@
     "markdownlint",
     "MILP",
     "mlflow",
+    "modelcontextprotocol",
     "mssql",
     "multithreaded",
     "multithreading",
@@ -226,6 +246,7 @@
     "setuptools",
     "shellcheck",
     "sklearn",
+    "smolagents",
     "sociodemographics",
     "softmax",
     "sqlalchemy",
@@ -266,11 +287,27 @@
   "cSpell.language": "en,en-US",
 
   "[css]": {
+    "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
   },
 
   "[html]": {
@@ -288,6 +325,7 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
 
   "[json]": {
+    "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
@@ -322,6 +360,8 @@
   "python.analysis.typeEvaluation.strictDictionaryInference": true,
   "python.analysis.typeEvaluation.strictListInference": true,
   "python.analysis.typeEvaluation.strictSetInference": true,
+  "python.createEnvironment.trigger": "off",
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
   "python.languageServer": "Pylance",
   "python.testing.pytestArgs": ["--no-cov"],
   "python.testing.pytestEnabled": true,
@@ -329,6 +369,10 @@
   "autoDocstring.guessTypes": false,
   "autoDocstring.startOnNewLine": true,
   "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
+
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
 
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -344,6 +388,7 @@
   },
 
   "[typescript]": {
+    "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
@@ -386,4 +431,9 @@
     "!Split",
     "!Split sequence"
   ],
+  "yaml.schemas": {
+    "/Users/degrandeniels/.vscode-insiders/extensions/continue.continue-1.1.35-darwin-arm64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ]
+  }
 }

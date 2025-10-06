@@ -18,6 +18,7 @@ require("lazy").setup({
     "folke/which-key.nvim",
     "gelguy/wilder.nvim",
     "itchyny/lightline.vim",
+    {"m4xshen/hardtime.nvim", lazy = false, dependencies = { "MunifTanjim/nui.nvim" }, opts = {},},
     "navarasu/onedark.nvim",
     {"neoclide/coc.nvim", branch = "release"},
     {"nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},

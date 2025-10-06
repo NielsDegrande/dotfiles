@@ -40,11 +40,13 @@ local wk = require("which-key")
 wk.add(
     {
         { "<leader>b", group = "buffer" },
-        { "<leader>bs", ":ls<Cr>:b<Space>", desc = "Switch Buffer" },
+        { "<leader>bs", ":ls<Cr>:b<Space>", desc = "Switch buffer" },
         { "<leader>f", group = "file" },
-        { "<leader>fb", "<cmd>Telescope file_browser<cr>", desc = "File Browser" },
-        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+        { "<leader>fb", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
+        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+        { "<leader>b", group = "delete" },
+        { "<leader>dd", '"_dd', desc = "Delete line to black hole" },
         { "<leader>t", group = "terminal" },
-        { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
+        { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
     }
 )

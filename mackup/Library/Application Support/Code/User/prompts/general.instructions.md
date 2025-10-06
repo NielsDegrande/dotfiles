@@ -1,0 +1,15 @@
+---
+applyTo: "**"
+---
+
+# General
+
+## Comments
+
+When writing comments:
+
+- Punctuate all sentences.
+- Do not contract words.
+- Avoid trivial comments that do not add value.
+- Prefix TODOs with `TODO: `.
+- When changing the internals of a class, method or function, update the docstring to reflect the change. Do not add new information, rather correct outdated information.

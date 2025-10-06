@@ -1,0 +1,18 @@
+---
+description: Python coding guidelines.
+globs: *.py
+alwaysApply: false
+---
+# Python
+
+## Comments
+
+When writing comments:
+
+- Punctuate comments.
+- Do not contract words.
+- Docstrings are in reStructuredText format.
+
+## Type Annotations
+
+- Type hints required for all code except tests

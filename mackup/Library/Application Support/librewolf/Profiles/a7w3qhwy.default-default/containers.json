@@ -1,13 +1,13 @@
 {
   "version": 5,
-  "lastUserContextId": 16,
+  "lastUserContextId": 18,
   "identities": [
     {
       "icon": "fingerprint",
       "color": "blue",
-      "l10nId": "user-context-personal",
       "public": true,
-      "userContextId": 1
+      "userContextId": 1,
+      "name": "Personal"
     },
     {
       "public": false,
@@ -33,32 +33,25 @@
       "name": "BCG"
     },
     {
-      "userContextId": 10,
-      "public": true,
-      "icon": "food",
-      "color": "yellow",
-      "name": "Client E"
-    },
-    {
-      "userContextId": 11,
-      "public": true,
-      "icon": "cart",
-      "color": "orange",
-      "name": "Client E AWS"
-    },
-    {
-      "userContextId": 12,
-      "public": true,
-      "icon": "chill",
-      "color": "red",
-      "name": "Client I"
-    },
-    {
       "userContextId": 16,
       "public": true,
       "icon": "circle",
       "color": "toolbar",
       "name": "Other"
+    },
+    {
+      "userContextId": 17,
+      "public": true,
+      "icon": "fence",
+      "color": "purple",
+      "name": "Client V"
+    },
+    {
+      "userContextId": 18,
+      "public": true,
+      "icon": "vacation",
+      "color": "orange",
+      "name": "Lov"
     }
   ]
 }

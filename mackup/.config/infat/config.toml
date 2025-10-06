@@ -1,0 +1,29 @@
+# infat --config ~/.config/infat/config.toml
+
+[extensions]
+# html  = "LibreWolf"
+ini   = "Cursor"
+json  = "Cursor"
+js    = "Cursor"
+jsx   = "Cursor"
+md    = "Cursor"
+py    = "Cursor"
+rs    = "Cursor"
+sh    = "Cursor"
+svg   = "LibreWolf"
+ts    = "Cursor"
+tsx   = "Cursor"
+txt   = "Cursor"
+yaml  = "Cursor"
+Brewfile = "Cursor"
+Dockerfile = "Cursor"
+
+[schemes]
+mailto = "Superhuman"
+web    = "LibreWolf"
+
+[types]
+makefile   = "Cursor"
+plain-text = "Cursor"
+shell      = "Cursor"
+sourcecode = "Cursor"

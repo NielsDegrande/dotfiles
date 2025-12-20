@@ -12,11 +12,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # Python.
-# Load pyenv automatically by appending the following to
-# ~/.zprofile (for login shells) and ~/.zshrc (for interactive shells):
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 # uv.
 export PATH="/Users/degrandeniels/.local/bin:$PATH"
 

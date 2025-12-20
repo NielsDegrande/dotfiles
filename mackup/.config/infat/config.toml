@@ -1,26 +1,27 @@
 # infat --config ~/.config/infat/config.toml
 
 [extensions]
-# html  = "LibreWolf"
+Brewfile = "Cursor"
+Dockerfile = "Cursor"
+html  = "Cursor"
 ini   = "Cursor"
-json  = "Cursor"
 js    = "Cursor"
+json  = "Cursor"
 jsx   = "Cursor"
 md    = "Cursor"
 py    = "Cursor"
 rs    = "Cursor"
 sh    = "Cursor"
-svg   = "LibreWolf"
+svg   = "Zen"
+toml  = "Cursor"
 ts    = "Cursor"
 tsx   = "Cursor"
 txt   = "Cursor"
 yaml  = "Cursor"
-Brewfile = "Cursor"
-Dockerfile = "Cursor"
 
 [schemes]
 mailto = "Superhuman"
-web    = "LibreWolf"
+web    = "Zen"
 
 [types]
 makefile   = "Cursor"

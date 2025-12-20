@@ -69,7 +69,11 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
 
 ## Miscellaneous
 
-### Firefox / LibreWolf
+### Firefox / Zen
+
+#### Settings
+
+Copy `user.js` from `manual` to the default profile.
 
 #### KeePassXC-Browser
 
@@ -77,9 +81,9 @@ To connect KeePassXC with Firefox: go to KeePassXC, Settings,
 Browser Integration and select Firefox.
 
 Ensure the `Use a custom browser configuration location` under Browser Integration > Advanced
-is set to: `~/Library/Application Support/Librewolf/NativeMessagingHosts`.
+is set to: `~/Library/Application Support/Mozilla/NativeMessagingHosts`.
 
-Additionally, you might want to export and import the extension settings.
+Additionally, you might want to export and import the extension settings (see Drive).
 You do so by going to KeePassXC, Manage Extension, Preferences, and scroll to the bottom.
 
 #### Multi-Account Containers
@@ -91,12 +95,12 @@ To change the shortcuts:
 1. Click the cogwheel, then "Manage Extension Shortcuts".
 
 To load the containers: copy `containers.json`.
-To make edit to containers: `about:preferences#containers`.
+To edit the containers: `about:preferences#containers`.
 To copy over host to container mappings: use the pen icon in the Containerise addon (Open Extension > CSV Editor).
 
 #### Enhanced Tracking Protection
 
-To avoid sign out loops on Microsoft web applications, disable enhanced tracking protection.
+To avoid sign out loops on Microsoft web applications, disable enhanced tracking protection for these sites.
 
 ### Install Tmux Plugins
 
@@ -110,15 +114,12 @@ In Tmux, press `prefix` + `I` to install plugins.
 - mountType: virtiofs
 - rosetta: true
 
-### nvm & pyenv
+### nvm
 
 Run the following and restart the shell:
-TODO: pyenv obsolete given `uv`?
 
 ```bash
 nvm install latest
-pyenv install <version>
-pyenv global <version>
 ```
 
 ### File transfers
@@ -128,6 +129,9 @@ pyenv global <version>
 
 ### Shortcuts
 
+TODO: iCloud synced?
+
+- Open Archive
 - VerticalMonitorLayout
 
 ### Hardcoded absolute paths

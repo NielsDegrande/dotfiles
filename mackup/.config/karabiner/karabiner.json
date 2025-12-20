@@ -112,18 +112,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/LibreWolf.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": {
-                                        "mandatory": ["right_command", "option", "shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/Applications/LibreWolf.app/Contents/MacOS/librewolf 'ext+container:name=BCG&url=https://outlook.office365.com/calendar'" }],
+                                "to": [{ "shell_command": "open '/Applications/Zen.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -152,17 +141,6 @@
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": {
-                                        "mandatory": ["right_command", "option", "shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/Applications/LibreWolf.app/Contents/MacOS/librewolf 'ext+container:name=BCG&url=https://bcgcloudeur-my.sharepoint.com/my'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": {
                                         "mandatory": ["right_command", "option"],
                                         "optional": ["any"]
                                     }
@@ -179,17 +157,6 @@
                                     }
                                 },
                                 "to": [{ "shell_command": "open '/Applications/DBeaver.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                        "mandatory": ["right_command", "option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Microsoft Excel.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -212,17 +179,6 @@
                                     }
                                 },
                                 "to": [{ "shell_command": "open '/System/Library/CoreServices/Finder.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": {
-                                        "mandatory": ["right_command", "option", "shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "/Applications/LibreWolf.app/Contents/MacOS/librewolf 'ext+container:name=BCG&url=https://outlook.office365.com/mail'" }],
                                 "type": "basic"
                             },
                             {
@@ -256,28 +212,6 @@
                                     }
                                 },
                                 "to": [{ "shell_command": "open '/Applications/ChatGPT.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "o",
-                                    "modifiers": {
-                                        "mandatory": ["right_command", "option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Microsoft Outlook.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "p",
-                                    "modifiers": {
-                                        "mandatory": ["right_command", "option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Microsoft PowerPoint.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -328,17 +262,6 @@
                                 "from": {
                                     "key_code": "t",
                                     "modifiers": {
-                                        "mandatory": ["right_command", "option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Microsoft Teams.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "t",
-                                    "modifiers": {
                                         "mandatory": ["right_command"],
                                         "optional": ["any"]
                                     }
@@ -366,17 +289,6 @@
                                     }
                                 },
                                 "to": [{ "shell_command": "open '/System/Applications/Preview.app'" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": {
-                                        "mandatory": ["right_command", "option"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Microsoft Word.app'" }],
                                 "type": "basic"
                             },
                             {

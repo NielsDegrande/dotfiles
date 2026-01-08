@@ -2,6 +2,7 @@
   "chat.promptFilesLocations": {
     "/Users/degrandeniels/git/prompts": true
   },
+  "claudeCode.preferredLocation": "panel",
   "cursor-retrieval.canAttemptGithubLogin": false,
   "dataWrangler.experiments.copilot.enabled": true,
   "debug.toolBarLocation": "commandCenter",

@@ -1,6 +1,6 @@
 {
   "chat.promptFilesLocations": {
-    "/Users/degrandeniels/git/prompts": true
+    "/Users/niels/git/prompts": true
   },
   "claudeCode.preferredLocation": "panel",
   "cursor-retrieval.canAttemptGithubLogin": false,
@@ -335,7 +335,7 @@
 
   "[markdown]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
 
   "[latex]": {
@@ -369,7 +369,7 @@
   "autoDocstring.docstringFormat": "sphinx-notypes",
   "autoDocstring.guessTypes": false,
   "autoDocstring.startOnNewLine": true,
-  "autoDocstring.customTemplatePath": "/Users/degrandeniels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
+  "autoDocstring.customTemplatePath": "/Users/niels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
 
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
@@ -432,9 +432,13 @@
     "!Split",
     "!Split sequence"
   ],
-  "yaml.schemas": {
-    "/Users/degrandeniels/.vscode-insiders/extensions/continue.continue-1.1.35-darwin-arm64/config-yaml-schema.json": [
-      ".continue/**/*.yaml"
-    ]
-  },
+  "cursor.cpp.disabledLanguages": [
+    "plaintext",
+    "scminput"
+  ],
+  "claudeCode.selectedModel": "opus",
+  "update.showReleaseNotes": false,
+  "claudeCode.allowDangerouslySkipPermissions": true,
+  "claudeCode.disableLoginPrompt": true,
+  "claudeCode.respectGitIgnore": false,
 }

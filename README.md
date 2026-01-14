@@ -3,6 +3,8 @@
 Back up and restore configuration easily.
 Automatically install applications and binaries.
 
+TODO: Impact of https://github.com/lra/mackup/pull/2085?
+
 ## Building blocks
 
 - `Mackup` for managing most configuration and dotfiles.
@@ -49,11 +51,11 @@ ls $ZSH_CUSTOM/themes
 echo "Validate the above list for missing zsh plugins and themes."
 
 # Inspect for any discrepancies.
-mackup backup --dry-run
+mackup link install --dry-run
 echo "Ensure you do not push any secrets, keys or similar."
 
 # Execute mackup.
-mackup backup
+mackup link install
 
 # Push the latest.
 cd "$HOME/git/dotfiles"
@@ -125,11 +127,9 @@ nvm install latest
 ### File transfers
 
 - `.ssh` keys.
-- `.client` file.
+- `.secrets` file.
 
 ### Shortcuts
-
-TODO: iCloud synced?
 
 - Open Archive
 - VerticalMonitorLayout
@@ -141,7 +141,7 @@ Search and replace if needed.
 
 ### Calendar
 
-Set calendars to be refreshed every X minutes and not `Push`.
+Set calendars to be refreshed every X minutes and not `Push` (TODO: required?).
 
 ### cron
 

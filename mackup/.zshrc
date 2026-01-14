@@ -78,13 +78,14 @@ plugins=(
   vi-mode
   you-should-use
   zsh-autosuggestions
-  zsh-completions
   zsh-syntax-highlighting
 )
 
 # Dump zsh completions in .cache.
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
-source $ZSH/oh-my-zsh.sh
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
+source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -119,16 +120,12 @@ eval "$(starship init zsh)"
 source ~/.aliases
 source ~/.functions
 source ~/.path
-[ -f ~/.client ] && source ~/.client
+[ -f ~/.secrets ] && source ~/.secrets
 
 # Set up applications and binaries.
-# Add more completion scripts, not available in zsh yet.
-autoload -U compinit && compinit
 # Set bat theme.
 export BAT_THEME=ansi
-# Source broot.
-source /Users/degrandeniels/.config/broot/launcher/bash/br
-# fzf: Fuzzy finder. Source and use ag.
+# fzf: Fuzzy finder.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # zoxide: Open folders and files fast.
 eval "$(zoxide init zsh)"
@@ -142,5 +139,4 @@ export KEYTIMEOUT=1
 export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"
 
 # Source venv if venv in current directory.
-[ -d venv ] && source venv/bin/activate || [ -d .venv ] && source .venv/bin/activate
-True
+if [ -d venv ]; then source venv/bin/activate; elif [ -d .venv ]; then source .venv/bin/activate; fi

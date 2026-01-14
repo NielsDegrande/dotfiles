@@ -1,5 +1,5 @@
 [general]
-import = ["/Users/degrandeniels/.config/alacritty/themes/one_dark.toml"]
+import = ["/Users/niels/.config/alacritty/themes/one_dark.toml"]
 
 [env]
 TERM = "alacritty"

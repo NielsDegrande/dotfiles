@@ -22,7 +22,7 @@ require("lazy").setup({
     "navarasu/onedark.nvim",
     {"neoclide/coc.nvim", branch = "release"},
     {"nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
-    {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+    {"nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate"},
     "Pocco81/auto-save.nvim",
     "preservim/nerdcommenter",
     "sbdchd/neoformat",

@@ -13,11 +13,11 @@ export NVM_DIR="$HOME/.nvm"
 
 # Python.
 # uv.
-export PATH="/Users/degrandeniels/.local/bin:$PATH"
+export PATH="/Users/niels/.local/bin:$PATH"
 
 # Rust.
 export PATH="$PATH:$HOME/.cargo/bin"
 
 # Java.
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+# export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+# export JAVA_HOME=$(/usr/libexec/java_home -v 17)

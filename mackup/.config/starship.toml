@@ -9,21 +9,36 @@ command_timeout = 1000
 # Replace the "❯" symbol in the prompt with "➜".
 # [character]                            # The name of the module we are configuring is "character"
 # success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
-# error_symbol = "[➜](bold red)"         # The "error_symbol" segment is being set to "➜" with the color "bold red"
+# error_symbol = "[➜](bold red)"         # The "error_symbol" segment is being set to "➜" wbith the color "bold red"
+
+[time]
+disabled = false
+format = "[$time]($style) "
+
+[aws]
+disabled = true
+
+[buf]
+disabled = true
 
 [docker_context]
-# disabled = true
+disabled = true
 format = "via [$symbol]($style)" # Drop text. 
 
 [gcloud]
 disabled = true
 
-# [nodejs]
-# symbol = ""
+[golang]
+disabled = true
 
-# [python]
-# symbol = ""
+[nix_shell]
+disabled = true
 
-[time]
-disabled = false
-format = "[$time]($style) "
+[nodejs]
+disabled = true
+
+[rust]
+disabled = true
+
+[hostname]
+disabled = true

@@ -37,8 +37,8 @@ ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plu
 ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 
 # Restore configuration.
-ln -s "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg" || true
-mackup restore --force
+ln -s "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg" || true   
+mackup link --force
 
 # Load mac configuration (this file should hold all mac config).
 bash "$HOME/.macos"
@@ -57,18 +57,23 @@ bash "$HOME/.macos"
 # Install alacritty theme.
 [ -d "$HOME/.config/alacritty/themes" ] || (mkdir -p "$HOME/.config/alacritty/themes" && curl https://raw.githubusercontent.com/alacritty/alacritty-theme/master/themes/one_dark.yaml >~/.config/alacritty/themes/one_dark.yaml)
 
-# Install tmux plugins.
+# Install tmux package manager.
 [ -d "~/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Install fzf keybindings.
 /opt/homebrew/opt/fzf/install
 
 # Add cron jobs.
-# Requires additional permissions to give crontab full disk access.
-echo "* 11 * * * /Users/degrandeniels/git/dotfiles/scripts/notes_archiver.sh" | crontab -
+# Requires additional permissions to give /usr/sbin/cron full disk access.
+echo "* 11 * * * $HOME/git/dotfiles/scripts/notes_archiver.sh" | crontab -
 
 # Install Alacritty terminfo.
+# TODO: Required? Test before.
 curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
 
 # Set default applications.
 infat --config ~/.config/infat/config.toml
+
+# Symlink VSCode settings.
+ln -s '/Users/niels/Library/Application Support/Code/User' '/Users/niels/Library/Application Support/Cursor'
+ln -s /Users/niels/.vscode/extensions /Users/niels/.cursor/extensions

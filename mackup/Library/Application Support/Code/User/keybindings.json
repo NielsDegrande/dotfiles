@@ -58,5 +58,13 @@
 {
   "key": "shift+cmd+l",
   "command": "-aichat.insertselectionintochat"
+},
+{
+  "key": "cmd+i",
+  "command": "composerMode.agent"
+},
+{
+  "key": "shift+cmd+l",
+  "command": "-composer.newAgentChat"
 }
 ]

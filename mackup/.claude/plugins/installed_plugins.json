@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "plugins": {
+    "gopls-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/niels/.claude/plugins/cache/claude-plugins-official/gopls-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-01-13T12:51:59.139Z",
+        "lastUpdated": "2026-01-13T12:51:59.139Z"
+      }
+    ],
+    "ralph-loop@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/niels/.claude/plugins/cache/claude-plugins-official/ralph-loop/96276205880a",
+        "version": "96276205880a",
+        "installedAt": "2026-01-16T17:51:52.866Z",
+        "lastUpdated": "2026-01-16T17:51:52.866Z",
+        "gitCommitSha": "96276205880a60fd66bbae981f5ab568e70c4cbf"
+      }
+    ]
+  }
+}

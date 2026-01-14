@@ -31,8 +31,9 @@ alias pydep="where python3 | parallel 'echo {} && {} -m pip list && echo'"
 alias searchalias="alias | fzf"
 alias searchbindkey="bindkey | fzf"
 
-# VS Code.
-alias ci="code-insiders"
-alias code=ci
+# Cursor.
 alias cur="cursor"
 alias curd="cursor ."
+
+# Lovable.
+alias up="pnpm install && devenv up"

@@ -8,9 +8,22 @@
 # General                                                                     #
 ###############################################################################
 
-# Expand save panel by default
+# Expand save panel by default.
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+###############################################################################
+# Sound                                                                       #
+###############################################################################
+
+# Disable UI sound effects (default: true).
+defaults write NSGlobalDomain com.apple.sound.uiaudio.enabled -bool false
+
+# Disable feedback when volume is changed (default: true).
+defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool false
+
+# Disable startup chime (default: %00; requires reboot).
+sudo nvram StartupMute=%01
 
 ###############################################################################
 # Finder                                                                      #
@@ -38,9 +51,6 @@ defaults write com.apple.finder "ShowPathbar" -bool true
 # Set default view style to column.
 defaults write com.apple.finder "FXPreferredViewStyle" -string "clmv"
 
-# Group windows by application.
-defaults write com.apple.dock "expose-group-apps" -bool "true"
-
 # Items to display on the desktop.
 defaults write com.apple.finder ShowHardDrivesOnDesktop -int 0
 defaults write com.apple.finder ShowMountedServersOnDesktop -int 0
@@ -52,9 +62,6 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
-
-# Kill Finder to apply changes.
-killall Finder
 
 
 ###############################################################################
@@ -68,6 +75,9 @@ killall Finder
 # Set minimize animation effect to Scale.
 defaults write com.apple.dock mineffect -string scale
 
+# Minimize windows into the app's Dock icon (default: false).
+defaults write com.apple.dock minimize-to-application -bool true
+
 # Automatically hide the dock.
 defaults write com.apple.dock "autohide" -bool "true"
 
@@ -78,9 +88,11 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # Do not show recents.
 defaults write com.apple.dock "show-recents" -bool "false"
 
+# Disable trackpad "Show Desktop" spread gesture (default: true).
+defaults write com.apple.dock showDesktopGestureEnabled -bool false
 
-# Kill dock to apply changes.
-killall Dock
+# Group windows by application in Exposé.
+defaults write com.apple.dock "expose-group-apps" -bool "true"
 
 
 ###############################################################################
@@ -94,5 +106,155 @@ defaults write com.apple.dock "mru-spaces" -bool "false"
 defaults write com.apple.spaces spans-displays -int 0
 
 
-# Kill SystemUIServer to apply changes.
-killall SystemUIServer
+###############################################################################
+# Control Center & Menu Bar                                                   #
+###############################################################################
+
+# Hide Wi-Fi from menu bar (default: true).
+defaults write com.apple.controlcenter "NSStatusItem Visible WiFi" -bool false
+
+# Hide Bluetooth from menu bar (default: false).
+defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool false
+
+# Hide AirDrop from menu bar (default: false).
+defaults write com.apple.controlcenter "NSStatusItem Visible AirDrop" -bool false
+
+# Hide Stage Manager from menu bar (default: false).
+defaults write com.apple.controlcenter "NSStatusItem Visible StageManager" -bool false
+
+# Hide Display from menu bar (default: false).
+defaults write com.apple.controlcenter "NSStatusItem Visible Display" -bool false
+
+# Hide Sound from menu bar (default: false).
+defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool false
+
+# Hide Now Playing from menu bar (default: false).
+defaults write com.apple.controlcenter "NSStatusItem Visible NowPlaying" -bool false
+
+# Hide Spotlight from menu bar (default: true).
+defaults write com.apple.controlcenter "NSStatusItem Visible Spotlight" -bool false
+
+# Hide Siri from menu bar (default: true).
+defaults write com.apple.controlcenter "NSStatusItem Visible Siri" -bool false
+
+# Hide Time Machine from menu bar (default: false).
+defaults write com.apple.controlcenter "NSStatusItem Visible TimeMachine" -bool false
+
+# Hide VPN from menu bar (default: false).
+defaults write com.apple.controlcenter "NSStatusItem Visible VPN" -bool false
+
+# Hide Weather from menu bar (default: false).
+defaults write com.apple.controlcenter "NSStatusItem Visible Weather" -bool false
+
+# Show battery in menu bar (default: true on laptops).
+defaults write com.apple.controlcenter "NSStatusItem Visible Battery" -bool true
+
+# Show battery percentage in menu bar (default: false).
+defaults write com.apple.controlcenter BatteryShowPercentage -bool true
+
+# Hide Input menu from menu bar (default: false).
+defaults write com.apple.TextInputMenu visible -bool false
+
+
+###############################################################################
+# Trackpad                                                                    #
+###############################################################################
+
+# Enable tap-to-click (default: false / 0).
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Enable secondary click via two-finger tap (default: true / 0).
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
+# Enable "Look up" via three-finger tap (default: 0).
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerTapGesture -int 2
+
+# Swipe between full-screen apps with four fingers, not three (default: 0 / 2).
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerHorizSwipeGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.fourFingerHorizSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerHorizSwipeGesture -int 0
+
+# Mission Control / App Exposé with four-finger vertical swipes, not three (default: 0 / 2).
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerVertSwipeGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.fourFingerVertSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 0
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerVertSwipeGesture -int 0
+
+# Enable rotate gesture (default: 0).
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRotate -int 1
+
+# Enable pinch to open Launchpad (default: 2).
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerPinchGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerPinchGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFiveFingerPinchGesture -int 2
+
+
+###############################################################################
+# Desktop & Stage Manager                                                     #
+###############################################################################
+
+# Disable Stage Manager (default: false).
+defaults write com.apple.WindowManager GloballyEnabled -bool false
+
+# Click wallpaper reveals desktop only in Stage Manager (default: true).
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
+
+# Show desktop items on Desktop (default: false).
+defaults write com.apple.WindowManager StandardHideDesktopIcons -bool false
+
+# Hide desktop items in Stage Manager (default: true).
+defaults write com.apple.WindowManager HideDesktop -bool true
+
+# Show widgets on Desktop (default: false).
+defaults write com.apple.WindowManager StandardHideWidgets -bool false
+
+# Show widgets in Stage Manager (default: false).
+defaults write com.apple.WindowManager StageManagerHideWidgets -bool false
+
+
+###############################################################################
+# Privacy                                                                     #
+###############################################################################
+
+# Disable "Help Apple Improve Search" data sharing (default: 1).
+defaults write com.apple.assistant.support "Search Queries Data Sharing Status" -int 2
+
+# Disable "Improve Siri & Dictation" data sharing (default: 1).
+defaults write com.apple.assistant.support "Siri Data Sharing Opt-In Status" -int 2
+
+
+###############################################################################
+# Apply Changes                                                               #
+###############################################################################
+
+echo "Restarting affected processes..."
+
+# Restart UI processes to apply changes.
+killall Finder 2>/dev/null || true
+killall Dock 2>/dev/null || true
+
+# Wait briefly before restarting remaining processes.
+sleep 1
+
+killall SystemUIServer 2>/dev/null || true
+killall ControlCenter 2>/dev/null || true
+killall TextInputMenuAgent 2>/dev/null || true
+killall WindowManager 2>/dev/null || true
+
+echo "Done. Some changes may require a logout or reboot to take effect."

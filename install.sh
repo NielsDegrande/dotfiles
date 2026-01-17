@@ -37,7 +37,7 @@ ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plu
 ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 
 # Restore configuration.
-ln -s "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg" || true   
+ln -s "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg" || true
 mackup link --force
 
 # Load mac configuration (this file should hold all mac config).
@@ -76,4 +76,4 @@ infat --config ~/.config/infat/config.toml
 
 # Symlink VSCode settings.
 ln -s '/Users/niels/Library/Application Support/Code/User' '/Users/niels/Library/Application Support/Cursor'
-ln -s /Users/niels/.vscode/extensions /Users/niels/.cursor/extensions
+ln -s '/Users/niels/.vscode/extensions' '/Users/niels/.cursor/extensions'

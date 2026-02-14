@@ -80,9 +80,13 @@ shift + alt - j: yabai -m window --focus south
 shift + alt - k: yabai -m window --focus north 
 shift + alt - l: yabai -m window --focus east 
 
+# Focus space.
+shift + alt - d: yabai -m space --focus 1
+
 # Focus monitor.
 shift + alt - 1: yabai -m display --focus 1
 shift + alt - 2: yabai -m display --focus 2
+shift + alt - 3: yabai -m display --focus 3
 
 # Move managed window.
 lctrl + shift + alt - h: yabai -m window --warp west
@@ -91,8 +95,10 @@ lctrl + shift + alt - k: yabai -m window --warp north
 lctrl + shift + alt - l: yabai -m window --warp east
 
 # Moved managed window to monitor.
-lctrl + shift + alt - 1: yabai -m window --display 1; yabai -m display --focus 1
+lctrl + shift + alt - 1: yabai -m window --space 1; yabai -m space --focus 1
+# lctrl + shift + alt - 1: yabai -m window --display 1; yabai -m display --focus 1
 lctrl + shift + alt - 2: yabai -m window --display 2; yabai -m display --focus 2 
+lctrl + shift + alt - 3: yabai -m window --display 3; yabai -m display --focus 3 
 
 # Make window fullscreen.
 lctrl + alt - f        : yabai -m window --toggle zoom-fullscreen
@@ -118,8 +124,6 @@ rshift + ralt - f: yabai -m window --toggle float --grid 4:4:1:1:2:2
 # Stack and BSP.
 shift + lalt - p: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus next || yabai -m window --focus first; fi
 shift + lalt - n: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus prev || yabai -m window --focus last; fi
-#shift + lalt - p: yabai -m window --focus stack.prev || yabai -m window --focus stack.last
-#shift + lalt - n: yabai -m window --focus stack.next || yabai -m window --focus stack.first
 shift + lalt - b: yabai -m space --layout bsp
 shift + lalt - s: yabai -m space --layout stack
 

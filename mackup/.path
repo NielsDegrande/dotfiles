@@ -1,10 +1,10 @@
 # Paths are configured here and sourced from ~/.zshrc.
 
 # Go.
-export GOPATH="${HOME}/.go"
+# export GOPATH="${HOME}/.go"
 # Below is hardcoded from $(brew --prefix golang) as it is slow.
-export GOROOT="/opt/homebrew/opt/go/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+# export GOROOT="/opt/homebrew/opt/go/libexec"
+# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # nvm.
 export NVM_DIR="$HOME/.nvm"

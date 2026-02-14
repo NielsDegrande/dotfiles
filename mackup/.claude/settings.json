@@ -2,9 +2,37 @@
   "apiKeyHelper": "~/.claude/anthropic_key.sh",
   "permissions": {
     "allow": [
-      "Bash(curl:*)"
+      "Bash(cat:*)",
+      "Bash(cd:*)",
+      "Bash(curl:*)",
+      "Bash(diff:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(pwd:*)",
+      "Bash(sort:*)",
+      "Bash(tail:*)",
+      "Bash(uniq:*)",
+      "Bash(wc:*)",
+      "Read(*)",
+      "Search(*)",
+      "WebSearch"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/credentials.json)",
+      "Read(**/secrets.json)",
+      "Read(**/*secret*)",
+      "Read(**/*credentials*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*_key)",
+      "Read(**/*-key)"
     ]
   },
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -28,7 +56,9 @@
     ]
   },
   "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": true
-  }
+  },
+  "fastMode": true
 }

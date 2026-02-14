@@ -1,9 +1,9 @@
 # Functions are defined here and sourced from ~/.zshrc.
 
-# Clean python artifacts.
-pyclean () {
-    find . -type f -name '*.py[co]' -delete
-    find . -type d -name __pycache__ -delete
+# Set SSL_CERT_FILE to the path of certifi's certificate bundle.
+certifi() {
+  export SSL_CERT_FILE=$(python3 -m certifi)
+  echo "SSL_CERT_FILE set to $SSL_CERT_FILE"
 }
 
 # Load .env file.
@@ -27,8 +27,49 @@ pip() {
     command pip "$@"
 }
 
-# Set SSL_CERT_FILE to the path of certifi's certificate bundle.
-certifi() {
-  export SSL_CERT_FILE=$(python3 -m certifi)
-  echo "SSL_CERT_FILE set to $SSL_CERT_FILE"
+# Clean python artifacts.
+pyclean () {
+    find . -type f -name '*.py[co]' -delete
+    find . -type d -name __pycache__ -delete
+}
+
+# Create a new git worktree with a branch from latest origin/main.
+# Usage:
+#   worknew <name> [base-branch]       Create new branch niels/<name> from origin/<base-branch>
+#   worknew -e <name> <branch>          Checkout existing branch into ../wt-<name>
+#   worknew -f <name> [base-branch]    Force recreate (removes existing worktree/branch)
+worknew() {
+  local force=false existing=false
+  local name="" base="main"
+  for arg in "$@"; do
+    case "$arg" in
+      -f|--force) force=true ;;
+      -e|--existing) existing=true ;;
+      *) [[ -z "$name" ]] && name="$arg" || base="$arg" ;;
+    esac
+  done
+  if [[ -z "$name" ]]; then
+    echo "Usage: worknew [-f|--force] [-e|--existing] <name> [base-branch]"
+    return 1
+  fi
+  local wtdir="../wt-$name"
+  if $existing; then
+    if [[ -z "$base" || "$base" == "main" ]]; then
+      echo "Usage: worknew -e <name> <branch>"
+      return 1
+    fi
+    git fetch origin "$base" && \
+    git worktree add "$wtdir" "$base" && \
+    cd "$wtdir" && \
+    direnv allow
+  else
+    if $force; then
+      git worktree remove "$wtdir" 2>/dev/null
+      git branch -D "niels/$name" 2>/dev/null
+    fi
+    git fetch origin "$base" && \
+    git worktree add --no-track -b "niels/$name" "$wtdir" "origin/$base" && \
+    cd "$wtdir" && \
+    direnv allow
+  fi
 }

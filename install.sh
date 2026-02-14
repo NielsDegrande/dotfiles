@@ -40,10 +40,8 @@ ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugi
 ln -s "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg" || true
 mackup link --force
 
-# Restore some linkages.
-killall Amphetamine  && rm "$HOME/Library/Containers/com.if.Amphetamine/Data/Library/Preferences/com.if.Amphetamine.plist" && cp "$HOME/git/dotfiles/mackup/Library/Containers/com.if.Amphetamine/Data/Library/Preferences/com.if.Amphetamine.plist" "$HOME/Library/Containers/com.if.Amphetamine/Data/Library/Preferences/" && open /Applications/Amphetamine.app
-killall MeetingBar && rm "$HOME/Library/Containers/leits.MeetingBar/Data/Library/Preferences/leits.MeetingBar.plist" && cp "$HOME/git/dotfiles/mackup/Library/Containers/leits.MeetingBar/Data/Library/Preferences/leits.MeetingBar.plist" "$HOME/Library/Containers/leits.MeetingBar/Data/Library/Preferences/" && open /Applications/MeetingBar.app
-killall Maccy && rm "$HOME/Library/Containers/org.p0deje.Maccy/Data/Library/Preferences/org.p0deje.Maccy.plist" && cp "$HOME/git/dotfiles/mackup/Library/Containers/org.p0deje.Maccy/Data/Library/Preferences/org.p0deje.Maccy.plist" "$HOME/Library/Containers/org.p0deje.Maccy/Data/Library/Preferences/" && open /Applications/Maccy.app
+# Restore copy-only files as symlinks break sandboxed apps.
+bash "$HOME/git/dotfiles/scripts/mackup_copy.sh" restore
 
 # Load mac configuration (this file should hold all mac config).
 bash "$HOME/.macos"

@@ -31,9 +31,9 @@ brew "bat"
 brew "bottom"
 brew "colima", restart_service: true
 brew "deno" # JS and TS runtime.
+brew "docker"
 brew "docker-buildx" # Still required with colima.
 brew "docker-compose" # Still required with colima.
-brew "docker"
 brew "eva" # Calculator.
 brew "eza"
 brew "fd"
@@ -42,15 +42,16 @@ brew "git-delta"
 brew "git-quick-stats"
 brew "go"
 brew "htop"
+brew "infat"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
+brew "lazygit"
 brew "mackup"
 brew "mas"
 brew "neovim"
 brew "nvm"
 brew "ollama"
 brew "parallel"
-brew "infat"
 brew "ripgrep" # Faster grep.
 brew "rm-improved"
 brew "rust"

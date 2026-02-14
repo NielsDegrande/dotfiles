@@ -1,4 +1,5 @@
 # Claude plugins cache
 mackup/.claude/plugins/cache/
-mackup/.claude/plugins/marketplaces/
 mackup/.claude/plugins/install-counts-cache.json
+mackup/.claude/plugins/known_marketplaces.json
+mackup/.claude/plugins/marketplaces/

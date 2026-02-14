@@ -23,6 +23,7 @@ alias gsp="git stash && gl && git stash apply"
 alias gspd="git stash && gco develop && gl && git stash apply"
 alias gspm="git stash && gco main && gl && git stash apply"
 alias gpuo="git branch --show-current | xargs git push -u origin"
+alias gcm="git commit --message"
 
 # Python.
 alias pydep="where python3 | parallel 'echo {} && {} -m pip list && echo'"
@@ -35,5 +36,8 @@ alias searchbindkey="bindkey | fzf"
 alias cur="cursor"
 alias curd="cursor ."
 
+# Claude.
+alias claude="CLAUDE_CODE_DISABLE_AUTO_MEMORY=0 claude --dangerously-skip-permissions"
+
 # Lovable.
-alias up="pnpm install && devenv up"
+alias up='develop-api 2>&1 | tee api.log'

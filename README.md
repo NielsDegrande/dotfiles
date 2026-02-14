@@ -3,11 +3,11 @@
 Back up and restore configuration easily.
 Automatically install applications and binaries.
 
-TODO: Impact of https://github.com/lra/mackup/pull/2085?
 
 ## Building blocks
 
-- `Mackup` for managing most configuration and dotfiles.
+- `Mackup` for managing most configuration and dotfiles (symlinks).
+- `scripts/mackup_copy.sh` for files that must be copied, not symlinked (e.g. sandboxed app plists).
 - `Homebrew` for installing almost all applications (`cask` and `mas`) and binaries.
 - `bash` scripts and some ubiquitous tools (e.g. `curl`) for the functionality not handled by the above.
 - `git` and GitHub to version and store the artifacts.
@@ -57,6 +57,9 @@ echo "Ensure you do not push any secrets, keys or similar."
 # Execute mackup.
 mackup link install
 
+# Backup copy-only files (sandboxed apps; symlinks break them).
+bash scripts/mackup_copy.sh backup
+
 # Push the latest.
 cd "$HOME/git/dotfiles"
 git add --all ; git commit --message "Back up machine configuration" ; git push
@@ -68,6 +71,13 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
   TODO: Move to `macos.sh`. See `defaults read`.
 - `Google Drive` and/or `OneDrive` for synchronizing data.
 - `Firefox Sync` for synchronizing bookmarks and extensions. Settings with a `user.js`.
+
+## Copy-only files
+
+Sandboxed apps break when their plists are symlinked.
+
+- List them in `[copy_only_files]` in `.mackup/personal.cfg`. Format: `path` or `path=/Applications/App.app` (app is quit and reopened on restore).
+- Use `scripts/mackup_copy.sh backup` after `mackup link install`; `scripts/mackup_copy.sh restore` runs automatically via `install.sh`.
 
 ## Miscellaneous
 
@@ -138,10 +148,6 @@ nvm install latest
 
 A few paths have to be absolute and hardcoded.
 Search and replace if needed.
-
-### Calendar
-
-Set calendars to be refreshed every X minutes and not `Push` (TODO: required?).
 
 ### cron
 

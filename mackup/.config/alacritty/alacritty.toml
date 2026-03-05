@@ -21,7 +21,11 @@ style = "Italic"
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
-style = "Regular"
+style = "Medium"
+
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-l", "-c", "tmux attach -t default || tmux new -s default"]
 
 [window]
 decorations = "buttonless"
@@ -31,3 +35,8 @@ option_as_alt = "OnlyLeft"
 
 [window.padding]
 x = 8
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"

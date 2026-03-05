@@ -61,7 +61,8 @@ worknew() {
     git fetch origin "$base" && \
     git worktree add "$wtdir" "$base" && \
     cd "$wtdir" && \
-    direnv allow
+    direnv allow && \
+    [[ -n "$TMUX" ]] && tmux rename-window "$name"
   else
     if $force; then
       git worktree remove "$wtdir" 2>/dev/null
@@ -70,6 +71,7 @@ worknew() {
     git fetch origin "$base" && \
     git worktree add --no-track -b "niels/$name" "$wtdir" "origin/$base" && \
     cd "$wtdir" && \
-    direnv allow
+    direnv allow && \
+    [[ -n "$TMUX" ]] && tmux rename-window "$name"
   fi
 }

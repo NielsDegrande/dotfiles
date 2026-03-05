@@ -49,9 +49,9 @@ fi
 terminal-notifier -title "Claude Code: Idle" -message "$summary"
 
 # Ring the terminal bell so tmux highlights the window title red in the status bar.
-# The hook may run with stdout redirected; use tmux to run the bell in the pane's window.
 if [ -n "${TMUX:-}" ] && [ -n "${TMUX_PANE:-}" ]; then
-  tmux split-window -h -d -t "$TMUX_PANE" "printf '\\a'; exit"
+  pane_tty=$(tmux display-message -p -t "$TMUX_PANE" '#{pane_tty}')
+  printf '\a' > "$pane_tty"
 else
   printf '\a' > /dev/tty 2>/dev/null || printf '\a'
 fi

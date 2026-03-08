@@ -32,9 +32,8 @@ alias pydep="where python3 | parallel 'echo {} && {} -m pip list && echo'"
 alias searchalias="alias | fzf"
 alias searchbindkey="bindkey | fzf"
 
-# Cursor.
-alias cur="cursor"
-alias curd="cursor ."
+# VS Code.
+alias cod="code ."
 
 # Claude.
 alias claude="CLAUDE_CODE_DISABLE_AUTO_MEMORY=0 claude --dangerously-skip-permissions"

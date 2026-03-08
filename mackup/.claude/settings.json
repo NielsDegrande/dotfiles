@@ -22,7 +22,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.claude/notify_on_finish.sh"
+            "command": "bash ~/.claude/hooks/notify_on_finish.sh"
           }
         ]
       }
@@ -32,7 +32,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.claude/notify_idle.sh"
+            "command": "bash ~/.claude/hooks/notify_idle.sh"
           }
         ]
       }

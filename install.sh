@@ -77,6 +77,6 @@ curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/ala
 # Set default applications.
 infat --config ~/.config/infat/config.toml
 
-# Symlink VSCode settings.
-ln -s '/Users/niels/Library/Application Support/Code/User' '/Users/niels/Library/Application Support/Cursor'
-ln -s '/Users/niels/.vscode/extensions' '/Users/niels/.cursor/extensions'
+# Symlink CLAUDE.
+ln -s /Users/niels/git/dotfiles/mackup/.agents/AGENTS.md /Users/niels/.claude/CLAUDE.md
+ln -s /Users/niels/.agents/skills /Users/niels/.claude

@@ -80,7 +80,6 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.commandCenter": true,
   "window.title": "${rootName}${separator}(${folderPath})",
-  "workbench.activityBar.location": "top",
   "workbench.colorTheme": "One Dark Pro Flat",
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook",
@@ -438,4 +437,6 @@
   "claudeCode.allowDangerouslySkipPermissions": true,
   "claudeCode.disableLoginPrompt": true,
   "claudeCode.respectGitIgnore": false,
+  "workbench.activityBar.location": "top",
+  "chat.disableAIFeatures": true,
 }

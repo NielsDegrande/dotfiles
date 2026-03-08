@@ -3,7 +3,6 @@
 Back up and restore configuration easily.
 Automatically install applications and binaries.
 
-
 ## Building blocks
 
 - `Mackup` for managing most configuration and dotfiles (symlinks).

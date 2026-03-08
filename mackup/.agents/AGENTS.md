@@ -11,9 +11,13 @@
 - When you are reviewing a PR, NEVER comment on the PR.
 - When writing PR descriptions, do not mention "testing in staging".
 
-## Python
+## Quality control
 
-Always use `uv` to create a virtual environment and install dependencies.
+Before committing, ensure linting and relevant tests are passing.
+You can use [agent-browser](https://github.com/vercel-labs/agent-browser) to test in the browser.
+
+Once you have created the PR, monitor the CI/CD checks on GitHub and fix any issues.
+If Cursor provides feedback, address it ONLY if it is relevant.
 
 ## Secrets
 
@@ -24,10 +28,18 @@ If you write a script that requires a secret, read them as part of the script. F
 
 Write temporary files to `/tmp/`.
 
-## Quality control
+## Languages
 
-Before committing, ensure linting and relevant tests are passing.
-You can use [agent-browser](https://github.com/vercel-labs/agent-browser) to test in the browser.
+### Go
 
-Once you have created the PR, monitor the CI/CD checks on GitHub and fix any issues.
-If Cursor provides feedback, address it ONLY if it is relevant.
+- Mark all tests `t.Parallel()` unless they can't run in parallel.
+
+### Python
+
+- Always use `uv` to create a virtual environment and install dependencies.
+- Docstrings are in reStructuredText format.
+- Type hints required for all code except tests.
+
+### TypeScript
+
+- Write TSDoc comments for all public classes, methods, and functions. At least use the `@param` tag for parameters and `@returns` for return values.

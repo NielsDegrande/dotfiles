@@ -1,5 +1,5 @@
 -- Clipboard.
-hs.hotkey.bind({"alt", "shift"}, "V", function()
+hs.hotkey.bind({ "alt", "shift" }, "V", function()
     local clipboardContent = hs.pasteboard.readString()
     if type(clipboardContent) == "string" then
         hs.notify.new({

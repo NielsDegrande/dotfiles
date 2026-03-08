@@ -1,21 +1,33 @@
+-- Set leader key to space.
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Set to true if you have a Nerd Font installed and selected in the terminal.
+vim.g.have_nerd_font = true
+
 -- Disable startup message.
 vim.opt.shortmess:append("I")
 
--- Optimize for fast terminal connections (reduces the delay for drawing).
-vim.opt.ttyfast = true
+-- Faster CursorHold events (used by LSP document highlight).
+vim.opt.updatetime = 250
 
--- Use the system clipboard for all yank, delete, change, and put operations.
-vim.opt.clipboard = "unnamedplus"
+-- Faster which-key popup.
+vim.opt.timeoutlen = 300
 
--- Manage undo history.
--- Enable persistent undo.
+-- Live preview of substitutions.
+vim.opt.inccommand = "split"
+
+-- Show dialog instead of error when quitting with unsaved changes.
+vim.opt.confirm = true
+
+-- Sync clipboard between OS and Neovim (scheduled for faster startup).
+vim.schedule(function() vim.opt.clipboard = "unnamedplus" end)
+
+-- Enable persistent undo (stored in ~/.local/state/nvim/undo).
 vim.opt.undofile = true
--- Set directory for undo files.
-local undo_dir = vim.fn.stdpath("config") .. "/undo"
-vim.opt.undodir = undo_dir
 
 -- Set command-line completion behavior to first list the longest common substring, then list all matches.
-vim.opt.wildmode = {"longest", "list"}
+vim.opt.wildmode = { "longest", "list" }
 
 -- When creating vertical splits, place the new window to the right of the current one.
 vim.opt.splitright = true
@@ -23,8 +35,11 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- Jump to the last position when reopening a file.
-if vim.fn.has("autocmd") == 1 then
-    vim.api.nvim_exec([[
-    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  ]], false)
-end
+vim.api.nvim_create_autocmd("BufReadPost", {
+    callback = function()
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+            vim.api.nvim_win_set_cursor(0, mark)
+        end
+    end,
+})

@@ -1,52 +1,57 @@
 -- Move line or visually selected block up or down (j/k).
-vim.api.nvim_set_keymap('n', '<A-j>', ':m .+1<CR>==', {
-    noremap = true,
-    silent = true
-})
-vim.api.nvim_set_keymap('n', '<A-k>', ':m .-2<CR>==', {
-    noremap = true,
-    silent = true
-})
-vim.api.nvim_set_keymap('i', '<A-j>', '<Esc>:m .+1<CR>==gi', {
-    noremap = true,
-    silent = true
-})
-vim.api.nvim_set_keymap('i', '<A-k>', '<Esc>:m .-2<CR>==gi', {
-    noremap = true,
-    silent = true
-})
-vim.api.nvim_set_keymap('v', '<A-j>', ':m \'>+1<CR>gv=gv', {
-    noremap = true,
-    silent = true
-})
-vim.api.nvim_set_keymap('v', '<A-k>', ':m \'<-2<CR>gv=gv', {
-    noremap = true,
-    silent = true
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { silent = true, desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { silent = true, desc = "Move line up" })
+vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { silent = true, desc = "Move line down" })
+vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { silent = true, desc = "Move line up" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
+
+-- Clear search highlights on pressing Escape.
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
+
+-- Exit terminal mode with Esc-Esc.
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- Window navigation with Ctrl+h/j/k/l.
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move to left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move to right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move to window below" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move to window above" })
+
+-- Highlight on yank.
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking text",
+    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+    callback = function()
+        vim.hl.on_yank()
+    end,
 })
 
--- coc.nvim related keymappings.
-function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+-- Telescope search keymaps.
+local builtin = function(name, opts)
+    return function() require("telescope.builtin")[name](opts) end
 end
 
-local keyset = vim.keymap.set
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-keyset("i", "<Tab>", [[pumvisible() ? coc#pum#confirm() : v:lua.check_back_space() ? "\<Tab>" : coc#refresh()]], opts)
-keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+vim.keymap.set("n", "<leader>sh", builtin("help_tags"), { desc = "Search help" })
+vim.keymap.set("n", "<leader>sk", builtin("keymaps"), { desc = "Search keymaps" })
+vim.keymap.set("n", "<leader>sf", builtin("find_files", { hidden = true, file_ignore_patterns = { "^%.git/" } }), { desc = "Search files" })
+vim.keymap.set("n", "<leader>ss", builtin("builtin"), { desc = "Search select Telescope" })
+vim.keymap.set({ "n", "v" }, "<leader>sw", builtin("grep_string"), { desc = "Search current word" })
+vim.keymap.set("n", "<leader>sg", builtin("live_grep"), { desc = "Search by grep" })
+vim.keymap.set("n", "<leader>sd", builtin("diagnostics"), { desc = "Search diagnostics" })
+vim.keymap.set("n", "<leader>sr", builtin("resume"), { desc = "Search resume" })
+vim.keymap.set("n", "<leader>s.", builtin("oldfiles"), { desc = "Search recent files" })
+vim.keymap.set("n", "<leader>sc", builtin("commands"), { desc = "Search commands" })
+vim.keymap.set("n", "<leader>s/", builtin("live_grep", { grep_open_files = true, prompt_title = "Live Grep in Open Files" }), { desc = "Search in open files" })
+vim.keymap.set("n", "<leader>st", "<cmd>TodoTelescope<cr>", { desc = "Search todos" })
+vim.keymap.set("n", "<leader>sb", function() require("telescope").extensions.file_browser.file_browser({ hidden = true, respect_gitignore = true }) end, { desc = "Search file browser" })
+vim.keymap.set("n", "<leader><leader>", builtin("buffers"), { desc = "Find existing buffers" })
+vim.keymap.set("n", "<leader>/", function() require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })) end, { desc = "Fuzzily search in current buffer" })
+vim.keymap.set("n", "<leader>sn", builtin("find_files", { cwd = vim.fn.stdpath("config") }), { desc = "Search neovim config" })
 
--- Mappings with `which-key.nvim`.
-local wk = require("which-key")
-wk.add(
-    {
-        { "<leader>b", group = "buffer" },
-        { "<leader>bs", ":ls<Cr>:b<Space>", desc = "Switch buffer" },
-        { "<leader>f", group = "file" },
-        { "<leader>fb", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
-        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-        { "<leader>b", group = "delete" },
-        { "<leader>dd", '"_dd', desc = "Delete line to black hole" },
-        { "<leader>t", group = "terminal" },
-        { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
-    }
-)
+-- Other leader keymaps.
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "File tree" })
+vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
+vim.keymap.set("n", "<leader>dd", '"_dd', { desc = "Delete line to black hole" })
+vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostic quickfix list" })

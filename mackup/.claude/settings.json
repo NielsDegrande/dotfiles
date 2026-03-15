@@ -15,7 +15,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -44,5 +44,6 @@
     "ralph-loop@claude-plugins-official": true,
     "slack@claude-plugins-official": true
   },
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true
 }

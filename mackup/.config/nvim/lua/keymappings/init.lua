@@ -49,6 +49,10 @@ vim.keymap.set("n", "<leader><leader>", builtin("buffers"), { desc = "Find exist
 vim.keymap.set("n", "<leader>/", function() require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })) end, { desc = "Fuzzily search in current buffer" })
 vim.keymap.set("n", "<leader>sn", builtin("find_files", { cwd = vim.fn.stdpath("config") }), { desc = "Search neovim config" })
 
+-- Git keymaps.
+vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame_line<CR>", { desc = "Git blame line" })
+vim.keymap.set("n", "<leader>gB", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle inline git blame" })
+
 -- Other leader keymaps.
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "File tree" })
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })

@@ -33,6 +33,7 @@ Write temporary files to `/tmp/`.
 ### Go
 
 - Mark all tests `t.Parallel()` unless they can't run in parallel.
+- CI runs `go fix -diff` and will fail on non-modernized code.
 
 ### Python
 

@@ -30,7 +30,7 @@ require("lazy").setup({
     }},
     {"j-hui/fidget.nvim", opts = {}},
     {"folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {}},
-    {"lewis6991/gitsigns.nvim", opts = {}},
+    {"lewis6991/gitsigns.nvim", opts = { current_line_blame = true }},
     {"nmac427/guess-indent.nvim", opts = {}},
     {"nvim-mini/mini.nvim", version = false, config = function()
         require("mini.ai").setup({ n_lines = 500 })

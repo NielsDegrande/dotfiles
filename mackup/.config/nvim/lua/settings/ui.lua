@@ -19,3 +19,6 @@ vim.opt.scrolloff = 10
 -- Show invisible whitespace characters.
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Add vertical padding at the top of each window.
+vim.opt.winbar = " "

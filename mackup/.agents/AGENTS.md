@@ -10,6 +10,7 @@
 - Open PRs in draft mode.
 - When you are reviewing a PR, NEVER comment on the PR.
 - When writing PR descriptions, do not mention "testing in staging".
+- When making significant changes to a PR, update the PR description to reflect the current state.
 
 ## Quality control
 
@@ -33,7 +34,7 @@ Write temporary files to `/tmp/`.
 ### Go
 
 - Mark all tests `t.Parallel()` unless they can't run in parallel.
-- CI runs `go fix -diff` and will fail on non-modernized code.
+- CI runs `go fix -diff` and will fail on non-modernized code. Before committing, run `cd go/api && go fix ./...` (and any other affected module) to apply modernizations.
 
 ### Python
 

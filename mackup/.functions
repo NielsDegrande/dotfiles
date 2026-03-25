@@ -30,6 +30,18 @@ logpane() {
   printf '\a'
 }
 
+# Mark the current tmux window as unread (activity alert).
+# Waits 5 seconds so you can switch away, then triggers the bell.
+unread() {
+  if [[ -z "$TMUX" ]]; then
+    echo "unread requires tmux"
+    return 1
+  fi
+  echo "Window will be marked unread in 5 seconds..."
+  sleep 5
+  printf '\a'
+}
+
 # Avoid accidentally pip installing in the base environment.
 pip() {
     if [[ -z "$VIRTUAL_ENV" ]]; then
@@ -57,6 +69,7 @@ pyclean () {
 wtnew() {
   local force=false existing=false
   local name="" base="main"
+  local tmux_window="${TMUX:+$(tmux display-message -p '#{window_id}')}"
   for arg in "$@"; do
     case "$arg" in
       -h|--help)
@@ -95,7 +108,7 @@ wtnew() {
     git worktree add "$wtdir" "$base" && \
     cd "$wtdir" && \
     direnv allow && \
-    [[ -n "$TMUX" ]] && tmux rename-window "$name"
+    [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$name"
   else
     if $force; then
       git worktree remove "$wtdir" 2>/dev/null
@@ -105,7 +118,7 @@ wtnew() {
     git worktree add --no-track -b "niels/$name" "$wtdir" "origin/$base" && \
     cd "$wtdir" && \
     direnv allow && \
-    [[ -n "$TMUX" ]] && tmux rename-window "$name"
+    [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$name"
   fi
 }
 

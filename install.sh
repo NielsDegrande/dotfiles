@@ -74,6 +74,13 @@ echo "* 11 * * * $HOME/git/dotfiles/scripts/notes_archiver.sh" | crontab -
 # TODO: Required? Test before.
 curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
 
+# Compile and install VerticalMonitorLayout.
+# Source: https://github.com/alin23/mac-utils (MIT, Alin Panaitiu).
+bin=/usr/local/bin/VerticalMonitorLayout
+sudo mkdir -p -m 0755 /usr/local/bin
+swiftc -framework Cocoa "$HOME/git/dotfiles/scripts/VerticalMonitorLayout.swift" -o /tmp/VerticalMonitorLayout
+sudo mv /tmp/VerticalMonitorLayout "$bin"
+
 # Set default applications.
 infat --config ~/.config/infat/config.toml
 

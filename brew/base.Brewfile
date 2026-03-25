@@ -53,7 +53,6 @@ brew "nvm"
 brew "ollama"
 brew "parallel"
 brew "ripgrep" # Faster grep.
-brew "rm-improved"
 brew "rust"
 brew "starship"
 brew "terminal-notifier"

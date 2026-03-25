@@ -4,6 +4,9 @@
 alias overbrew='brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"'
 alias brewdump='brew bundle dump ; cat Brewfile ; rm Brewfile'
 
+# Safety.
+alias rm='echo "Use trash instead. Use command rm for real rm." #'
+
 # Custom.
 alias sourcev='source venv/bin/activate >/dev/null 2>&1 || source .venv/bin/activate >/dev/null 2>&1 || echo "Error: Failed to activate virtual environment."' # Activate venv in current folder.
 alias sourcez='source ~/.zshrc' # Source zshrc in current shell.
@@ -35,8 +38,9 @@ alias searchbindkey="bindkey | fzf"
 # VS Code.
 alias cod="code ."
 
-# Claude.
-alias claude="CLAUDE_CODE_DISABLE_AUTO_MEMORY=0 claude --dangerously-skip-permissions"
+# Coding agents.
+alias claude="env -u TMUX CLAUDE_CODE_DISABLE_AUTO_MEMORY=0 claude --dangerously-skip-permissions"
+alias codex="codex --dangerously-bypass-approvals-and-sandbox"
 
 # Lovable.
 alias up='develop-api 2>&1 | tee api.log'

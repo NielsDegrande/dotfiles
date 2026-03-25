@@ -97,6 +97,9 @@ defaults write com.apple.dock showDesktopGestureEnabled -bool false
 # Group windows by application in Exposé.
 defaults write com.apple.dock expose-group-apps -bool true
 
+# Disable icon bouncing in Dock (default: false).
+defaults write com.apple.dock no-bouncing -bool true
+
 # Do not rearrange spaces based on most recent use.
 defaults write com.apple.dock mru-spaces -bool false
 
@@ -254,6 +257,13 @@ defaults write com.apple.assistant.support "Search Queries Data Sharing Status" 
 # Disable "Improve Siri & Dictation" data sharing (default: 1).
 defaults write com.apple.assistant.support "Siri Data Sharing Opt-In Status" -int 2
 
+
+###############################################################################
+# Terminal: Font Smoothing                                                    #
+###############################################################################
+
+# Disable font smoothing for Alacritty (prevents overly bold/blurry text).
+defaults write org.alacritty AppleFontSmoothing -int 0
 
 ###############################################################################
 # Apply Changes                                                               #

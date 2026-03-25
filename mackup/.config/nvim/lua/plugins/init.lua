@@ -39,7 +39,7 @@ require("lazy").setup({
         statusline.setup({ use_icons = vim.g.have_nerd_font })
         statusline.section_location = function() return "%2l:%-2v" end
     end},
-    {"m4xshen/hardtime.nvim", lazy = false, dependencies = { "MunifTanjim/nui.nvim" }, opts = {},},
+    {"m4xshen/hardtime.nvim", lazy = false, dependencies = { "MunifTanjim/nui.nvim" }, opts = { restriction_mode = "hint" },},
     {"nvim-neo-tree/neo-tree.nvim", branch = "v3.x", dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "MunifTanjim/nui.nvim" }, opts = {
         filesystem = {
             filtered_items = { visible = true },

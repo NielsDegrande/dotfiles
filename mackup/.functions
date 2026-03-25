@@ -1,17 +1,33 @@
 # Functions are defined here and sourced from ~/.zshrc.
 
-# Set SSL_CERT_FILE to the path of certifi's certificate bundle.
-certifi() {
-  export SSL_CERT_FILE=$(python3 -m certifi)
-  echo "SSL_CERT_FILE set to $SSL_CERT_FILE"
-}
-
 # Load .env file.
 envup () {
   if [ -f .env ]
   then
     set -o allexport; source .env; set +o allexport
   fi
+}
+
+# Create new branch.
+gcob() { git checkout -b "$1" --no-track origin/main; }
+
+# Run a command with output logged to a file and tailed in a small tmux pane.
+# Usage: logpane <command> [args...]
+logpane() {
+  if [[ $# -eq 0 ]]; then
+    echo "Usage: logpane <command> [args...]"
+    return 1
+  fi
+  if [[ -z "$TMUX" ]]; then
+    echo "logpane requires tmux"
+    return 1
+  fi
+  local logfile="/tmp/$(tmux display-message -p '#S-#W')-$(date +%Y%m%d-%H%M%S).log"
+  tmux split-window -l 35 -d "tail -f '$logfile'"
+  echo "Logging to $logfile"
+  eval "$@" > "$logfile" 2>&1
+  # Ring the terminal bell so tmux highlights the window red.
+  printf '\a'
 }
 
 # Avoid accidentally pip installing in the base environment.
@@ -27,9 +43,6 @@ pip() {
     command pip "$@"
 }
 
-# Create new branch.
-gcob() { git checkout -b "$1" --no-track origin/main; }
-
 # Clean python artifacts.
 pyclean () {
     find . -type f -name '*.py[co]' -delete
@@ -38,27 +51,44 @@ pyclean () {
 
 # Create a new git worktree with a branch from latest origin/main.
 # Usage:
-#   worknew <name> [base-branch]       Create new branch niels/<name> from origin/<base-branch>
-#   worknew -e <name> <branch>          Checkout existing branch into ../wt-<name>
-#   worknew -f <name> [base-branch]    Force recreate (removes existing worktree/branch)
-worknew() {
+#   wtnew <name> [base-branch]       Create new branch niels/<name> from origin/<base-branch>
+#   wtnew -e <name> <branch>          Checkout existing branch into ../wt-<name>
+#   wtnew -f <name> [base-branch]    Force recreate (removes existing worktree/branch)
+wtnew() {
   local force=false existing=false
   local name="" base="main"
   for arg in "$@"; do
     case "$arg" in
+      -h|--help)
+        echo "Usage: wtnew [-f|--force] [-e|--existing] <name> [base-branch]"
+        echo ""
+        echo "Create a new git worktree with a branch from latest origin/main."
+        echo ""
+        echo "Modes:"
+        echo "  wtnew <name> [base-branch]       Create new branch niels/<name> from origin/<base-branch>"
+        echo "  wtnew -e <name> <branch>          Checkout existing branch into ../wt-<name>"
+        echo ""
+        echo "Options:"
+        echo "  -f, --force       Force recreate (removes existing worktree/branch)"
+        echo "  -e, --existing    Checkout an existing remote branch"
+        echo "  -h, --help        Show this help message"
+        echo ""
+        echo "The worktree is created at ../wt-<name>. If inside tmux, the window is renamed."
+        return 0
+        ;;
       -f|--force) force=true ;;
       -e|--existing) existing=true ;;
       *) [[ -z "$name" ]] && name="$arg" || base="$arg" ;;
     esac
   done
   if [[ -z "$name" ]]; then
-    echo "Usage: worknew [-f|--force] [-e|--existing] <name> [base-branch]"
+    echo "Usage: wtnew [-f|--force] [-e|--existing] <name> [base-branch]"
     return 1
   fi
   local wtdir="../wt-$name"
   if $existing; then
     if [[ -z "$base" || "$base" == "main" ]]; then
-      echo "Usage: worknew -e <name> <branch>"
+      echo "Usage: wtnew -e <name> <branch>"
       return 1
     fi
     git fetch origin "$base" && \
@@ -76,5 +106,43 @@ worknew() {
     cd "$wtdir" && \
     direnv allow && \
     [[ -n "$TMUX" ]] && tmux rename-window "$name"
+  fi
+}
+
+# Remove git worktrees by short name.
+# Usage:
+#   wtrm [-f|--force] <name> [name...]  Remove ../wt-<name> worktrees
+#   wtrm [-f|--force] -a|--all          Remove all worktrees (except the main one)
+wtrm() {
+  local force=()
+  while [[ $# -gt 0 && "$1" == -* ]]; do
+    case "$1" in
+      -f|--force) force=(--force); shift ;;
+      -a|--all) break ;;
+      *) echo "Unknown option: $1"; return 1 ;;
+    esac
+  done
+  if [[ $# -eq 0 ]]; then
+    echo "Usage: wtrm [-f|--force] <name> [name...]  or  wtrm [-f|--force] -a|--all"
+    return 1
+  fi
+  local main_wt
+  main_wt=$(git worktree list | head -1 | awk '{print $1}')
+  cd "$main_wt" || return 1
+  if [[ "$1" == "-a" || "$1" == "--all" ]]; then
+    git worktree list | tail -n +2 | awk '{print $1}' | while read -r wt; do
+      echo "Removing $wt"
+      git worktree remove "${force[@]}" "$wt"
+    done
+  else
+    for name in "$@"; do
+      local wtdir="../wt-$name"
+      if [[ -d "$wtdir" ]]; then
+        echo "Removing $wtdir"
+        git worktree remove "${force[@]}" "$wtdir"
+      else
+        echo "Worktree $wtdir not found"
+      fi
+    done
   fi
 }

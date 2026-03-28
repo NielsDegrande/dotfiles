@@ -55,6 +55,15 @@ pip() {
     command pip "$@"
 }
 
+# Interactive git diff with fzf preview.
+gdf() {
+  git diff "$@" --color=always --name-only |
+    fzf \
+      --height=100% \
+      --preview "git diff $* -- {-1} | delta --width=\${FZF_PREVIEW_COLUMNS}" \
+      --preview-window="right,75%" || true
+}
+
 # Clean python artifacts.
 pyclean () {
     find . -type f -name '*.py[co]' -delete

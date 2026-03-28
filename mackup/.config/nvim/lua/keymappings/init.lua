@@ -20,21 +20,28 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move to window above" })
 
 -- Highlight on yank.
 vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight when yanking text",
-    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-    callback = function()
-        vim.hl.on_yank()
-    end,
+	desc = "Highlight when yanking text",
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
+	end,
 })
 
 -- Telescope search keymaps.
 local builtin = function(name, opts)
-    return function() require("telescope.builtin")[name](opts) end
+	return function()
+		require("telescope.builtin")[name](opts)
+	end
 end
 
 vim.keymap.set("n", "<leader>sh", builtin("help_tags"), { desc = "Search help" })
 vim.keymap.set("n", "<leader>sk", builtin("keymaps"), { desc = "Search keymaps" })
-vim.keymap.set("n", "<leader>sf", builtin("find_files", { hidden = true, file_ignore_patterns = { "^%.git/" } }), { desc = "Search files" })
+vim.keymap.set(
+	"n",
+	"<leader>sf",
+	builtin("find_files", { hidden = true, file_ignore_patterns = { "^%.git/" } }),
+	{ desc = "Search files" }
+)
 vim.keymap.set("n", "<leader>ss", builtin("builtin"), { desc = "Search select Telescope" })
 vim.keymap.set({ "n", "v" }, "<leader>sw", builtin("grep_string"), { desc = "Search current word" })
 vim.keymap.set("n", "<leader>sg", builtin("live_grep"), { desc = "Search by grep" })
@@ -42,16 +49,34 @@ vim.keymap.set("n", "<leader>sd", builtin("diagnostics"), { desc = "Search diagn
 vim.keymap.set("n", "<leader>sr", builtin("resume"), { desc = "Search resume" })
 vim.keymap.set("n", "<leader>s.", builtin("oldfiles"), { desc = "Search recent files" })
 vim.keymap.set("n", "<leader>sc", builtin("commands"), { desc = "Search commands" })
-vim.keymap.set("n", "<leader>s/", builtin("live_grep", { grep_open_files = true, prompt_title = "Live Grep in Open Files" }), { desc = "Search in open files" })
+vim.keymap.set(
+	"n",
+	"<leader>s/",
+	builtin("live_grep", { grep_open_files = true, prompt_title = "Live Grep in Open Files" }),
+	{ desc = "Search in open files" }
+)
 vim.keymap.set("n", "<leader>st", "<cmd>TodoTelescope<cr>", { desc = "Search todos" })
-vim.keymap.set("n", "<leader>sb", function() require("telescope").extensions.file_browser.file_browser({ hidden = true, respect_gitignore = true }) end, { desc = "Search file browser" })
+vim.keymap.set("n", "<leader>sb", function()
+	require("telescope").extensions.file_browser.file_browser({ hidden = true, respect_gitignore = true })
+end, { desc = "Search file browser" })
 vim.keymap.set("n", "<leader><leader>", builtin("buffers"), { desc = "Find existing buffers" })
-vim.keymap.set("n", "<leader>/", function() require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })) end, { desc = "Fuzzily search in current buffer" })
-vim.keymap.set("n", "<leader>sn", builtin("find_files", { cwd = vim.fn.stdpath("config") }), { desc = "Search neovim config" })
+vim.keymap.set("n", "<leader>/", function()
+	require("telescope.builtin").current_buffer_fuzzy_find(
+		require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })
+	)
+end, { desc = "Fuzzily search in current buffer" })
+vim.keymap.set(
+	"n",
+	"<leader>sn",
+	builtin("find_files", { cwd = vim.fn.stdpath("config") }),
+	{ desc = "Search neovim config" }
+)
 
 -- Git keymaps.
 vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame_line<CR>", { desc = "Git blame line" })
 vim.keymap.set("n", "<leader>gB", "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle inline git blame" })
+vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", { desc = "Preview git hunk" })
+vim.keymap.set("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "Diff against index" })
 
 -- Other leader keymaps.
 vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "File tree" })

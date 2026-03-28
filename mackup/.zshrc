@@ -125,6 +125,8 @@ source ~/.path
 # Set up applications and binaries.
 # Set bat theme.
 export BAT_THEME=ansi
+# Configure look for git delta.
+export DELTA_FEATURES="diff-so-fancy"
 # fzf: Fuzzy finder.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # zoxide: Open folders and files fast.

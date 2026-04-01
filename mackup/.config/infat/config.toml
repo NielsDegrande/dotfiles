@@ -2,8 +2,8 @@
 
 [extensions]
 Brewfile = "Visual Studio Code"
+conf  = "Visual Studio Code"
 Dockerfile = "Visual Studio Code"
-html  = "Visual Studio Code"
 ini   = "Visual Studio Code"
 js    = "Visual Studio Code"
 json  = "Visual Studio Code"

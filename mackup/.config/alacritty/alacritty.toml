@@ -36,6 +36,33 @@ option_as_alt = "OnlyLeft"
 [window.padding]
 x = 8
 
+[[hints.enabled]]
+regex = 'https?://\S+'
+hyperlinks = true
+command = { program = "open", args = [] }
+binding = { key = "U", mods = "Control|Shift" }
+mouse.enabled = true
+mouse.mods = "Shift"
+post_processing = true
+persist = false
+
+[[hints.enabled]]
+regex = '[~.]?/?[\w@-]+(/\.?[\w@-]+)*/\.?[\w@-]+\.\w+(:\d+){0,2}'
+command = { program = "/bin/sh", args = ["-c", 'p="$1"; line=""; col=""; case "$p" in *:*:*) col="${p##*:}"; tmp="${p%:*}"; line="${tmp##*:}"; p="${tmp%:*}";; *:*) line="${p##*:}"; p="${p%:*}";; esac; case "$p" in \~/*) p="$HOME/${p#\~/}";; esac; case "$p" in /*) ;; *) cwd=$(/opt/homebrew/bin/tmux display-message -p "#{pane_current_path}" 2>/dev/null) && p="$cwd/$p";; esac; if [ -n "$line" ]; then /opt/homebrew/bin/code --goto "$p:$line${col:+:$col}"; else open "$p"; fi', "sh"] }
+binding = { key = "F", mods = "Control|Shift" }
+mouse.enabled = true
+mouse.mods = "Shift"
+post_processing = false
+persist = false
+
+[[hints.enabled]]
+regex = '[0-9a-f]{7,40}'
+action = "Copy"
+binding = { key = "G", mods = "Control|Shift" }
+mouse.enabled = true
+mouse.mods = "Shift"
+persist = false
+
 [[keyboard.bindings]]
 key = "Return"
 mods = "Shift"

@@ -15,7 +15,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus[1m]",
+  "model": "claude-opus-4-6[1m]",
   "hooks": {
     "Stop": [
       {
@@ -41,7 +41,8 @@
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "slack@claude-plugins-official": false
+    "slack@claude-plugins-official": false,
+    "posthog@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "openai-codex": {
@@ -52,5 +53,6 @@
     }
   },
   "effortLevel": "high",
+  "fastMode": true,
   "skipDangerousModePermissionPrompt": true
 }

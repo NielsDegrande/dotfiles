@@ -7,7 +7,6 @@
 - When you address PR comments, after pushing:
   - Add a comment and resolve the PR comments if it is a bot (bugbot, cursor, depthfirst, etc.).
   - If it is a human, ask for permission before commenting and resolving.
-- Open PRs in draft mode. After opening, comment `@cursor review` on the PR to trigger a Cursor/Bugbot review.
 - When you are reviewing a PR, NEVER comment on the PR.
 - When writing PR descriptions, do not mention "testing in staging".
 - When making significant changes to a PR, update the PR description to reflect the current state.
@@ -17,7 +16,7 @@
 Before committing, ensure linting and relevant tests are passing.
 You can use [agent-browser](https://github.com/vercel-labs/agent-browser) to test in the browser.
 
-Once you have created the PR and commented `@cursor review`, proactively monitor for both CI/CD check failures and Bugbot/Cursor review comments. Fix CI failures and address review comments that are relevant without waiting to be asked.
+Once you have created the PR, proactively monitor for both CI/CD check failures and review comments. Fix CI failures and address review comments that are relevant without waiting to be asked.
 
 ## Secrets
 

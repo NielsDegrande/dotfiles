@@ -12,6 +12,9 @@
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
+# Set locale to English (US) with Sweden region for date/currency formatting.
+defaults write NSGlobalDomain AppleLocale -string "en_US@rg=sezzzz"
+
 ###############################################################################
 # Sound                                                                       #
 ###############################################################################
@@ -63,7 +66,29 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -int 0
 # Show scroll bars when scrolling.
 defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 
-# Show the ~/Library folder
+# Open new Finder windows at the Home folder (default: Recents).
+# Values: PfHm = Home, PfDe = Desktop, PfDo = Documents, PfCm = Computer.
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+
+# Disable warning when emptying the Trash (default: true).
+defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+# Hide recent tags from the sidebar (default: true).
+defaults write com.apple.finder ShowRecentTags -bool false
+
+# Do not sync Desktop folder to iCloud Drive (default: true).
+defaults write com.apple.finder FXICloudDriveDesktop -bool false
+
+# Do not sync Documents folder to iCloud Drive (default: true).
+defaults write com.apple.finder FXICloudDriveDocuments -bool false
+
+# Prevent .DS_Store files on network volumes (default: false).
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# Prevent .DS_Store files on USB drives (default: false).
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Show the ~/Library folder.
 chflags nohidden ~/Library
 
 
@@ -74,6 +99,9 @@ chflags nohidden ~/Library
 # Remove everything.
 # dockutil --remove all > /dev/null 2>&1
 # dockutil --add ... > /dev/null 2>&1
+
+# Set Dock icon size to 42 pixels (default: 48).
+defaults write com.apple.dock tilesize -int 42
 
 # Set minimize animation effect to Scale.
 defaults write com.apple.dock mineffect -string scale
@@ -90,6 +118,12 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 
 # Do not show recents.
 defaults write com.apple.dock show-recents -bool false
+
+# Enable App Exposé gesture (default: true).
+defaults write com.apple.dock showAppExposeGestureEnabled -bool true
+
+# Enable Mission Control gesture (default: true).
+defaults write com.apple.dock showMissionControlGestureEnabled -bool true
 
 # Disable trackpad "Show Desktop" spread gesture (default: true).
 defaults write com.apple.dock showDesktopGestureEnabled -bool false
@@ -202,8 +236,10 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRotate
 # Enable pinch to open Launchpad (default: 2).
 defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerPinchGesture -int 2
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerPinchGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.fourFingerPinchSwipeGesture -int 2
 defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 2
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFiveFingerPinchGesture -int 2
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.fiveFingerPinchSwipeGesture -int 2
 
 
 ###############################################################################
@@ -234,16 +270,17 @@ defaults write com.apple.WindowManager StageManagerHideWidgets -bool false
 ###############################################################################
 
 # Disable all hot corners (default: varies).
-# Values: 0 = no action, 2 = Mission Control, 3 = App Windows,
+# Values: 1 = no action, 2 = Mission Control, 3 = App Windows,
 #   4 = Desktop, 5 = Start Screen Saver, 6 = Disable Screen Saver,
 #   10 = Put Display to Sleep, 11 = Launchpad, 13 = Lock Screen.
-defaults write com.apple.dock wvous-tl-corner -int 0
+# Note: macOS uses 1 (not 0) for "no action"; using 0 causes reversion.
+defaults write com.apple.dock wvous-tl-corner -int 1
 defaults write com.apple.dock wvous-tl-modifier -int 0
-defaults write com.apple.dock wvous-tr-corner -int 0
+defaults write com.apple.dock wvous-tr-corner -int 1
 defaults write com.apple.dock wvous-tr-modifier -int 0
-defaults write com.apple.dock wvous-bl-corner -int 0
+defaults write com.apple.dock wvous-bl-corner -int 1
 defaults write com.apple.dock wvous-bl-modifier -int 0
-defaults write com.apple.dock wvous-br-corner -int 0
+defaults write com.apple.dock wvous-br-corner -int 1
 defaults write com.apple.dock wvous-br-modifier -int 0
 
 
@@ -251,11 +288,17 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 # Privacy                                                                     #
 ###############################################################################
 
+# Disable Siri (default: true).
+defaults write com.apple.assistant.support "Assistant Enabled" -bool false
+
 # Disable "Help Apple Improve Search" data sharing (default: 1).
 defaults write com.apple.assistant.support "Search Queries Data Sharing Status" -int 2
 
 # Disable "Improve Siri & Dictation" data sharing (default: 1).
 defaults write com.apple.assistant.support "Siri Data Sharing Opt-In Status" -int 2
+
+# Automatically install macOS updates (default: false).
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticallyInstallMacOSUpdates -bool true
 
 
 ###############################################################################
@@ -264,6 +307,40 @@ defaults write com.apple.assistant.support "Siri Data Sharing Opt-In Status" -in
 
 # Disable font smoothing for Alacritty (prevents overly bold/blurry text).
 defaults write org.alacritty AppleFontSmoothing -int 0
+
+###############################################################################
+# Spotlight                                                                   #
+###############################################################################
+
+# Disable clipboard history in Spotlight (default: false).
+defaults write com.apple.Spotlight PasteboardHistoryEnabled -bool false
+
+###############################################################################
+# Messages                                                                    #
+###############################################################################
+
+# Disable notification sounds in Messages (default: true).
+defaults write com.apple.MobileSMS PlaySoundsKey -bool false
+
+# Keep messages forever (default: 0 = forever, 365 = 1 year, 30 = 30 days).
+defaults write com.apple.MobileSMS KeepMessageForDays -int 0
+
+# Auto-delete verification codes after use (default: false).
+defaults write com.apple.MobileSMS DeleteVerificationCodes -bool true
+
+###############################################################################
+# Printing                                                                    #
+###############################################################################
+
+# Default to double-sided printing, long-edge binding (default: varies).
+defaults write com.apple.print.custompresets "com.apple.print.customPresets.default" -dict-add DuplexMode -string "DuplexNoTumble"
+
+###############################################################################
+# Accessibility                                                               #
+###############################################################################
+
+# Enable scroll gesture with modifier keys to zoom (default: false).
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 
 ###############################################################################
 # Apply Changes                                                               #
@@ -284,3 +361,40 @@ killall TextInputMenuAgent 2>/dev/null || true
 killall WindowManager 2>/dev/null || true
 
 echo "Done. Some changes may require a logout or reboot to take effect."
+
+###############################################################################
+# Third-Party App Preferences (reference only)                                #
+#                                                                             #
+# These settings depend on the apps being installed. They are documented here #
+# for reference but commented out as they may break if the app updates its    #
+# preferences schema. Restore these apps' settings via Mackup where possible. #
+###############################################################################
+
+# --- Amphetamine (com.if.Amphetamine) ---
+# defaults write com.if.Amphetamine "Allow Display Sleep" -bool false
+# defaults write com.if.Amphetamine "Allow Screen Saver" -bool false
+# defaults write com.if.Amphetamine "Hide Dock Icon" -bool true
+# defaults write com.if.Amphetamine "Start Session At Launch" -bool true
+# defaults write com.if.Amphetamine "Default Duration" -int 0  # indefinite
+
+# --- Hidden Bar / minimalbar (com.dwarvesv.minimalbar) ---
+# defaults write com.dwarvesv.minimalbar isAutoStart -bool true
+
+# --- Maccy (org.p0deje.Maccy) ---
+# defaults write org.p0deje.Maccy historySize -int 999
+# defaults write org.p0deje.Maccy pasteByDefault -bool true
+# defaults write org.p0deje.Maccy searchMode -string "exact"
+
+# --- MeetingBar (leits.MeetingBar) ---
+# defaults write leits.MeetingBar createMeetingService -string "Google Meet"
+# defaults write leits.MeetingBar timeFormat -string "24-hour"
+# defaults write leits.MeetingBar hideMeetingTitle -bool true
+# defaults write leits.MeetingBar joinEventNotificationTime -int 300
+
+# --- NordVPN (com.nordvpn.macos) ---
+# defaults write com.nordvpn.macos isAnalyticsConsentAllowed -bool false
+# defaults write com.nordvpn.macos connectOnDemand -bool false
+# defaults write com.nordvpn.macos startOnBoot -bool false
+
+# --- UTM (com.utmapp.UTM) ---
+# defaults write com.utmapp.UTM ShowMenuIcon -bool false

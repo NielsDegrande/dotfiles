@@ -15,7 +15,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "claude-opus-4-6[1m]",
+  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -52,7 +52,7 @@
       }
     }
   },
-  "effortLevel": "high",
-  "fastMode": true,
-  "skipDangerousModePermissionPrompt": true
+  "effortLevel": "xhigh",
+  "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim"
 }

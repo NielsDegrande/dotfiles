@@ -31,14 +31,20 @@ logpane() {
 }
 
 # Mark the current tmux window as unread (activity alert).
-# Waits 5 seconds so you can switch away, then triggers the bell.
+# Waits N seconds (default 5) so you can switch away, then triggers the bell.
+# Usage: unread [seconds]
 unread() {
   if [[ -z "$TMUX" ]]; then
     echo "unread requires tmux"
     return 1
   fi
-  echo "Window will be marked unread in 5 seconds..."
-  sleep 5
+  local wait_seconds="${1:-5}"
+  if ! [[ "$wait_seconds" =~ ^[0-9]+$ ]]; then
+    echo "Usage: unread [seconds]"
+    return 1
+  fi
+  echo "Window will be marked unread in ${wait_seconds} seconds..."
+  sleep "$wait_seconds"
   printf '\a'
 }
 

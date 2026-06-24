@@ -1,6 +1,17 @@
 #!/bin/bash
 # Notify when Claude Code is waiting for user input
 
+# Read the JSON data passed from Claude Code
+input=$(cat)
+
+# Skip if the Monitor tool is currently active for this session — Claude is
+# "idle" only because it's watching a background process, not because it needs
+# the user. The Monitor marker is written by monitor_marker.sh.
+session_id=$(echo "$input" | jq -r '.session_id // empty' 2>/dev/null)
+if [ -n "$session_id" ] && [ -f "/tmp/claude_monitoring_${session_id}" ]; then
+  exit 0
+fi
+
 # Cooldown: only notify once per 5 minutes per session
 COOLDOWN_FILE="/tmp/claude_idle_notified_$PPID"
 if [ -f "$COOLDOWN_FILE" ]; then
@@ -11,9 +22,6 @@ if [ -f "$COOLDOWN_FILE" ]; then
   fi
 fi
 date +%s > "$COOLDOWN_FILE"
-
-# Read the JSON data passed from Claude Code
-input=$(cat)
 
 # Get the path to the conversation transcript
 transcript_path=$(echo "$input" | jq -r '.transcript_path')
@@ -48,10 +56,5 @@ fi
 # Send the notification.
 terminal-notifier -title "Claude Code: Idle" -message "$summary"
 
-# Ring the terminal bell so tmux highlights the window title red in the status bar.
-if [ -n "${TMUX:-}" ] && [ -n "${TMUX_PANE:-}" ]; then
-  pane_tty=$(tmux display-message -p -t "$TMUX_PANE" '#{pane_tty}')
-  printf '\a' > "$pane_tty"
-else
-  printf '\a' > /dev/tty 2>/dev/null || printf '\a'
-fi
+# Ring the tmux bell so the window tab goes red until viewed.
+bash ~/.claude/hooks/highlight_window.sh

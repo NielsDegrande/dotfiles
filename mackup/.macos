@@ -377,8 +377,8 @@ echo "Done. Some changes may require a logout or reboot to take effect."
 # defaults write com.if.Amphetamine "Start Session At Launch" -bool true
 # defaults write com.if.Amphetamine "Default Duration" -int 0  # indefinite
 
-# --- Hidden Bar / minimalbar (com.dwarvesv.minimalbar) ---
-# defaults write com.dwarvesv.minimalbar isAutoStart -bool true
+# --- Ice (com.jordanbaird.Ice) ---
+# Launch at login and menu bar layout are configured in Ice's settings UI.
 
 # --- Maccy (org.p0deje.Maccy) ---
 # defaults write org.p0deje.Maccy historySize -int 999

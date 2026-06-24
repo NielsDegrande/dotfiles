@@ -15,7 +15,6 @@
     ],
     "defaultMode": "default"
   },
-  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -33,6 +32,37 @@
           {
             "type": "command",
             "command": "bash ~/.claude/hooks/notify_idle.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/notify_ask_question.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Monitor",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/monitor_marker.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Monitor",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/monitor_marker.sh"
           }
         ]
       }
@@ -54,5 +84,7 @@
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true
 }

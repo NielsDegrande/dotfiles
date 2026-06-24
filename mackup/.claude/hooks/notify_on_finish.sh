@@ -37,10 +37,5 @@ fi
 # Send the notification with context (using terminal-notifier with Claude icon).
 terminal-notifier -title "Claude Code: Finished" -message "$summary"
 
-# Ring the terminal bell so tmux highlights the window title red in the status bar.
-if [ -n "${TMUX:-}" ] && [ -n "${TMUX_PANE:-}" ]; then
-  pane_tty=$(tmux display-message -p -t "$TMUX_PANE" '#{pane_tty}')
-  printf '\a' > "$pane_tty"
-else
-  printf '\a' > /dev/tty 2>/dev/null || printf '\a'
-fi
+# Ring the tmux bell so the window tab goes red until viewed.
+bash ~/.claude/hooks/highlight_window.sh

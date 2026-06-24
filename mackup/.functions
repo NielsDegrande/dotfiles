@@ -83,7 +83,7 @@ pyclean () {
 #   wtnew -f <name> [base-branch]    Force recreate (removes existing worktree/branch)
 wtnew() {
   local force=false existing=false
-  local name="" base="main"
+  local wt_name="" base="main"
   local tmux_window="${TMUX:+$(tmux display-message -p '#{window_id}')}"
   for arg in "$@"; do
     case "$arg" in
@@ -106,14 +106,14 @@ wtnew() {
         ;;
       -f|--force) force=true ;;
       -e|--existing) existing=true ;;
-      *) [[ -z "$name" ]] && name="$arg" || base="$arg" ;;
+      *) [[ -z "$wt_name" ]] && wt_name="$arg" || base="$arg" ;;
     esac
   done
-  if [[ -z "$name" ]]; then
+  if [[ -z "$wt_name" ]]; then
     echo "Usage: wtnew [-f|--force] [-e|--existing] <name> [base-branch]"
     return 1
   fi
-  local wtdir="../wt-$name"
+  local wtdir="../wt-$wt_name"
   if $existing; then
     if [[ -z "$base" || "$base" == "main" ]]; then
       echo "Usage: wtnew -e <name> <branch>"
@@ -121,19 +121,23 @@ wtnew() {
     fi
     git fetch origin "$base" && \
     git worktree add "$wtdir" "$base" && \
-    cd "$wtdir" && \
-    direnv allow && \
-    [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$name"
+    cd "$wtdir" || return 1
+    git lfs install --local --force
+    git lfs pull
+    direnv allow
+    [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$wt_name"
   else
     if $force; then
       git worktree remove "$wtdir" 2>/dev/null
-      git branch -D "niels/$name" 2>/dev/null
+      git branch -D "niels/$wt_name" 2>/dev/null
     fi
     git fetch origin "$base" && \
-    git worktree add --no-track -b "niels/$name" "$wtdir" "origin/$base" && \
-    cd "$wtdir" && \
-    direnv allow && \
-    [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$name"
+    git worktree add --no-track -b "niels/$wt_name" "$wtdir" "origin/$base" && \
+    cd "$wtdir" || return 1
+    git lfs install --local --force
+    git lfs pull
+    direnv allow
+    [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$wt_name"
   fi
 }
 
@@ -143,27 +147,30 @@ wtnew() {
 #   wtrm [-f|--force] -a|--all          Remove all worktrees (except the main one)
 wtrm() {
   local force=()
-  while [[ $# -gt 0 && "$1" == -* ]]; do
-    case "$1" in
-      -f|--force) force=(--force); shift ;;
-      -a|--all) break ;;
-      *) echo "Unknown option: $1"; return 1 ;;
+  local all=0
+  local names=()
+  for arg in "$@"; do
+    case "$arg" in
+      -f|--force) force=(--force) ;;
+      -a|--all) all=1 ;;
+      -*) echo "Unknown option: $arg"; return 1 ;;
+      *) names+=("$arg") ;;
     esac
   done
-  if [[ $# -eq 0 ]]; then
+  if [[ $all -eq 0 && ${#names[@]} -eq 0 ]]; then
     echo "Usage: wtrm [-f|--force] <name> [name...]  or  wtrm [-f|--force] -a|--all"
     return 1
   fi
   local main_wt
   main_wt=$(git worktree list | head -1 | awk '{print $1}')
   cd "$main_wt" || return 1
-  if [[ "$1" == "-a" || "$1" == "--all" ]]; then
+  if [[ $all -eq 1 ]]; then
     git worktree list | tail -n +2 | awk '{print $1}' | while read -r wt; do
       echo "Removing $wt"
       git worktree remove "${force[@]}" "$wt"
     done
   else
-    for name in "$@"; do
+    for name in "${names[@]}"; do
       local wtdir="../wt-$name"
       if [[ -d "$wtdir" ]]; then
         echo "Removing $wtdir"

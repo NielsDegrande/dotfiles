@@ -26,6 +26,7 @@ If you write a script that requires a secret, read them as part of the script. F
 ## Temporary files
 
 Write temporary files to `/tmp/`.
+Files that might be useful to keep, for example datasets, plots or interim results, write to `.scratch` in the worktree.
 
 ## Languages
 

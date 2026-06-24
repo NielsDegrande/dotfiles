@@ -68,7 +68,7 @@ git add --all ; git commit --message "Back up machine configuration" ; git push
 
 - `iCloud` for syncing most Apple related settings.
   TODO: Move to `macos.sh`. See `defaults read`.
-- `Google Drive` and/or `OneDrive` for synchronizing data.
+- `Google Drive` for synchronizing data.
 - `Firefox Sync` for synchronizing bookmarks and extensions. Settings with a `user.js`.
 
 ## Copy-only files

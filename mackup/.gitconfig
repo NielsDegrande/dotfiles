@@ -49,3 +49,9 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[filter "keeshare-strip"]
+	# Strip the KeePassXC KeeShare private key (Own=) before staging, so the
+	# synced keepassxc.ini never carries secret key material into git history.
+	clean = sed -e '/^Own=/d'
+[lfs]
+	storage = /Users/niels/.cache/git-lfs

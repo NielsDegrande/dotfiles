@@ -77,8 +77,14 @@
 # Focus window.
 shift + alt - h: yabai -m window --focus west
 shift + alt - j: yabai -m window --focus south
-shift + alt - k: yabai -m window --focus north 
-shift + alt - l: yabai -m window --focus east 
+shift + alt - k: yabai -m window --focus north
+shift + alt - l: yabai -m window --focus east
+
+# Focus window with hyper (Caps Lock held, via Karabiner).
+hyper - h: yabai -m window --focus west
+hyper - j: yabai -m window --focus south
+hyper - k: yabai -m window --focus north
+hyper - l: yabai -m window --focus east
 
 # Focus space.
 shift + alt - d: yabai -m space --focus 1
@@ -87,6 +93,11 @@ shift + alt - d: yabai -m space --focus 1
 shift + alt - 1: yabai -m display --focus 1
 shift + alt - 2: yabai -m display --focus 2
 shift + alt - 3: yabai -m display --focus 3
+
+# Focus monitor with hyper (Caps Lock held, via Karabiner).
+hyper - 1: yabai -m display --focus 1
+hyper - 2: yabai -m display --focus 2
+hyper - 3: yabai -m display --focus 3
 
 # Move managed window.
 lctrl + shift + alt - h: yabai -m window --warp west

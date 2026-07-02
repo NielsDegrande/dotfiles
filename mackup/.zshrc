@@ -72,6 +72,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   colored-man-pages
+  fzf-tab
   git
   history-substring-search
   macos

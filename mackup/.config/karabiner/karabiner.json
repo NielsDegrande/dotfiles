@@ -4,6 +4,25 @@
       "complex_modifications": {
         "rules": [
           {
+            "description": "Caps Lock to Escape (tap) or Hyper cmd+ctrl+opt+shift (hold).",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [
+                  {
+                    "key_code": "left_shift",
+                    "modifiers": ["left_command", "left_control", "left_option"]
+                  }
+                ],
+                "to_if_alone": [{ "key_code": "escape" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Change right command + h/j/k/l to arrow keys.",
             "manipulators": [
               {
@@ -348,12 +367,6 @@
       },
       "name": "Default profile",
       "selected": true,
-      "simple_modifications": [
-        {
-          "from": { "key_code": "caps_lock" },
-          "to": [{ "key_code": "escape" }]
-        }
-      ],
       "virtual_hid_keyboard": {
         "country_code": 0,
         "keyboard_type_v2": "ansi"

@@ -72,71 +72,65 @@
 
 # ############################################################### #
 # CONFIGURATION                                                   #
+#                                                                 #
+# Layers, sharing h/j/k/l across escalating modifiers:            #
+#   hyper (Caps Lock held) - focus windows and toggles            #
+#   shift + alt            - move windows                         #
+#   lctrl + alt            - resize windows                       #
 # ############################################################### #
 
 # Focus window.
-shift + alt - h: yabai -m window --focus west
-shift + alt - j: yabai -m window --focus south
-shift + alt - k: yabai -m window --focus north
-shift + alt - l: yabai -m window --focus east
-
-# Focus window with hyper (Caps Lock held, via Karabiner).
 hyper - h: yabai -m window --focus west
 hyper - j: yabai -m window --focus south
 hyper - k: yabai -m window --focus north
 hyper - l: yabai -m window --focus east
 
 # Focus space.
-shift + alt - d: yabai -m space --focus 1
+hyper - d: yabai -m space --focus 1
 
 # Focus monitor.
-shift + alt - 1: yabai -m display --focus 1
-shift + alt - 2: yabai -m display --focus 2
-shift + alt - 3: yabai -m display --focus 3
-
-# Focus monitor with hyper (Caps Lock held, via Karabiner).
 hyper - 1: yabai -m display --focus 1
 hyper - 2: yabai -m display --focus 2
 hyper - 3: yabai -m display --focus 3
 
 # Move managed window.
-lctrl + shift + alt - h: yabai -m window --warp west
-lctrl + shift + alt - j: yabai -m window --warp south 
-lctrl + shift + alt - k: yabai -m window --warp north
-lctrl + shift + alt - l: yabai -m window --warp east
+shift + alt - h: yabai -m window --warp west
+shift + alt - j: yabai -m window --warp south
+shift + alt - k: yabai -m window --warp north
+shift + alt - l: yabai -m window --warp east
 
-# Moved managed window to monitor.
-lctrl + shift + alt - 1: yabai -m window --space 1; yabai -m space --focus 1
-# lctrl + shift + alt - 1: yabai -m window --display 1; yabai -m display --focus 1
-lctrl + shift + alt - 2: yabai -m window --display 2; yabai -m display --focus 2 
-lctrl + shift + alt - 3: yabai -m window --display 3; yabai -m display --focus 3 
+# Move managed window to monitor.
+shift + alt - 1: yabai -m window --space 1; yabai -m space --focus 1
+# shift + alt - 1: yabai -m window --display 1; yabai -m display --focus 1
+shift + alt - 2: yabai -m window --display 2; yabai -m display --focus 2
+shift + alt - 3: yabai -m window --display 3; yabai -m display --focus 3
 
 # Make window fullscreen.
-lctrl + alt - f        : yabai -m window --toggle zoom-fullscreen
-lctrl + shift + alt - f: yabai -m window --toggle native-fullscreen
+hyper - f      : yabai -m window --toggle zoom-fullscreen
+shift + alt - f: yabai -m window --toggle native-fullscreen
 
 # Size windows.
-lctrl + alt - 0: yabai -m space --balance
+hyper - 0: yabai -m space --balance
 lctrl + alt - h: yabai -m window --resize left:-50:0; \
                  yabai -m window --resize right:-50:0;
 lctrl + alt - j: yabai -m window --resize bottom:0:50; \
                  yabai -m window --resize top:0:50
 lctrl + alt - k: yabai -m window --resize top:0:-50; \
-                 yabai -m window --resize bottom:0:-50 
+                 yabai -m window --resize bottom:0:-50
 lctrl + alt - l: yabai -m window --resize right:50:0; \
                  yabai -m window --resize left:50:0
 
 # Toggle window split type.
-lctrl + alt - s: yabai -m window --toggle split
+hyper - e: yabai -m window --toggle split
 
 # Float / unfloat window and center on screen.
-rshift + ralt - f: yabai -m window --toggle float --grid 4:4:1:1:2:2
+hyper - t: yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # Stack and BSP.
-shift + lalt - p: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus next || yabai -m window --focus first; fi
-shift + lalt - n: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus prev || yabai -m window --focus last; fi
-shift + lalt - b: yabai -m space --layout bsp
-shift + lalt - s: yabai -m space --layout stack
+hyper - p: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus next || yabai -m window --focus first; fi
+hyper - n: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus prev || yabai -m window --focus last; fi
+hyper - b: yabai -m space --layout bsp
+hyper - s: yabai -m space --layout stack
 
 # Restart yabai.
-lctrl + alt - r: yabai --restart-service
+hyper - r: yabai --restart-service

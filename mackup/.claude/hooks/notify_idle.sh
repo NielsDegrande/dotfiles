@@ -12,12 +12,17 @@ if [ -n "$session_id" ] && [ -f "/tmp/claude_monitoring_${session_id}" ]; then
   exit 0
 fi
 
-# Cooldown: only notify once per 5 minutes per session.
-COOLDOWN_FILE="/tmp/claude_idle_notified_$PPID"
+# Cooldown: only notify once per 5 minutes per session. Keep the state file in
+# a private per-user dir (mode 0700) so no other local user can pre-plant it,
+# and require a numeric value before arithmetic — otherwise a crafted value
+# like 'x[$(cmd)]' in the file would be executed by the $(( )) below.
+state_dir="${TMPDIR:-/tmp}/claude-$(id -u)"
+mkdir -p "$state_dir" && chmod 700 "$state_dir"
+COOLDOWN_FILE="$state_dir/idle_notified_$PPID"
 if [ -f "$COOLDOWN_FILE" ]; then
   last=$(cat "$COOLDOWN_FILE")
   now=$(date +%s)
-  if [ $((now - last)) -lt 300 ]; then
+  if [[ "$last" =~ ^[0-9]+$ ]] && [ $((now - last)) -lt 300 ]; then
     exit 0
   fi
 fi

@@ -41,6 +41,10 @@ alias cod="code ."
 # Coding agents.
 alias claude="env -u TMUX CLAUDE_CODE_DISABLE_AUTO_MEMORY=0 claude --dangerously-skip-permissions"
 alias codex="codex --dangerously-bypass-approvals-and-sandbox"
+# Safe variants without the auto-bypass, for untrusted or unfamiliar repos:
+# prompt injection in repo content then cannot run commands without approval.
+alias claude-safe="env -u TMUX CLAUDE_CODE_DISABLE_AUTO_MEMORY=0 claude"
+alias codex-safe="codex"
 
 # Lovable.
 alias up='develop-api 2>&1 | tee api.log'

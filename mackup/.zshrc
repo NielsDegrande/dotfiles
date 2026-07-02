@@ -140,6 +140,3 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5c6370'
 export KEYTIMEOUT=1
 # Centralize Python cached files.
 export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"
-
-# Source venv if venv in current directory.
-if [ -d venv ]; then source venv/bin/activate; elif [ -d .venv ]; then source .venv/bin/activate; fi

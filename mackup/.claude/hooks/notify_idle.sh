@@ -1,7 +1,7 @@
 #!/bin/bash
-# Notify when Claude Code is waiting for user input
+# Notify when Claude Code is waiting for user input (Notification hook).
 
-# Read the JSON data passed from Claude Code
+# Read the JSON data passed from Claude Code.
 input=$(cat)
 
 # Skip if the Monitor tool is currently active for this session — Claude is
@@ -12,7 +12,7 @@ if [ -n "$session_id" ] && [ -f "/tmp/claude_monitoring_${session_id}" ]; then
   exit 0
 fi
 
-# Cooldown: only notify once per 5 minutes per session
+# Cooldown: only notify once per 5 minutes per session.
 COOLDOWN_FILE="/tmp/claude_idle_notified_$PPID"
 if [ -f "$COOLDOWN_FILE" ]; then
   last=$(cat "$COOLDOWN_FILE")
@@ -23,38 +23,25 @@ if [ -f "$COOLDOWN_FILE" ]; then
 fi
 date +%s > "$COOLDOWN_FILE"
 
-# Get the path to the conversation transcript
-transcript_path=$(echo "$input" | jq -r '.transcript_path')
+# shellcheck source=notify_lib.sh
+source ~/.claude/hooks/notify_lib.sh
+cc_context "$input"
 
-# Expand tilde to $HOME (jq returns literal ~)
-transcript_path="${transcript_path/#\~/$HOME}"
+# Message: the last prompt gives context on what Claude is blocked on. Fall
+# back to the session name, then the tmux window name, then a generic string.
+message="$CC_PROMPT"
+[ -z "$message" ] && message="$CC_TITLE"
+[ -z "$message" ] && message="$CC_WINDOW"
+[ -z "$message" ] && message="Waiting for input"
 
-# Get the content of the last real user prompt in the session.
-# Transcripts are JSONL. Content can be a plain string or an array of objects.
-if [ -f "$transcript_path" ]; then
-  summary=$(grep '"type":"user"' "$transcript_path" | jq -r '
-    select(.type == "user")
-    | select(.isMeta != true)
-    | if (.message.content | type) == "string" then
-        select(.message.content | startswith("<") | not)
-        | select(.message.content | startswith("[Request interrupted") | not)
-        | .message.content[0:100] | gsub("\n"; " ")
-      elif (.message.content | type) == "array" then
-        [.message.content[] | select(.type == "text") | .text] | last // empty
-        | .[0:100] | gsub("\n"; " ")
-      else
-        empty
-      end
-  ' 2>/dev/null | tail -1)
-fi
+# Subtitle: session name (which session needs input). Fall back to tmux window.
+subtitle="$CC_TITLE"
+[ -z "$subtitle" ] && subtitle="$CC_WINDOW"
+[ "$subtitle" = "$message" ] && subtitle=""
 
-# Fallback if summary is empty
-if [ -z "$summary" ]; then
-  summary="Waiting for input"
-fi
-
-# Send the notification.
-terminal-notifier -title "Claude Code: Idle" -message "$summary"
+args=(-title "Claude Code: Idle" -message "$message")
+[ -n "$subtitle" ] && args+=(-subtitle "$subtitle")
+terminal-notifier "${args[@]}"
 
 # Ring the tmux bell so the window tab goes red until viewed.
 bash ~/.claude/hooks/highlight_window.sh

@@ -1,41 +1,29 @@
 #!/bin/bash
-# Make this executable with: chmod +x ~/.claude/notify_on_finish.sh
+# Notify when Claude Code finishes a turn (Stop hook).
 
-# Read the JSON data passed from Claude Code
+# Read the JSON data passed from Claude Code.
 input=$(cat)
 
-# Get the path to the conversation transcript
-transcript_path=$(echo "$input" | jq -r '.transcript_path')
+# shellcheck source=notify_lib.sh
+source ~/.claude/hooks/notify_lib.sh
+cc_context "$input"
 
-# Expand tilde to $HOME (jq returns literal ~)
-transcript_path="${transcript_path/#\~/$HOME}"
+# Message: the actual last prompt is the useful signal. Fall back to the
+# session name, then the tmux window name, then a generic string.
+message="$CC_PROMPT"
+[ -z "$message" ] && message="$CC_TITLE"
+[ -z "$message" ] && message="$CC_WINDOW"
+[ -z "$message" ] && message="Task completed"
 
-# Get the content of the last real user prompt in the session.
-# Transcripts are JSONL. Content can be a plain string or an array of objects.
-if [ -f "$transcript_path" ]; then
-  summary=$(grep '"type":"user"' "$transcript_path" | jq -r '
-    select(.type == "user")
-    | select(.isMeta != true)
-    | if (.message.content | type) == "string" then
-        select(.message.content | startswith("<") | not)
-        | select(.message.content | startswith("[Request interrupted") | not)
-        | .message.content[0:100] | gsub("\n"; " ")
-      elif (.message.content | type) == "array" then
-        [.message.content[] | select(.type == "text") | .text] | last // empty
-        | .[0:100] | gsub("\n"; " ")
-      else
-        empty
-      end
-  ' 2>/dev/null | tail -1)
-fi
+# Subtitle: session name (which session finished). Fall back to tmux window.
+# Drop it if it would just duplicate the message.
+subtitle="$CC_TITLE"
+[ -z "$subtitle" ] && subtitle="$CC_WINDOW"
+[ "$subtitle" = "$message" ] && subtitle=""
 
-# Fallback if summary is empty
-if [ -z "$summary" ]; then
-  summary="Task completed"
-fi
-
-# Send the notification with context (using terminal-notifier with Claude icon).
-terminal-notifier -title "Claude Code: Finished" -message "$summary"
+args=(-title "Claude Code: Finished" -message "$message")
+[ -n "$subtitle" ] && args+=(-subtitle "$subtitle")
+terminal-notifier "${args[@]}"
 
 # Ring the tmux bell so the window tab goes red until viewed.
 bash ~/.claude/hooks/highlight_window.sh

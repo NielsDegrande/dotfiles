@@ -1,2 +1,5 @@
 # Claude plugins cache
 mackup/.claude/plugins
+
+# Worktrees
+worktrees

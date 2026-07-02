@@ -16,7 +16,12 @@
 Before committing, ensure linting and relevant tests are passing.
 You can use [agent-browser](https://github.com/vercel-labs/agent-browser) to test in the browser.
 
-Once you have created the PR, proactively monitor for both CI/CD check failures and review comments. Fix CI failures and address review comments that are relevant without waiting to be asked.
+Once you have created the PR, proactively monitor for both CI/CD check failures and review comments.
+Fix CI failures and address review comments that are relevant without waiting to be asked.
+
+## Browser
+
+- When I explicitly ask for interactive browser work, launch [agent-browser](https://github.com/vercel-labs/agent-browser) in headed mode (`agent-browser --headed open <url>`) so I can log in and handle any auth myself in the window, then keep driving the same session. Alternatively, attach with `--auto-connect` to a browser I started with `--remote-debugging-port=9222`. The browser is ephemeral (no persistent profile), so logins last only for that session.
 
 ## Secrets
 

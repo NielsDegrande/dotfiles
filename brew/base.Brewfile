@@ -7,7 +7,6 @@ tap "koekeishiya/formulae"
 # brew "awscli"
 # brew "azcopy"
 # brew "azure-cli"
-# brew "broot" # Terminal file explorer.
 # brew "btop"  # Resource monitoring.
 # brew "certifi" # Required to get Mozilla certificates.
 # brew "cloud-sql-proxy"
@@ -26,6 +25,7 @@ tap "koekeishiya/formulae"
 # brew "shellcheck"
 # brew "terraform"
 # brew "tunnelblick"
+brew "agent-browser" # Browser automation CLI for AI agents.
 brew "bat"
 brew "bottom"
 brew "colima", restart_service: true
@@ -63,10 +63,10 @@ brew "uv"
 brew "watch"
 brew "wget"
 brew "yank"
+brew "yazi" # Terminal file manager.
 brew "zoxide"
 
 # Applications.
-# cask "comet"
 # cask "cyberduck"
 # cask "discord"
 # cask "gimp"
@@ -93,6 +93,7 @@ cask "arduino-ide"
 cask "bruno"
 cask "chromium"
 cask "claude-code"
+cask "codex"
 cask "conductor"
 cask "dbeaver-community"
 cask "deskpad"

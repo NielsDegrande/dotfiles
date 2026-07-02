@@ -79,8 +79,13 @@ curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/ala
 # Source: https://github.com/alin23/mac-utils (MIT, Alin Panaitiu).
 bin=/usr/local/bin/VerticalMonitorLayout
 sudo mkdir -p -m 0755 /usr/local/bin
-swiftc -framework Cocoa "$HOME/git/dotfiles/scripts/VerticalMonitorLayout.swift" -o /tmp/VerticalMonitorLayout
-sudo mv /tmp/VerticalMonitorLayout "$bin"
+# Build in a private mktemp dir (mode 0700, owned by us) rather than a
+# predictable /tmp path, so no other local user can swap the binary between
+# compile and the privileged install.
+build_dir=$(mktemp -d)
+swiftc -framework Cocoa "$HOME/git/dotfiles/scripts/VerticalMonitorLayout.swift" -o "$build_dir/VerticalMonitorLayout"
+sudo install -m 0755 "$build_dir/VerticalMonitorLayout" "$bin"
+rm -rf "$build_dir"
 
 # Set default applications.
 infat --config ~/.config/infat/config.toml

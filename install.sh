@@ -14,12 +14,15 @@ set -e
 xcode-select --install || true
 
 # Get the latest dotfiles.
+# Clone over HTTPS: a fresh machine has no SSH key yet (ssh is not restored by mackup).
 mkdir -p "$HOME/git"
-git clone git@github.com:NielsDegrande/dotfiles.git "$HOME/git" || true
+git clone https://github.com/NielsDegrande/dotfiles.git "$HOME/git/dotfiles" || true
 cd "$HOME/git/dotfiles"
 
 # Install Homebrew.
 command -v brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Freshly installed brew is not yet on bash's PATH on Apple Silicon.
+command -v brew >/dev/null || eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Update Homebrew and upgrade formulae when this is not a 'clean install'.
 brew update
@@ -33,8 +36,8 @@ brew cleanup
 
 # Ensure docker can find compose and buildx: install as plugin.
 mkdir -p ~/.docker/cli-plugins
-ln -sfn $(brew --prefix)/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
-ln -sfn $(brew --prefix)/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-compose" ~/.docker/cli-plugins/docker-compose
+ln -sfn "$(brew --prefix)/opt/docker-buildx/bin/docker-buildx" ~/.docker/cli-plugins/docker-buildx
 
 # Restore configuration.
 ln -s "$HOME/git/dotfiles/mackup/.mackup.cfg" "$HOME/.mackup.cfg" || true
@@ -47,29 +50,28 @@ bash "$HOME/git/dotfiles/scripts/mackup_copy.sh" restore
 bash "$HOME/.macos"
 
 # Install additional binaries and applications.
-# oh-my-zsh.
-[ -d "$HOME/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# oh-my-zsh. Unattended: RUNZSH=no avoids exec'ing zsh mid-script, KEEP_ZSHRC=yes
+# stops the installer from renaming the mackup-managed ~/.zshrc symlink.
+[ -d "$HOME/.oh-my-zsh" ] || RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 # NOTE: oh-my-zsh plugins and themes are not submodules as they are nested under `.oh-my-zsh/custom` which we install above.
 #       Using submodules in dotfiles for the below, is causing problems as oh-my-zsh is a git repo itself.
+# ZSH_CUSTOM only exists inside a zsh session with oh-my-zsh loaded; default it here.
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 [ -d "$ZSH_CUSTOM/plugins/fzf-tab" ] || git clone https://github.com/Aloxaf/fzf-tab.git "$ZSH_CUSTOM/plugins/fzf-tab"
 [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ] || git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
 [ -d "$ZSH_CUSTOM/plugins/zsh-completions" ] || git clone https://github.com/zsh-users/zsh-completions.git "$ZSH_CUSTOM/plugins/zsh-completions"
-[ -d "$ZSH_CUSTOM/plugins/zsh-history-substring-search" ] || git clone https://github.com/zsh-users/zsh-history-substring-search.git "$ZSH_CUSTOM/plugins/zsh-history-substring-search"
 [ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
 [ -d "$ZSH_CUSTOM/plugins/you-should-use" ] || git clone https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_CUSTOM/plugins/you-should-use"
 
-# Install alacritty theme.
-[ -d "$HOME/.config/alacritty/themes" ] || (mkdir -p "$HOME/.config/alacritty/themes" && curl https://raw.githubusercontent.com/alacritty/alacritty-theme/master/themes/one_dark.yaml >~/.config/alacritty/themes/one_dark.yaml)
-
 # Install tmux package manager.
-[ -d "~/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+[ -d "$HOME/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 
-# Install fzf keybindings.
-/opt/homebrew/opt/fzf/install
-
-# Add cron jobs.
+# Add cron jobs (preserve unrelated entries, replace any previous archiver line).
 # Requires additional permissions to give /usr/sbin/cron full disk access.
-echo "* 11 * * * $HOME/git/dotfiles/scripts/notes_archiver.sh" | crontab -
+# The `|| true` matters: under set -e, a failing grep (no crontab yet, or no
+# other entries) would otherwise abort the subshell before the echo and
+# install an empty crontab.
+(crontab -l 2>/dev/null | grep -v notes_archiver.sh || true; echo "0 11 * * * $HOME/git/dotfiles/scripts/notes_archiver.sh") | crontab -
 
 # Install Alacritty terminfo.
 # TODO: Required? Test before.
@@ -91,5 +93,12 @@ rm -rf "$build_dir"
 infat --config ~/.config/infat/config.toml
 
 # Symlink CLAUDE.
-ln -s /Users/niels/git/dotfiles/mackup/.agents/AGENTS.md /Users/niels/.claude/CLAUDE.md
-ln -s /Users/niels/.agents/skills /Users/niels/.claude
+mkdir -p "$HOME/.claude"
+ln -sfn "$HOME/git/dotfiles/mackup/.agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+# BSD ln -sfn nests a junk link inside an existing real directory (Claude Code
+# pre-creates ~/.claude/skills); replace it only when empty or already a link.
+if [ ! -d "$HOME/.claude/skills" ] || [ -L "$HOME/.claude/skills" ] || rmdir "$HOME/.claude/skills" 2>/dev/null; then
+  ln -sfn "$HOME/.agents/skills" "$HOME/.claude/skills"
+else
+  echo "Skipped ~/.claude/skills symlink: existing non-empty directory."
+fi

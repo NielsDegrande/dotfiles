@@ -6,19 +6,16 @@
 input=$(cat)
 
 question=$(echo "$input" | jq -r '.tool_input.questions[0].question // empty' 2>/dev/null)
-[ -z "$question" ] && question="Awaiting answer"
-message=$(echo "$question" | tr '\n' ' ' | cut -c1-200)
 
 # shellcheck source=notify_lib.sh
-source ~/.claude/hooks/notify_lib.sh
+if ! source "$HOME/.claude/hooks/notify_lib.sh" 2>/dev/null; then
+  command -v terminal-notifier >/dev/null 2>&1 \
+    && terminal-notifier -title "Claude Code: Question" -message "${question:-Awaiting answer}"
+  exit 0
+fi
 cc_context "$input"
 
-# Subtitle: session name (which session is asking). Fall back to tmux window.
-subtitle="$CC_TITLE"
-[ -z "$subtitle" ] && subtitle="$CC_WINDOW"
-
-args=(-title "Claude Code: Question" -message "$message")
-[ -n "$subtitle" ] && args+=(-subtitle "$subtitle")
-terminal-notifier "${args[@]}"
+message=$(cc_squash "$question" 200)
+cc_notify "Claude Code: Question" "$message" "Awaiting answer"
 
 bash ~/.claude/hooks/highlight_window.sh

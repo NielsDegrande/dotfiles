@@ -22,10 +22,10 @@ logpane() {
     echo "logpane requires tmux"
     return 1
   fi
-  local logfile="/tmp/$(tmux display-message -p '#S-#W')-$(date +%Y%m%d-%H%M%S).log"
+  local logfile="/tmp/$(tmux display-message -p '#S-#W' | tr '/' '-')-$(date +%Y%m%d-%H%M%S).log"
   tmux split-window -l 35 -d "tail -f '$logfile'"
   echo "Logging to $logfile"
-  eval "$@" > "$logfile" 2>&1
+  "$@" > "$logfile" 2>&1
   # Ring the terminal bell so tmux highlights the window red.
   printf '\a'
 }

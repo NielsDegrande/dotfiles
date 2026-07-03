@@ -3,6 +3,13 @@
     "deny": [
       "Read(**/.env)",
       "Read(**/.env.*)",
+      "Read(**/*.env)",
+      "Read(**/.envrc)",
+      "Read(**/.npmrc)",
+      "Read(**/.pgpass)",
+      "Read(**/.docker/config.json)",
+      "Read(**/.kube/**)",
+      "Read(**/.config/gh/hosts.yml)",
       "Read(**/credentials.json)",
       "Read(**/secrets.json)",
       "Read(**/*secret*)",
@@ -47,6 +54,15 @@
       }
     ],
     "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/secret_guard.sh"
+          }
+        ]
+      },
       {
         "matcher": "AskUserQuestion",
         "hooks": [

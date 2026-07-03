@@ -38,7 +38,9 @@ local servers = {
                 runtime = { version = "LuaJIT", path = { "lua/?.lua", "lua/?/init.lua" } },
                 workspace = {
                     checkThirdParty = false,
-                    library = vim.tbl_extend("force", vim.api.nvim_get_runtime_file("", true), {
+                    -- list_extend, not tbl_extend: these are list-like tables, and
+                    -- tbl_extend would overwrite entries 1-2 instead of appending.
+                    library = vim.list_extend(vim.api.nvim_get_runtime_file("", true), {
                         "${3rd}/luv/library",
                         "${3rd}/busted/library",
                     }),

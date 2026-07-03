@@ -85,9 +85,6 @@ hyper - j: yabai -m window --focus south
 hyper - k: yabai -m window --focus north
 hyper - l: yabai -m window --focus east
 
-# Focus space.
-hyper - d: yabai -m space --focus 1
-
 # Focus monitor.
 hyper - 1: yabai -m display --focus 1
 hyper - 2: yabai -m display --focus 2
@@ -99,15 +96,16 @@ shift + alt - j: yabai -m window --warp south
 shift + alt - k: yabai -m window --warp north
 shift + alt - l: yabai -m window --warp east
 
-# Move managed window to monitor.
-shift + alt - 1: yabai -m window --space 1; yabai -m space --focus 1
-# shift + alt - 1: yabai -m window --display 1; yabai -m display --focus 1
-shift + alt - 2: yabai -m window --display 2; yabai -m display --focus 2
-shift + alt - 3: yabai -m window --display 3; yabai -m display --focus 3
+# Move managed window to monitor. Chained --focus (no argument) refocuses the
+# moved window, which also makes its display the active one.
+shift + alt - 1: yabai -m window --display 1 --focus
+shift + alt - 2: yabai -m window --display 2 --focus
+shift + alt - 3: yabai -m window --display 3 --focus
 
-# Make window fullscreen.
-hyper - f      : yabai -m window --toggle zoom-fullscreen
-shift + alt - f: yabai -m window --toggle native-fullscreen
+# Make window fullscreen (zoom within the tiling grid). Native macOS
+# fullscreen stays on the system shortcut (fn-F / ctrl+cmd-F): shift+alt-f
+# is deliberately unbound because it is Format Document in VS Code.
+hyper - f: yabai -m window --toggle zoom-fullscreen
 
 # Size windows.
 hyper - 0: yabai -m space --balance
@@ -127,8 +125,8 @@ hyper - e: yabai -m window --toggle split
 hyper - t: yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # Stack and BSP.
-hyper - p: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus next || yabai -m window --focus first; fi
-hyper - n: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus prev || yabai -m window --focus last; fi
+hyper - p: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus prev || yabai -m window --focus last; fi
+hyper - n: if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus next || yabai -m window --focus first; fi
 hyper - b: yabai -m space --layout bsp
 hyper - s: yabai -m space --layout stack
 

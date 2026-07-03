@@ -241,30 +241,6 @@
               },
               {
                 "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": ["right_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  { "shell_command": "open '/Applications/Superhuman.app'" }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "o",
-                  "modifiers": {
-                    "mandatory": ["right_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [{ "shell_command": "open '/Applications/ChatGPT.app'" }],
-                "type": "basic"
-              },
-              {
-                "from": {
                   "key_code": "p",
                   "modifiers": {
                     "mandatory": ["right_command"],
@@ -274,17 +250,6 @@
                 "to": [
                   { "shell_command": "open '/Applications/KeePassXC.app'" }
                 ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "r",
-                  "modifiers": {
-                    "mandatory": ["right_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [{ "shell_command": "open '/Applications/Postman.app'" }],
                 "type": "basic"
               },
               {
@@ -348,17 +313,6 @@
                 "to": [
                   { "shell_command": "open '/System/Applications/Preview.app'" }
                 ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "z",
-                  "modifiers": {
-                    "mandatory": ["right_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [{ "shell_command": "open '/Applications/zoom.us.app'" }],
                 "type": "basic"
               }
             ]

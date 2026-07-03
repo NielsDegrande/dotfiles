@@ -29,7 +29,7 @@
   },
   {
     "key": "ctrl+shift+t",
-    "command": "terminal.focus"
+    "command": "workbench.action.terminal.focus"
   },
   {
     "key": "ctrl+shift+o",

@@ -62,7 +62,9 @@ require("lazy").setup({
     {"nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = function() return vim.fn.executable("make") == 1 end, dependencies = { "nvim-telescope/telescope.nvim" }},
     {"nvim-telescope/telescope-ui-select.nvim", dependencies = { "nvim-telescope/telescope.nvim" }},
     {"nvim-treesitter/nvim-treesitter", lazy = false, branch = "main", build = ":TSUpdate"},
-    {"okuuva/auto-save.nvim", opts = {}},
+    -- noautocmd: autosaves skip BufWritePre, so conform only formats on manual :w
+    -- (otherwise the buffer reformats every time insert mode is left).
+    {"okuuva/auto-save.nvim", opts = { noautocmd = true }},
     {"stevearc/conform.nvim", event = { "BufWritePre" }, cmd = { "ConformInfo" },
     keys = {
         { "<leader>f", function() require("conform").format({ async = true, lsp_format = "fallback" }) end, mode = "", desc = "Format buffer" },

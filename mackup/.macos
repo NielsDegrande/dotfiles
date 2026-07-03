@@ -199,7 +199,6 @@ defaults write com.apple.TextInputMenu visible -bool false
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-sudo defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Enable secondary click via two-finger tap (default: true / 0).
 defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
@@ -340,7 +339,10 @@ defaults write com.apple.print.custompresets "com.apple.print.customPresets.defa
 ###############################################################################
 
 # Enable scroll gesture with modifier keys to zoom (default: false).
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# Writing to universalaccess needs Full Disk Access for the invoking terminal;
+# skip quietly when it is not granted instead of failing the whole script.
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true 2>/dev/null \
+  || echo "Skipped universalaccess (terminal lacks Full Disk Access)."
 
 ###############################################################################
 # Apply Changes                                                               #

@@ -42,7 +42,7 @@ Back up the current machine:
 
 ```bash
 # Verify completeness of install.sh.
-brew bundle dump ; cat Brewfile ; rm Brewfile
+brew bundle dump --file=-
 echo "Validate the above list for discrepancies with the Brewfile."
 
 ls $ZSH_CUSTOM/plugins
@@ -50,6 +50,8 @@ ls $ZSH_CUSTOM/themes
 echo "Validate the above list for missing zsh plugins and themes."
 
 # Inspect for any discrepancies.
+# `link install` captures: it moves new local config files into the store and
+# links them. (Plain `mackup link` is the restore direction, used by install.sh.)
 mackup link install --dry-run
 echo "Ensure you do not push any secrets, keys or similar."
 

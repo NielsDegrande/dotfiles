@@ -11,9 +11,7 @@ yabai -m config                                 \
     window_origin_display        default        \
     window_placement             second_child   \
     window_zoom_persist          on             \
-    window_topmost               off            \
     window_shadow                on             \
-    window_animation_frame_rate  120            \
     window_opacity_duration      0.0            \
     active_window_opacity        1.0            \
     normal_window_opacity        0.90           \
@@ -37,7 +35,7 @@ yabai -m config                                 \
 # yabai -m query --windows
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
-yabai -m rule --add label="Maccy" app"^Macy$" manage=off
+yabai -m rule --add label="Maccy" app="^Maccy$" manage=off
 yabai -m rule --add label="Okta Verify" app="^Okta Verify$" title=".*" manage=off
 yabai -m rule --add label="Python" app="^Python$" title=".*" manage=off
 yabai -m rule --add label="System Settings" app="^System Settings$" title=".*" manage=off

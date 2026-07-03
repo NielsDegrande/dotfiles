@@ -13,7 +13,7 @@ time="$(date +%H:%M)"
 if [[ ! -f "$file" ]]; then
   printf '# Log\n\n## %s\n\n' "$day" > "$file"
 else
-  # Ensure शीर्ष title exists at top
+  # Ensure the title exists at top
   first_line="$(head -n 1 "$file" || true)"
   if [[ "$first_line" != "# Log" ]]; then
     tmp="$(mktemp)"

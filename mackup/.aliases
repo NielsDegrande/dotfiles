@@ -2,7 +2,7 @@
 
 # Brew.
 alias overbrew='brew leaves | xargs brew deps --installed --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"'
-alias brewdump='brew bundle dump ; cat Brewfile ; rm Brewfile'
+alias brewdump='brew bundle dump --file=-' # Print to stdout; never touches a repo's own Brewfile.
 
 # Safety.
 alias rm='echo "Use trash instead. Use command rm for real rm." #'
@@ -10,21 +10,23 @@ alias rm='echo "Use trash instead. Use command rm for real rm." #'
 # Custom.
 alias sourcev='source venv/bin/activate >/dev/null 2>&1 || source .venv/bin/activate >/dev/null 2>&1 || echo "Error: Failed to activate virtual environment."' # Activate venv in current folder.
 alias sourcez='source ~/.zshrc' # Source zshrc in current shell.
-alias dstop="docker ps | awk 'NR>1{ print $1 }' | parallel docker stop {}" # Stop all docker containers.
+alias dstop='docker ps -q | xargs docker stop' # Stop all docker containers.
 alias retmux="tmux source-file ~/.tmux.conf"
-alias reterm="cd $HOME; deactivate; clear"
+alias reterm='cd "$HOME"; deactivate 2>/dev/null; clear'
 
 # Exa.
 alias ll='eza -la --icons --git' # Always use list and show all, add icons and git status info.
 alias llt='eza --icons --tree --git-ignore' # Show tree with icons.
 
 # FZF.
-alias fzfp="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'"
+alias fzfp="fzf --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (eza --tree --color=always {} | head -200)) || echo {} 2> /dev/null | head -200'"
 
 # Git aliases.
-alias gsp="git stash && gl && git stash apply"
-alias gspd="git stash && gco develop && gl && git stash apply"
-alias gspm="git stash && gco main && gl && git stash apply"
+# Only re-apply when something was actually stashed — a no-op stash followed
+# by `stash apply` would apply an unrelated older stash.
+alias gsp='git pull --autostash'
+alias gspd='stashed=$(git stash) ; gco develop && gl ; case $stashed in Saved*) git stash apply ;; esac'
+alias gspm='stashed=$(git stash) ; gco main && gl ; case $stashed in Saved*) git stash apply ;; esac'
 alias gpuo="git branch --show-current | xargs git push -u origin"
 alias gcm="git commit --message"
 

@@ -17,4 +17,6 @@ if [ -n "${TMUX_PANE:-}" ] && command -v tmux >/dev/null 2>&1; then
   fi
 fi
 
-printf '\a' > /dev/tty 2>/dev/null || printf '\a'
+# No fallback: hooks have no controlling tty, so a BEL to /dev/tty or stdout
+# never reaches a terminal. Outside tmux there is simply nothing to ring.
+exit 0

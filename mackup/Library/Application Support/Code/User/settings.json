@@ -14,7 +14,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
   },
-  "editor.defaultFormatter": "ms-python.black-formatter",
   "editor.fontFamily": "'JetBrainsMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
@@ -46,16 +45,6 @@
   },
   "files.insertFinalNewline": true,
   "git.mergeEditor": true,
-  "github.copilot.chat.agent.thinkingTool": true,
-  "github.copilot.chat.codesearch.enabled": true,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": true,
-    "scminput": false,
-  },
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "github.copilot.nextEditSuggestions.fixes": true,
   "gitlens.graph.layout": "editor",
   "gitlens.telemetry.enabled": false,
   "inlineChat.enableV2": true,
@@ -337,10 +326,6 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
   },
 
-  "[latex]": {
-    "editor.defaultFormatter": "mathematic.vscode-latex",
-  },
-
   "[python]": {
     "editor.rulers": [72, 79],
     "editor.defaultFormatter": "ms-python.black-formatter",
@@ -362,7 +347,6 @@
   "python.analysis.typeEvaluation.strictSetInference": true,
   "python.createEnvironment.trigger": "off",
   "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
-  "python.languageServer": "None",
   "python.testing.pytestArgs": ["--no-cov"],
   "python.testing.pytestEnabled": true,
   "autoDocstring.docstringFormat": "sphinx-notypes",

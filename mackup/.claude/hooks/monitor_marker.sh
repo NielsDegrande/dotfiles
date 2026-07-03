@@ -4,7 +4,10 @@
 # Monitor is running (otherwise watching a process pings the user every time
 # Claude becomes "idle" mid-monitor).
 #
-# Wire as PreToolUse and PostToolUse (and PostToolUseFailure) on matcher Monitor.
+# Wired as PreToolUse and PostToolUse on matcher Monitor. Cleanup also happens
+# in notify_on_finish.sh (Stop hook) and via a freshness check in
+# notify_idle.sh, so a crashed or interrupted Monitor cannot suppress idle
+# notifications forever.
 
 input=$(cat)
 session_id=$(echo "$input" | jq -r '.session_id // empty' 2>/dev/null)
@@ -12,13 +15,15 @@ event=$(echo "$input" | jq -r '.hook_event_name // empty' 2>/dev/null)
 
 [ -z "$session_id" ] && exit 0
 
-marker="/tmp/claude_monitoring_${session_id}"
+# shellcheck source=notify_lib.sh
+source "$HOME/.claude/hooks/notify_lib.sh" 2>/dev/null || exit 0
+marker="$(cc_state_dir)/monitoring_${session_id}"
 
 case "$event" in
   PreToolUse)
     touch "$marker"
     ;;
-  PostToolUse|PostToolUseFailure)
+  PostToolUse)
     rm -f "$marker"
     ;;
 esac

@@ -1,10 +1,10 @@
-# Mac.
+# Mac
 .DS_Store
 
-# Windows.
+# Windows
 Thumbs.db
 
-# Jupyter checkpoints. 
+# Jupyter checkpoints
 .ipynb_checkpoints
 
 # venv
@@ -12,3 +12,6 @@ venv
 
 # pyenv
 .python-version
+
+# Claude Code
+**/.claude/settings.local.json

@@ -3,3 +3,6 @@ mackup/.claude/plugins
 
 # Worktrees
 worktrees
+
+# Agent scratch space (interim results, reports)
+.scratch

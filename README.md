@@ -3,6 +3,8 @@
 Back up and restore configuration easily.
 Automatically install applications and binaries.
 
+System-wide keyboard shortcuts are documented in [HOTKEYS.md](HOTKEYS.md).
+
 ## Building blocks
 
 - `Mackup` for managing most configuration and dotfiles (symlinks).

@@ -129,6 +129,8 @@ export BAT_THEME=ansi
 export DELTA_FEATURES="diff-so-fancy"
 # fzf: Fuzzy finder.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# atuin: shell history database on ctrl+r (after fzf so atuin owns the bind).
+command -v atuin >/dev/null && eval "$(atuin init zsh --disable-up-arrow)"
 # zoxide: Open folders and files fast.
 eval "$(zoxide init zsh)"
 # Set auto suggest higlight style.

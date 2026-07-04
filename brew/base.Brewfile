@@ -16,6 +16,7 @@ tap "koekeishiya/formulae"
 # brew "presenterm"
 # brew "terraform"
 brew "agent-browser" # Browser automation CLI for AI agents.
+brew "atuin" # Shell history database.
 brew "bat"
 brew "bottom"
 brew "colima", restart_service: true
@@ -28,6 +29,7 @@ brew "eza"
 brew "fd"
 brew "fzf"
 brew "gh" # GitHub CLI.
+brew "git-absorb" # Automatic fixup commits.
 brew "git-delta"
 brew "git-lfs"
 brew "git-quick-stats"
@@ -82,6 +84,7 @@ cask "codex"
 cask "conductor"
 cask "dbeaver-community"
 cask "electrum"
+cask "espanso" # Text expander.
 cask "font-jetbrains-mono-nerd-font"
 cask "google-drive"
 cask "jordanbaird-ice"

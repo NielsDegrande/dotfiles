@@ -66,6 +66,9 @@ ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 # Install tmux package manager.
 [ -d "$HOME/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 
+# Install gh extensions.
+gh extension list 2>/dev/null | grep -q "dlvhdr/gh-dash" || gh extension install dlvhdr/gh-dash
+
 # Install runtimes pinned in the global mise config (linked by mackup).
 command -v mise >/dev/null && mise install --yes
 

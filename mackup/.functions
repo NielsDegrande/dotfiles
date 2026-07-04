@@ -113,6 +113,7 @@ wtnew() {
     echo "Usage: wtnew [-f|--force] [-e|--existing] <name> [base-branch]"
     return 1
   fi
+  cd ~/git/lov/lovable || return 1
   local wtdir="../wt-$wt_name"
   if $existing; then
     if [[ -z "$base" || "$base" == "main" ]]; then
@@ -161,6 +162,7 @@ wtrm() {
     echo "Usage: wtrm [-f|--force] <name> [name...]  or  wtrm [-f|--force] -a|--all"
     return 1
   fi
+  cd ~/git/lov/lovable || return 1
   local main_wt
   main_wt=$(git worktree list | head -1 | awk '{print $1}')
   cd "$main_wt" || return 1

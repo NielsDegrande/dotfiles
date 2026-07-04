@@ -118,8 +118,8 @@ lctrl + alt - k: yabai -m window --resize top:0:-50; \
 lctrl + alt - l: yabai -m window --resize right:50:0; \
                  yabai -m window --resize left:50:0
 
-# Toggle window split type.
-hyper - e: yabai -m window --toggle split
+# Toggle window split type. (hyper+e opens the espanso search bar.)
+hyper - x: yabai -m window --toggle split
 
 # Float / unfloat window and center on screen.
 hyper - t: yabai -m window --toggle float --grid 4:4:1:1:2:2

@@ -228,7 +228,7 @@
                 "from": {
                   "key_code": "m",
                   "modifiers": {
-                    "mandatory": ["right_command", "option"],
+                    "mandatory": ["right_command"],
                     "optional": ["any"]
                   }
                 },
@@ -256,7 +256,7 @@
                 "from": {
                   "key_code": "s",
                   "modifiers": {
-                    "mandatory": ["right_command", "option"],
+                    "mandatory": ["right_command"],
                     "optional": ["any"]
                   }
                 },
@@ -265,17 +265,6 @@
                     "shell_command": "open '/System/Applications/System Settings.app'"
                   }
                 ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "s",
-                  "modifiers": {
-                    "mandatory": ["right_command"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [{ "shell_command": "open '/Applications/Slack.app'" }],
                 "type": "basic"
               },
               {

@@ -66,6 +66,9 @@ ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 # Install tmux package manager.
 [ -d "$HOME/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 
+# Install runtimes pinned in the global mise config (linked by mackup).
+command -v mise >/dev/null && mise install --yes
+
 # Add cron jobs (preserve unrelated entries, replace any previous archiver line).
 # Requires additional permissions to give /usr/sbin/cron full disk access.
 # The `|| true` matters: under set -e, a failing grep (no crontab yet, or no

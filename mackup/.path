@@ -6,26 +6,11 @@
 # export GOROOT="/opt/homebrew/opt/go/libexec"
 # export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
-# nvm. Lazy-load: sourcing nvm.sh eagerly costs ~300-500 ms on every shell start.
-# The wrappers self-destruct and load the real nvm on first use.
-export NVM_DIR="$HOME/.nvm"
-_load_nvm() {
-  unset -f nvm node npm npx _load_nvm
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-}
-nvm() { _load_nvm; nvm "$@"; }
-node() { _load_nvm; node "$@"; }
-npm() { _load_nvm; npm "$@"; }
-npx() { _load_nvm; npx "$@"; }
+# mise pins the global version (~/.config/mise/config.toml).
+command -v mise >/dev/null && eval "$(mise activate zsh)"
 
-# Python.
-# uv.
+# Python / uv.
 export PATH="/Users/niels/.local/bin:$PATH"
 
 # Rust.
 export PATH="$PATH:$HOME/.cargo/bin"
-
-# Java.
-# export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-# export JAVA_HOME=$(/usr/libexec/java_home -v 17)

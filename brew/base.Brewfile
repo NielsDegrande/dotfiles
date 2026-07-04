@@ -39,8 +39,8 @@ brew "koekeishiya/formulae/yabai"
 brew "lazygit"
 brew "mackup"
 brew "mas"
+brew "mise" # Global runtime versions (node).
 brew "neovim"
-brew "nvm"
 brew "ollama"
 brew "parallel"
 brew "ripgrep" # Faster grep.

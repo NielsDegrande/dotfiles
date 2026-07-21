@@ -129,14 +129,6 @@ In Tmux, press `prefix` + `I` to install plugins.
 - mountType: virtiofs
 - rosetta: true
 
-### nvm
-
-Run the following and restart the shell:
-
-```bash
-nvm install latest
-```
-
 ### File transfers
 
 - `.ssh` keys.

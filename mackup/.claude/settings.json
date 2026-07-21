@@ -1,4 +1,7 @@
 {
+  "env": {
+    "NODE_EXTRA_CA_CERTS": "/Users/niels/.formal/ca/localca-cert.pem"
+  },
   "permissions": {
     "deny": [
       "Read(**/.env)",
@@ -33,22 +36,23 @@
   },
   "model": "claude-fable-5[1m]",
   "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/notify_on_finish.sh"
-          }
-        ]
-      }
-    ],
     "Notification": [
       {
         "hooks": [
           {
             "type": "command",
             "command": "bash ~/.claude/hooks/notify_idle.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Monitor",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/monitor_marker.sh"
           }
         ]
       }
@@ -82,13 +86,12 @@
         ]
       }
     ],
-    "PostToolUse": [
+    "Stop": [
       {
-        "matcher": "Monitor",
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.claude/hooks/monitor_marker.sh"
+            "command": "bash ~/.claude/hooks/notify_on_finish.sh"
           }
         ]
       }
@@ -97,8 +100,9 @@
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "slack@claude-plugins-official": false,
-    "posthog@claude-plugins-official": true
+    "money@show-me-the-money": true,
+    "posthog@claude-plugins-official": true,
+    "slack@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
     "openai-codex": {
@@ -106,9 +110,16 @@
         "source": "github",
         "repo": "openai/codex-plugin-cc"
       }
+    },
+    "show-me-the-money": {
+      "source": {
+        "source": "github",
+        "repo": "iamzifei/show-me-the-money"
+      }
     }
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
+  "fastMode": true,
   "skipDangerousModePermissionPrompt": true,
   "editorMode": "vim",
   "remoteControlAtStartup": true,

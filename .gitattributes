@@ -1,3 +1,6 @@
 # Strip the KeePassXC KeeShare private key (Own=) on staging.
 # Filter is defined as [filter "keeshare-strip"] in mackup/.gitconfig.
 keepassxc.ini filter=keeshare-strip
+# Redact email addresses in espanso replacements on staging.
+# Filter is defined as [filter "email-redact"] in mackup/.gitconfig.
+"mackup/Library/Application Support/espanso/match/base.yml" filter=email-redact

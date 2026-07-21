@@ -76,13 +76,26 @@ pyclean () {
     find . -type d -name __pycache__ -delete
 }
 
+# JS bootstrap for a fresh worktree: real per-worktree install (never
+# symlink node_modules from the main checkout — Turbopack/Vite reject deps
+# resolving outside the worktree root), compiled i18n runtime, and the devenv
+# install-watcher hash seeded so devenv up doesn't enter its install-restart
+# loop. See AGENTS.md "Working in a Git Worktree".
+_wtnew_bootstrap() {
+  direnv exec . pnpm install &&
+  direnv exec . pnpm --filter web run paraglide:compile &&
+  mkdir -p .devenv/state &&
+  shasum -a 256 pnpm-lock.yaml | cut -d' ' -f1 > .devenv/state/pnpm-lock.sha
+}
+
 # Create a new git worktree with a branch from latest origin/main.
 # Usage:
 #   wtnew <name> [base-branch]       Create new branch niels/<name> from origin/<base-branch>
 #   wtnew -e <name> <branch>          Checkout existing branch into ../wt-<name>
 #   wtnew -f <name> [base-branch]    Force recreate (removes existing worktree/branch)
+#   wtnew -s <name> [...]            Skip the JS bootstrap (pnpm install etc.)
 wtnew() {
-  local force=false existing=false
+  local force=false existing=false skip_bootstrap=false
   local wt_name="" base="main"
   local tmux_window="${TMUX:+$(tmux display-message -p '#{window_id}')}"
   for arg in "$@"; do
@@ -99,6 +112,7 @@ wtnew() {
         echo "Options:"
         echo "  -f, --force       Force recreate (removes existing worktree/branch)"
         echo "  -e, --existing    Checkout an existing remote branch"
+        echo "  -s, --skip-bootstrap  Skip pnpm install / paraglide / devenv hash seeding"
         echo "  -h, --help        Show this help message"
         echo ""
         echo "The worktree is created at ../wt-<name>. If inside tmux, the window is renamed."
@@ -106,6 +120,7 @@ wtnew() {
         ;;
       -f|--force) force=true ;;
       -e|--existing) existing=true ;;
+      -s|--skip-bootstrap) skip_bootstrap=true ;;
       *) [[ -z "$wt_name" ]] && wt_name="$arg" || base="$arg" ;;
     esac
   done
@@ -126,6 +141,7 @@ wtnew() {
     git lfs install --local --force
     git lfs pull
     direnv allow
+    $skip_bootstrap || _wtnew_bootstrap
     [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$wt_name"
   else
     if $force; then
@@ -138,6 +154,7 @@ wtnew() {
     git lfs install --local --force
     git lfs pull
     direnv allow
+    $skip_bootstrap || _wtnew_bootstrap
     [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$wt_name"
   fi
 }

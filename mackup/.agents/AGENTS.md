@@ -5,8 +5,8 @@
 - Use `niels` as the branch name prefix (not the full GitHub username).
 - Always ask for permission before committing and pushing.
 - When you address PR comments, after pushing:
-  - Add a comment and resolve the PR comments if it is a bot (bugbot, cursor, depthfirst, etc.).
-  - If it is a human, ask for permission before commenting and resolving.
+  - If it is a bot (bugbot, Claude, cursor, depthfirst, etc.), reply with a comment and resolve the thread.
+  - If it is a human, do NOT comment or resolve the thread.
 - When you are reviewing a PR, NEVER comment on the PR.
 - When writing PR descriptions, do not mention "testing in staging".
 - When making significant changes to a PR, update the PR description to reflect the current state.

@@ -53,5 +53,9 @@
 	# Strip the KeePassXC KeeShare private key (Own=) before staging, so the
 	# synced keepassxc.ini never carries secret key material into git history.
 	clean = sed -e '/^Own=/d'
+[filter "email-redact"]
+	# Redact email addresses in espanso replacements before staging, so
+	# personal addresses never land in git history.
+	clean = sed -E 's/(replace: \")[^\"]*@[^\"]*(\")/\\1REDACTED\\2/'
 [lfs]
 	storage = /Users/niels/.cache/git-lfs

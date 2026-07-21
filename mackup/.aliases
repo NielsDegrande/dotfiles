@@ -48,5 +48,5 @@ alias codex="codex --dangerously-bypass-approvals-and-sandbox"
 alias claude-safe="env -u TMUX CLAUDE_CODE_DISABLE_AUTO_MEMORY=0 claude"
 alias codex-safe="codex"
 
-# Lovable.
+# Lov.
 alias up='develop-api 2>&1 | tee api.log'

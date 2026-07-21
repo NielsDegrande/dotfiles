@@ -59,7 +59,7 @@ Configured in each app's own preferences (sandboxed plists are backed up via
 
 | Hotkey | App | Action |
 | --- | --- | --- |
-| hyper c | Maccy | Open clipboard history popup |
+| hyper v | Maccy | Open clipboard history popup |
 | hyper i | Ice | Toggle hidden menu bar section |
 | hyper m | MeetingBar | Join the next meeting |
 | hyper e | espanso | Open search bar (set in [`espanso/config/default.yml`](mackup/Library/Application%20Support/espanso/config/default.yml)) |

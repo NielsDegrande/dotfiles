@@ -129,6 +129,7 @@ wtnew() {
     return 1
   fi
   cd ~/git/lov/lovable || return 1
+  direnv allow .
   local wtdir="../wt-$wt_name"
   if $existing; then
     if [[ -z "$base" || "$base" == "main" ]]; then
@@ -157,6 +158,49 @@ wtnew() {
     $skip_bootstrap || _wtnew_bootstrap
     [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$wt_name"
   fi
+}
+
+# Fix repeated `git fetch` errors like:
+#   error: fetching ref refs/remotes/origin/<user>/<branch> failed: incorrect old value provided
+# Cause is usually a branch-casing rename on GitHub colliding on the
+# case-insensitive filesystem; the same error also appears
+# transiently when concurrent fetches (agent worktrees) race on a ref.
+# Deletes the failing remote-tracking refs — every case variant, loose and
+# packed — then refetches. Remote-tracking refs only, so it's always safe.
+# Usage: gfixrefs [remote]
+gfixrefs() {
+  local remote="${1:-origin}"
+  local gitdir
+  gitdir=$(git rev-parse --path-format=absolute --git-common-dir) || return 1
+  local out
+  out=$(git fetch "$remote" --prune 2>&1)
+  local -a bad
+  bad=("${(@f)$(print -r -- "$out" | sed -n 's/^error: fetching ref \(refs\/[^ ]*\) failed: incorrect old value.*/\1/p' | sort -u)}")
+  bad=("${(@)bad:#}")
+  if (( ${#bad[@]} == 0 )); then
+    echo "fetch clean — was likely a transient race between concurrent fetches"
+    return 0
+  fi
+  echo "resetting ${#bad[@]} broken remote-tracking ref(s):"
+  local ref variant
+  for ref in "${bad[@]}"; do
+    echo "  $ref"
+    # Delete every case variant git knows about (handles loose and packed).
+    git for-each-ref --format='%(refname)' "refs/remotes/$remote" |
+      grep -ixF -- "$ref" |
+      while IFS= read -r variant; do git update-ref -d "$variant" 2>/dev/null; done
+    # packed-refs can hold an old-casing entry that for-each-ref no longer
+    # reports once the loose file wins the case-insensitive lookup.
+    if [[ -f "$gitdir/packed-refs" ]]; then
+      awk -v r="$ref" 'tolower($2) == tolower(r) { print $2 }' "$gitdir/packed-refs" |
+        while IFS= read -r variant; do git update-ref -d "$variant" 2>/dev/null; done
+    fi
+    # Leftover loose file under an old-casing directory (rm is aliased to trash).
+    command rm -f "$gitdir/$ref" 2>/dev/null
+  done
+  # Drop now-empty old-casing directories so enumeration and lookup agree again.
+  find "$gitdir/refs/remotes/$remote" -type d -empty -delete 2>/dev/null
+  git fetch "$remote" --prune
 }
 
 # Remove git worktrees by short name.

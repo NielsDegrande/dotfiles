@@ -1,97 +1,8 @@
 {
-  "agentPushNotifEnabled": true,
-  "editorMode": "vim",
-  "effortLevel": "high",
-  "enabledPlugins": {
-    "code-review@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "money@show-me-the-money": true,
-    "posthog@claude-plugins-official": true,
-    "slack@claude-plugins-official": false
-  },
   "env": {
     "NODE_EXTRA_CA_CERTS": "/Users/niels/.formal/ca/localca-cert.pem"
   },
-  "extraKnownMarketplaces": {
-    "openai-codex": {
-      "source": {
-        "repo": "openai/codex-plugin-cc",
-        "source": "github"
-      }
-    },
-    "show-me-the-money": {
-      "source": {
-        "repo": "iamzifei/show-me-the-money",
-        "source": "github"
-      }
-    }
-  },
-  "fastMode": true,
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "command": "bash ~/.claude/hooks/notify_idle.sh",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "bash ~/.claude/hooks/monitor_marker.sh",
-            "type": "command"
-          }
-        ],
-        "matcher": "Monitor"
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "bash ~/.claude/hooks/secret_guard.sh",
-            "type": "command"
-          }
-        ],
-        "matcher": "Bash"
-      },
-      {
-        "hooks": [
-          {
-            "command": "bash ~/.claude/hooks/notify_ask_question.sh",
-            "type": "command"
-          }
-        ],
-        "matcher": "AskUserQuestion"
-      },
-      {
-        "hooks": [
-          {
-            "command": "bash ~/.claude/hooks/monitor_marker.sh",
-            "type": "command"
-          }
-        ],
-        "matcher": "Monitor"
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "bash ~/.claude/hooks/notify_on_finish.sh",
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
-  "model": "claude-fable-5[1m]",
   "permissions": {
-    "defaultMode": "default",
     "deny": [
       "Read(**/.env)",
       "Read(**/.env.*)",
@@ -120,8 +31,96 @@
       "Read(**/*.pfx)",
       "Read(**/*.keychain*)",
       "Bash(gh pr merge:*)"
+    ],
+    "defaultMode": "default"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/notify_idle.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Monitor",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/monitor_marker.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/secret_guard.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/notify_ask_question.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Monitor",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/monitor_marker.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/notify_on_finish.sh"
+          }
+        ]
+      }
     ]
   },
+  "enableArtifact": false,
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "money@show-me-the-money": true,
+    "posthog@claude-plugins-official": true,
+    "slack@claude-plugins-official": false
+  },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "show-me-the-money": {
+      "source": {
+        "source": "github",
+        "repo": "iamzifei/show-me-the-money"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true,
+  "editorMode": "vim",
   "remoteControlAtStartup": true,
-  "skipDangerousModePermissionPrompt": true
+  "agentPushNotifEnabled": true
 }

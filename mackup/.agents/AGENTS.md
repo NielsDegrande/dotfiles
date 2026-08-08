@@ -1,5 +1,10 @@
 # AGENTS.md
 
+## Communication
+
+- When replying to me, use simple language that a human can easily understand.
+- Favor tables and visual approaches (e.g., ASCII diagrams) to make concepts clear.
+
 ## Git and GitHub
 
 - Use `niels` as the branch name prefix (not the full GitHub username).

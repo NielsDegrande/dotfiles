@@ -82,10 +82,18 @@ pyclean () {
 # install-watcher hash seeded so devenv up doesn't enter its install-restart
 # loop. See AGENTS.md "Working in a Git Worktree".
 _wtnew_bootstrap() {
-  direnv exec . pnpm install &&
+  direnv exec . pnpm install --frozen-lockfile --prefer-offline &&
   direnv exec . pnpm --filter web run paraglide:compile &&
   mkdir -p .devenv/state &&
   shasum -a 256 pnpm-lock.yaml | cut -d' ' -f1 > .devenv/state/pnpm-lock.sha
+}
+
+# Run the bootstrap in the background so the shell is usable immediately.
+# The worktree is editable right away; `devenv up` needs the bootstrap done.
+_wtnew_bootstrap_bg() {
+  local log="/tmp/wtnew-bootstrap-${1:-wt}.log"
+  echo "JS bootstrap running in background; tail -f $log"
+  ( { _wtnew_bootstrap && echo "wtnew bootstrap: OK" || echo "wtnew bootstrap: FAILED"; } >"$log" 2>&1 & )
 }
 
 # Create a new git worktree with a branch from latest origin/main.
@@ -142,7 +150,7 @@ wtnew() {
     git lfs install --local --force
     git lfs pull
     direnv allow
-    $skip_bootstrap || _wtnew_bootstrap
+    $skip_bootstrap || _wtnew_bootstrap_bg "$wt_name"
     [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$wt_name"
   else
     if $force; then
@@ -155,7 +163,7 @@ wtnew() {
     git lfs install --local --force
     git lfs pull
     direnv allow
-    $skip_bootstrap || _wtnew_bootstrap
+    $skip_bootstrap || _wtnew_bootstrap_bg "$wt_name"
     [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$wt_name"
   fi
 }
@@ -243,4 +251,32 @@ wtrm() {
       fi
     done
   fi
+}
+
+# Mind palace (~/git/me/mind) — see its README.md
+mind() {
+  local dir=~/git/me/mind
+  case "$1" in
+    a|add)
+      shift
+      (cd "$dir" && claude -p --permission-mode acceptEdits "/mind add $*")
+      ;;
+    q|ask)
+      shift
+      (cd "$dir" && claude "/mind $*")
+      ;;
+    o|open) open "$dir/index.html" ;;
+    b|build) (cd "$dir" && python3 scripts/build.py) ;;
+    s|serve)
+      echo "http://localhost:8765"
+      (cd "$dir" && python3 -m http.server 8765)
+      ;;
+    *)
+      echo "mind a <text|link|path>  add knowledge (headless claude)"
+      echo "mind q <question>        ask the palace (interactive claude)"
+      echo "mind o                   open in browser"
+      echo "mind b                   rebuild indexes"
+      echo "mind s                   serve on :8765"
+      ;;
+  esac
 }

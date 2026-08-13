@@ -1,5 +1,7 @@
 # Functions are defined here and sourced from ~/.zshrc.
 
+## Environment ------------------------------------------------------------
+
 # Load .env file.
 envup () {
   if [ -f .env ]
@@ -8,58 +10,10 @@ envup () {
   fi
 }
 
+## Git --------------------------------------------------------------------
+
 # Create new branch.
 gcob() { git checkout -b "$1" --no-track origin/main; }
-
-# Run a command with output logged to a file and tailed in a small tmux pane.
-# Usage: logpane <command> [args...]
-logpane() {
-  if [[ $# -eq 0 ]]; then
-    echo "Usage: logpane <command> [args...]"
-    return 1
-  fi
-  if [[ -z "$TMUX" ]]; then
-    echo "logpane requires tmux"
-    return 1
-  fi
-  local logfile="/tmp/$(tmux display-message -p '#S-#W' | tr '/' '-')-$(date +%Y%m%d-%H%M%S).log"
-  tmux split-window -l 35 -d "tail -f '$logfile'"
-  echo "Logging to $logfile"
-  "$@" > "$logfile" 2>&1
-  # Ring the terminal bell so tmux highlights the window red.
-  printf '\a'
-}
-
-# Mark the current tmux window as unread (activity alert).
-# Waits N seconds (default 5) so you can switch away, then triggers the bell.
-# Usage: unread [seconds]
-unread() {
-  if [[ -z "$TMUX" ]]; then
-    echo "unread requires tmux"
-    return 1
-  fi
-  local wait_seconds="${1:-5}"
-  if ! [[ "$wait_seconds" =~ ^[0-9]+$ ]]; then
-    echo "Usage: unread [seconds]"
-    return 1
-  fi
-  echo "Window will be marked unread in ${wait_seconds} seconds..."
-  sleep "$wait_seconds"
-  printf '\a'
-}
-
-# Avoid accidentally pip installing in the base environment.
-pip() {
-    if [[ -z "$VIRTUAL_ENV" ]]; then
-        echo "WARNING: You are not in a virtual environment. Do you want to proceed (y/n)?"
-        read -r answer
-        if [[ "$answer" != "y" ]]; then
-            echo "Aborting pip command."
-            return 1
-        fi
-    fi
-    command pip "$@"
-}
 
 # Interactive git diff with fzf preview.
 gdf() {
@@ -70,11 +24,64 @@ gdf() {
       --preview-window="right,75%" || true
 }
 
-# Clean python artifacts.
-pyclean () {
-    find . -type f -name '*.py[co]' -delete
-    find . -type d -name __pycache__ -delete
+# Fix repeated `git fetch` errors like:
+#   error: fetching ref refs/remotes/origin/<user>/<branch> failed: incorrect old value provided
+# Cause is usually a branch-casing rename on GitHub colliding on the
+# case-insensitive filesystem; the same error also appears
+# transiently when concurrent fetches (agent worktrees) race on a ref.
+# Deletes the failing remote-tracking refs — every case variant, loose and
+# packed — then refetches. Remote-tracking refs only, so it's always safe.
+# Usage: gfixrefs [remote]
+gfixrefs() {
+  local remote="${1:-origin}"
+  local gitdir
+  gitdir=$(git rev-parse --path-format=absolute --git-common-dir) || return 1
+  local out
+  out=$(git fetch "$remote" --prune 2>&1)
+  local -a bad
+  bad=("${(@f)$(print -r -- "$out" | sed -n 's/^error: fetching ref \(refs\/[^ ]*\) failed: incorrect old value.*/\1/p' | sort -u)}")
+  bad=("${(@)bad:#}")
+  if (( ${#bad[@]} == 0 )); then
+    echo "fetch clean — was likely a transient race between concurrent fetches"
+    return 0
+  fi
+  echo "resetting ${#bad[@]} broken remote-tracking ref(s):"
+  local ref variant
+  for ref in "${bad[@]}"; do
+    echo "  $ref"
+    # Delete every case variant git knows about (handles loose and packed).
+    git for-each-ref --format='%(refname)' "refs/remotes/$remote" |
+      grep -ixF -- "$ref" |
+      while IFS= read -r variant; do git update-ref -d "$variant" 2>/dev/null; done
+    # packed-refs can hold an old-casing entry that for-each-ref no longer
+    # reports once the loose file wins the case-insensitive lookup.
+    if [[ -f "$gitdir/packed-refs" ]]; then
+      awk -v r="$ref" 'tolower($2) == tolower(r) { print $2 }' "$gitdir/packed-refs" |
+        while IFS= read -r variant; do git update-ref -d "$variant" 2>/dev/null; done
+    fi
+    # Leftover loose file under an old-casing directory (rm is aliased to trash).
+    command rm -f "$gitdir/$ref" 2>/dev/null
+  done
+  # Drop now-empty old-casing directories so enumeration and lookup agree again.
+  find "$gitdir/refs/remotes/$remote" -type d -empty -delete 2>/dev/null
+  git fetch "$remote" --prune
 }
+
+# Open the current repo and branch on GitHub in the browser.
+gopen() {
+  local url branch
+  url=$(git remote get-url origin) || return 1
+  branch=$(git rev-parse --abbrev-ref HEAD) || return 1
+  url="${url%.git}"
+  url="${url/#git@github.com:/https://github.com/}"
+  if [[ "$branch" == "HEAD" ]]; then
+    open "$url"  # Detached HEAD: open the repo root.
+  else
+    open "$url/tree/$branch"
+  fi
+}
+
+## Git worktrees ----------------------------------------------------------
 
 # JS bootstrap for a fresh worktree: real per-worktree install (never
 # symlink node_modules from the main checkout — Turbopack/Vite reject deps
@@ -168,49 +175,6 @@ wtnew() {
   fi
 }
 
-# Fix repeated `git fetch` errors like:
-#   error: fetching ref refs/remotes/origin/<user>/<branch> failed: incorrect old value provided
-# Cause is usually a branch-casing rename on GitHub colliding on the
-# case-insensitive filesystem; the same error also appears
-# transiently when concurrent fetches (agent worktrees) race on a ref.
-# Deletes the failing remote-tracking refs — every case variant, loose and
-# packed — then refetches. Remote-tracking refs only, so it's always safe.
-# Usage: gfixrefs [remote]
-gfixrefs() {
-  local remote="${1:-origin}"
-  local gitdir
-  gitdir=$(git rev-parse --path-format=absolute --git-common-dir) || return 1
-  local out
-  out=$(git fetch "$remote" --prune 2>&1)
-  local -a bad
-  bad=("${(@f)$(print -r -- "$out" | sed -n 's/^error: fetching ref \(refs\/[^ ]*\) failed: incorrect old value.*/\1/p' | sort -u)}")
-  bad=("${(@)bad:#}")
-  if (( ${#bad[@]} == 0 )); then
-    echo "fetch clean — was likely a transient race between concurrent fetches"
-    return 0
-  fi
-  echo "resetting ${#bad[@]} broken remote-tracking ref(s):"
-  local ref variant
-  for ref in "${bad[@]}"; do
-    echo "  $ref"
-    # Delete every case variant git knows about (handles loose and packed).
-    git for-each-ref --format='%(refname)' "refs/remotes/$remote" |
-      grep -ixF -- "$ref" |
-      while IFS= read -r variant; do git update-ref -d "$variant" 2>/dev/null; done
-    # packed-refs can hold an old-casing entry that for-each-ref no longer
-    # reports once the loose file wins the case-insensitive lookup.
-    if [[ -f "$gitdir/packed-refs" ]]; then
-      awk -v r="$ref" 'tolower($2) == tolower(r) { print $2 }' "$gitdir/packed-refs" |
-        while IFS= read -r variant; do git update-ref -d "$variant" 2>/dev/null; done
-    fi
-    # Leftover loose file under an old-casing directory (rm is aliased to trash).
-    command rm -f "$gitdir/$ref" 2>/dev/null
-  done
-  # Drop now-empty old-casing directories so enumeration and lookup agree again.
-  find "$gitdir/refs/remotes/$remote" -type d -empty -delete 2>/dev/null
-  git fetch "$remote" --prune
-}
-
 # Remove git worktrees by short name.
 # Usage:
 #   wtrm [-f|--force] <name> [name...]  Remove ../wt-<name> worktrees
@@ -252,6 +216,68 @@ wtrm() {
     done
   fi
 }
+
+## Python -----------------------------------------------------------------
+
+# Avoid accidentally pip installing in the base environment.
+pip() {
+    if [[ -z "$VIRTUAL_ENV" ]]; then
+        echo "WARNING: You are not in a virtual environment. Do you want to proceed (y/n)?"
+        read -r answer
+        if [[ "$answer" != "y" ]]; then
+            echo "Aborting pip command."
+            return 1
+        fi
+    fi
+    command pip "$@"
+}
+
+# Clean python artifacts.
+pyclean () {
+    find . -type f -name '*.py[co]' -delete
+    find . -type d -name __pycache__ -delete
+}
+
+## Tmux -------------------------------------------------------------------
+
+# Run a command with output logged to a file and tailed in a small tmux pane.
+# Usage: logpane <command> [args...]
+logpane() {
+  if [[ $# -eq 0 ]]; then
+    echo "Usage: logpane <command> [args...]"
+    return 1
+  fi
+  if [[ -z "$TMUX" ]]; then
+    echo "logpane requires tmux"
+    return 1
+  fi
+  local logfile="/tmp/$(tmux display-message -p '#S-#W' | tr '/' '-')-$(date +%Y%m%d-%H%M%S).log"
+  tmux split-window -l 35 -d "tail -f '$logfile'"
+  echo "Logging to $logfile"
+  "$@" > "$logfile" 2>&1
+  # Ring the terminal bell so tmux highlights the window red.
+  printf '\a'
+}
+
+# Mark the current tmux window as unread (activity alert).
+# Waits N seconds (default 5) so you can switch away, then triggers the bell.
+# Usage: unread [seconds]
+unread() {
+  if [[ -z "$TMUX" ]]; then
+    echo "unread requires tmux"
+    return 1
+  fi
+  local wait_seconds="${1:-5}"
+  if ! [[ "$wait_seconds" =~ ^[0-9]+$ ]]; then
+    echo "Usage: unread [seconds]"
+    return 1
+  fi
+  echo "Window will be marked unread in ${wait_seconds} seconds..."
+  sleep "$wait_seconds"
+  printf '\a'
+}
+
+## Misc -------------------------------------------------------------------
 
 # Mind palace (~/git/me/mind) — see its README.md
 mind() {

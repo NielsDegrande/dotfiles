@@ -28,6 +28,7 @@ Fix CI failures and address review comments that are relevant without waiting to
 ## Browser
 
 - When I explicitly ask for interactive browser work, launch [agent-browser](https://github.com/vercel-labs/agent-browser) in headed mode (`agent-browser --headed open <url>`) so I can log in and handle any auth myself in the window, then keep driving the same session. Alternatively, attach with `--auto-connect` to a browser I started with `--remote-debugging-port=9222`. The browser is ephemeral (no persistent profile), so logins last only for that session.
+- The full-page screenshot flag is `--full`, NEVER `--full-page`. agent-browser treats unrecognized tokens as the output path, so a wrong flag silently creates junk files (e.g. a file named `--full-page`) in the cwd.
 
 ## Code comments
 

@@ -120,9 +120,9 @@
     }
   },
   "effortLevel": "high",
+  "fastMode": true,
   "skipDangerousModePermissionPrompt": true,
   "editorMode": "vim",
   "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true,
-  "fastMode": true
+  "agentPushNotifEnabled": true
 }

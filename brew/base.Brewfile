@@ -1,7 +1,7 @@
 # Install: `brew bundle --file base.Brewfile`.
 
 # Taps.
-tap "koekeishiya/formulae"
+tap "asmvik/formulae"
 
 # Binaries.
 # brew "awscli"
@@ -36,8 +36,8 @@ brew "git-quick-stats"
 brew "go"
 brew "htop"
 brew "infat"
-brew "koekeishiya/formulae/skhd"
-brew "koekeishiya/formulae/yabai"
+brew "asmvik/formulae/skhd"
+brew "asmvik/formulae/yabai"
 brew "lazygit"
 brew "mackup"
 brew "mas"

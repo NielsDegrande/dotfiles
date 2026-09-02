@@ -34,7 +34,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "fable[1m]",
   "hooks": {
     "Notification": [
       {
@@ -120,7 +120,6 @@
     }
   },
   "effortLevel": "high",
-  "fastMode": true,
   "skipDangerousModePermissionPrompt": true,
   "editorMode": "vim",
   "remoteControlAtStartup": true,

@@ -24,13 +24,15 @@ gdf() {
       --preview-window="right,75%" || true
 }
 
-# Fix repeated `git fetch` errors like:
-#   error: fetching ref refs/remotes/origin/<user>/<branch> failed: incorrect old value provided
-# Cause is usually a branch-casing rename on GitHub colliding on the
-# case-insensitive filesystem; the same error also appears
-# transiently when concurrent fetches (agent worktrees) race on a ref.
-# Deletes the failing remote-tracking refs — every case variant, loose and
-# packed — then refetches. Remote-tracking refs only, so it's always safe.
+# Fix repeated `git fetch` errors caused by branch-casing renames on GitHub
+# colliding on the case-insensitive filesystem. Two flavors:
+#   error: fetching ref refs/remotes/<r>/<x> failed: incorrect old value provided
+#   error: could not delete references: cannot lock ref 'refs/remotes/<r>/<x>' (prune-only)
+# The prune flavor surfaces one ref per run (alphabetically), so beyond the
+# refs named in errors this also scans loose files + packed-refs for names
+# present in more than one casing and resets every variant of every group.
+# Remote-tracking refs only, so it's always safe; fetch recreates whichever
+# casing the remote actually has.
 # Usage: gfixrefs [remote]
 gfixrefs() {
   local remote="${1:-origin}"
@@ -38,23 +40,42 @@ gfixrefs() {
   gitdir=$(git rev-parse --path-format=absolute --git-common-dir) || return 1
   local out
   out=$(git fetch "$remote" --prune 2>&1)
+
   local -a bad
-  bad=("${(@f)$(print -r -- "$out" | sed -n 's/^error: fetching ref \(refs\/[^ ]*\) failed: incorrect old value.*/\1/p' | sort -u)}")
+  bad=("${(@f)$(print -r -- "$out" | sed -n \
+    -e 's/^error: fetching ref \(refs\/[^ ]*\) failed: incorrect old value.*/\1/p' \
+    -e "s/^error: could not delete references: cannot lock ref '\(refs\/[^']*\)'.*/\1/p" \
+    | sort -u)}")
   bad=("${(@)bad:#}")
-  if (( ${#bad[@]} == 0 )); then
-    echo "fetch clean — was likely a transient race between concurrent fetches"
+
+  # Case-duplicate groups across loose files and packed-refs. for-each-ref
+  # can't see these: the loose file wins the case-insensitive lookup and
+  # shadows the packed entry, so enumerate both stores raw.
+  local -a collided
+  collided=("${(@f)$(
+    {
+      [[ -d "$gitdir/refs/remotes/$remote" ]] &&
+        find "$gitdir/refs/remotes/$remote" -type f ! -name '*.lock' | sed "s|^$gitdir/||"
+      [[ -f "$gitdir/packed-refs" ]] &&
+        awk -v p="refs/remotes/$remote/" 'index($2, p) == 1 { print $2 }' "$gitdir/packed-refs"
+    } | sort -u | sort -f | uniq -Di
+  )}")
+  collided=("${(@)collided:#}")
+
+  local -aU targets
+  targets=("${bad[@]}" "${collided[@]}")
+  if (( ${#targets[@]} == 0 )); then
+    echo "fetch clean, no case-collided refs — was likely a transient race between concurrent fetches"
     return 0
   fi
-  echo "resetting ${#bad[@]} broken remote-tracking ref(s):"
+  echo "resetting ${#targets[@]} broken remote-tracking ref(s):"
   local ref variant
-  for ref in "${bad[@]}"; do
+  for ref in "${targets[@]}"; do
     echo "  $ref"
     # Delete every case variant git knows about (handles loose and packed).
     git for-each-ref --format='%(refname)' "refs/remotes/$remote" |
       grep -ixF -- "$ref" |
       while IFS= read -r variant; do git update-ref -d "$variant" 2>/dev/null; done
-    # packed-refs can hold an old-casing entry that for-each-ref no longer
-    # reports once the loose file wins the case-insensitive lookup.
     if [[ -f "$gitdir/packed-refs" ]]; then
       awk -v r="$ref" 'tolower($2) == tolower(r) { print $2 }' "$gitdir/packed-refs" |
         while IFS= read -r variant; do git update-ref -d "$variant" 2>/dev/null; done
@@ -64,7 +85,11 @@ gfixrefs() {
   done
   # Drop now-empty old-casing directories so enumeration and lookup agree again.
   find "$gitdir/refs/remotes/$remote" -type d -empty -delete 2>/dev/null
-  git fetch "$remote" --prune
+  git fetch "$remote" --prune 2>&1 | grep -E '^(error|fatal)' && {
+    echo "gfixrefs: errors remain after refetch — rerun or inspect packed-refs"
+    return 1
+  }
+  echo "refetched clean"
 }
 
 # Open the current repo and branch on GitHub in the browser.
@@ -153,10 +178,10 @@ wtnew() {
     fi
     git fetch origin "$base" && \
     git worktree add "$wtdir" "$base" && \
+    direnv allow "$wtdir/.envrc" && \
     cd "$wtdir" || return 1
     git lfs install --local --force
     git lfs pull
-    direnv allow
     $skip_bootstrap || _wtnew_bootstrap_bg "$wt_name"
     [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$wt_name"
   else
@@ -166,10 +191,10 @@ wtnew() {
     fi
     git fetch origin "$base" && \
     git worktree add --no-track -b "niels/$wt_name" "$wtdir" "origin/$base" && \
+    direnv allow "$wtdir/.envrc" && \
     cd "$wtdir" || return 1
     git lfs install --local --force
     git lfs pull
-    direnv allow
     $skip_bootstrap || _wtnew_bootstrap_bg "$wt_name"
     [[ -n "$tmux_window" ]] && tmux rename-window -t "$tmux_window" "$wt_name"
   fi

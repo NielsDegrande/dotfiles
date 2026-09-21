@@ -3,38 +3,9 @@
     "NODE_EXTRA_CA_CERTS": "/Users/niels/.formal/ca/localca-cert.pem"
   },
   "permissions": {
-    "deny": [
-      "Read(**/.env)",
-      "Read(**/.env.*)",
-      "Read(**/*.env)",
-      "Read(**/.envrc)",
-      "Read(**/.npmrc)",
-      "Read(**/.pgpass)",
-      "Read(**/.docker/config.json)",
-      "Read(**/.kube/**)",
-      "Read(**/.config/gh/hosts.yml)",
-      "Read(**/credentials.json)",
-      "Read(**/secrets.json)",
-      "Read(**/*secret*)",
-      "Read(**/*credentials*)",
-      "Read(**/*.pem)",
-      "Read(**/*.key)",
-      "Read(**/*_key)",
-      "Read(**/*-key)",
-      "Read(**/.ssh/**)",
-      "Read(**/id_rsa*)",
-      "Read(**/id_ed25519*)",
-      "Read(**/.aws/**)",
-      "Read(**/.config/gcloud/**)",
-      "Read(**/.netrc)",
-      "Read(**/*.p12)",
-      "Read(**/*.pfx)",
-      "Read(**/*.keychain*)",
-      "Bash(gh pr merge:*)"
-    ],
     "defaultMode": "default"
   },
-  "model": "fable[1m]",
+  "model": "claude-fable-5-1[1m]",
   "hooks": {
     "Notification": [
       {

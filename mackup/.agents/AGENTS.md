@@ -8,13 +8,13 @@
 ## Git and GitHub
 
 - Use `niels` as the branch name prefix (not the full GitHub username).
-- Always ask for permission before committing and pushing.
 - When you address PR comments, after pushing:
   - If it is a bot (bugbot, Claude, cursor, depthfirst, etc.), reply with a comment and resolve the thread.
   - If it is a human, do NOT comment or resolve the thread.
 - When you are reviewing a PR, NEVER comment on the PR.
 - NEVER post `@claude review always` on a PR. When a claude[bot] review is needed, post `@claude review once` instead (no push subscription).
 - When writing PR descriptions, do not mention "testing in staging".
+- Keep PR bodies simple, short and human readable. Include examples and evidence (e.g., data) where possible.
 - When making significant changes to a PR, update the PR description to reflect the current state.
 
 ## Quality control
@@ -30,8 +30,9 @@ Fix CI failures and address review comments that are relevant without waiting to
 - When I explicitly ask for interactive browser work, launch [agent-browser](https://github.com/vercel-labs/agent-browser) in headed mode (`agent-browser --headed open <url>`) so I can log in and handle any auth myself in the window, then keep driving the same session. Alternatively, attach with `--auto-connect` to a browser I started with `--remote-debugging-port=9222`. The browser is ephemeral (no persistent profile), so logins last only for that session.
 - The full-page screenshot flag is `--full`, NEVER `--full-page`. agent-browser treats unrecognized tokens as the output path, so a wrong flag silently creates junk files (e.g. a file named `--full-page`) in the cwd.
 
-## Code comments
+## Code comments and tests
 
+- No AI slop comments, no AI slop tests.
 - Keep comments short; avoid extremely lengthy comments.
 - Do not document process or history in comments (e.g., "bug X happened on day Y, so I fixed it here"). Describe the why and what of the code, and only when it adds value beyond the code itself.
 

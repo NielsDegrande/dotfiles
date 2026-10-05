@@ -8,11 +8,12 @@ alias brewdump='brew bundle dump --file=-' # Print to stdout; never touches a re
 alias rm='echo "Use trash instead. Use command rm for real rm." #'
 
 # Custom.
+alias capsoff='swift "$HOME/git/dotfiles/scripts/CapsLockOff.swift"' # Turn off Caps Lock (the key is remapped by Karabiner).
+alias dstop='docker ps -q | xargs docker stop' # Stop all docker containers.
+alias reterm='cd "$HOME"; deactivate 2>/dev/null; clear'
+alias retmux="tmux source-file ~/.tmux.conf"
 alias sourcev='source venv/bin/activate >/dev/null 2>&1 || source .venv/bin/activate >/dev/null 2>&1 || echo "Error: Failed to activate virtual environment."' # Activate venv in current folder.
 alias sourcez='source ~/.zshrc' # Source zshrc in current shell.
-alias dstop='docker ps -q | xargs docker stop' # Stop all docker containers.
-alias retmux="tmux source-file ~/.tmux.conf"
-alias reterm='cd "$HOME"; deactivate 2>/dev/null; clear'
 
 # Exa.
 alias ll='eza -la --icons --git' # Always use list and show all, add icons and git status info.

@@ -1,0 +1,24 @@
+# duti ~/.config/duti/defaults.duti
+# Format: bundle_id  uti_or_.ext  role  |  bundle_id  url_scheme
+
+# Extensions. Ones without a declared UTI (e.g. .toml, .Brewfile) fail with
+# error -50; set those once via Finder > Get Info > Open with > Change All.
+com.microsoft.VSCode  .js          all
+com.microsoft.VSCode  .json        all
+com.microsoft.VSCode  .md          all
+com.microsoft.VSCode  .py          all
+com.microsoft.VSCode  .sh          all
+app.zen-browser.zen   .svg         all
+com.microsoft.VSCode  .ts          all
+com.microsoft.VSCode  .txt         all
+com.microsoft.VSCode  .yaml        all
+
+# Types.
+com.microsoft.VSCode  public.make-source   all
+com.microsoft.VSCode  public.plain-text    all
+com.microsoft.VSCode  public.shell-script  all
+com.microsoft.VSCode  public.source-code   all
+
+# URL schemes.
+app.zen-browser.zen  mailto
+app.zen-browser.zen  http

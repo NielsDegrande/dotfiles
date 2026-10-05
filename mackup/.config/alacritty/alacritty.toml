@@ -66,4 +66,4 @@ persist = false
 [[keyboard.bindings]]
 key = "Return"
 mods = "Shift"
-chars = "\u001B\r"
+chars = "\u001b[13;2u" # CSI-u Shift+Enter, preserved through tmux.

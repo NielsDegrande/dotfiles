@@ -5,7 +5,7 @@
   "permissions": {
     "defaultMode": "default"
   },
-  "model": "claude-fable-5-1[1m]",
+  "cleanupPeriodDays": 365,
   "hooks": {
     "Notification": [
       {
@@ -91,8 +91,19 @@
     }
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "voice": {
+    "enabled": true,
+    "mode": "tap"
+  },
+  "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
   "editorMode": "vim",
   "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "voiceEnabled": true
 }

@@ -96,7 +96,7 @@ sudo install -m 0755 "$build_dir/VerticalMonitorLayout" "$bin"
 rm -rf "$build_dir"
 
 # Set default applications.
-infat --config ~/.config/infat/config.toml
+duti ~/.config/duti/defaults.duti
 
 # Symlink CLAUDE.
 mkdir -p "$HOME/.claude"
@@ -107,4 +107,12 @@ if [ ! -d "$HOME/.claude/skills" ] || [ -L "$HOME/.claude/skills" ] || rmdir "$H
   ln -sfn "$HOME/.agents/skills" "$HOME/.claude/skills"
 else
   echo "Skipped ~/.claude/skills symlink: existing non-empty directory."
+fi
+
+# Share personal instructions with Pi; preserve any separate Pi instructions.
+mkdir -p "$HOME/.pi/agent"
+if [ ! -e "$HOME/.pi/agent/AGENTS.md" ] || [ -L "$HOME/.pi/agent/AGENTS.md" ]; then
+  ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.pi/agent/AGENTS.md"
+else
+  echo "Skipped ~/.pi/agent/AGENTS.md symlink: existing non-symlink path."
 fi

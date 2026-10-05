@@ -5,6 +5,10 @@
 - When replying to me, use simple language that a human can easily understand.
 - Favor tables and visual approaches (e.g., ASCII diagrams) to make concepts clear.
 
+## Scope
+
+A feature or fix request does not authorize framework changes, shared infrastructure changes, or new plumbing across UI, SDK, backend, or schemas. Unless I explicitly requested that broader work, stop before implementing it, explain the scope and a smaller alternative, and get my approval. This applies even when the broader changes seem necessary to fulfill my request. If scope grows during implementation, stop and ask again before continuing.
+
 ## Git and GitHub
 
 - Use `niels` as the branch name prefix (not the full GitHub username).

@@ -1,0 +1,13 @@
+{
+  "lastChangelogVersion": "0.99.1",
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-6-astra",
+  "defaultThinkingLevel": "high",
+  "tuiMode": "fullscreen",
+  "piVim": {
+    "clipboardMirror": "yank"
+  },
+  "packages": [
+    "npm:pi-vim@0.14.2"
+  ]
+}

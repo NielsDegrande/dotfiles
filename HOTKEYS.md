@@ -14,6 +14,8 @@ Defined in [`mackup/.config/karabiner/karabiner.json`](mackup/.config/karabiner/
 | Caps Lock (tap) | Escape |
 | Caps Lock (hold) | Hyper (⌘⌃⌥⇧) |
 
+If Caps Lock gets stuck on (e.g. pressed before Karabiner started), run `capsoff`.
+
 ## Window management (skhd + yabai)
 
 Defined in [`mackup/.skhdrc`](mackup/.skhdrc). Three layers share `h/j/k/l`:

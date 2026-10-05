@@ -13,8 +13,8 @@ tap "asmvik/formulae"
 # brew "helm"
 # brew "kubernetes-cli"
 # brew "libpq"
+# brew "opentofu"
 # brew "presenterm"
-# brew "terraform"
 brew "agent-browser" # Browser automation CLI for AI agents.
 brew "atuin" # Shell history database.
 brew "bat"
@@ -24,6 +24,7 @@ brew "deno" # JS and TS runtime.
 brew "docker"
 brew "docker-buildx" # Still required with colima.
 brew "docker-compose" # Still required with colima.
+brew "duti" # Default apps per file type and URL scheme.
 brew "eva" # Calculator.
 brew "eza"
 brew "fd"
@@ -35,7 +36,6 @@ brew "git-lfs"
 brew "git-quick-stats"
 brew "go"
 brew "htop"
-brew "infat"
 brew "asmvik/formulae/skhd"
 brew "asmvik/formulae/yabai"
 brew "lazygit"
@@ -45,6 +45,7 @@ brew "mise" # Global runtime versions (node).
 brew "neovim"
 brew "ollama"
 brew "parallel"
+brew "pi-coding-agent" # Extensible terminal coding agent.
 brew "ripgrep" # Faster grep.
 brew "rust"
 brew "shellcheck"
@@ -78,10 +79,8 @@ brew "zoxide"
 cask "alacritty"
 cask "arduino-ide"
 cask "bruno"
-cask "chromium"
-cask "claude-code"
+cask "claude-code@latest"
 cask "codex"
-cask "conductor"
 cask "dbeaver-community"
 cask "electrum"
 cask "espanso" # Text expander.

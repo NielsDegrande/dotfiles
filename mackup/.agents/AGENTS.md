@@ -56,6 +56,7 @@ Files that might be useful to keep, for example datasets, plots or interim resul
 
 - Mark all tests `t.Parallel()` unless they can't run in parallel.
 - CI runs `go fix -diff` and will fail on non-modernized code. Before committing, run `cd go/api && go fix ./...` (and any other affected module) to apply modernizations.
+- In the lovable repo, build, vet and test Go with `rgo` (remote, on CI workers), never local `go test`/`go build`/`go vet`/`test-api`: local builds overload my laptop. E.g. `rgo test ./go/api/pkg/agent/...`, `rgo test TestName -count=1`, `rgo vet ./go/api/pkg/x/...`. Only fall back to local `go` if `rgo` fails for infra reasons, and tell me.
 
 ### Python
 

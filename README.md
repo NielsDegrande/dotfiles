@@ -117,6 +117,16 @@ To copy over host to container mappings: use the pen icon in the Containerise ad
 
 To avoid sign out loops on Microsoft web applications, disable enhanced tracking protection for these sites.
 
+### Alacritty
+
+Homebrew disabled the Alacritty cask because the app is not notarized by Apple.
+GitHub releases are the update channel instead, so `brew upgrade` does not update it:
+
+```bash
+scripts/update_alacritty.sh          # Install or update to the latest release.
+scripts/update_alacritty.sh v0.17.0  # Install a specific release.
+```
+
 ### Install Tmux Plugins
 
 In Tmux, press `prefix` + `I` to install plugins.
@@ -148,3 +158,12 @@ Search and replace if needed.
 
 To allow the cron job to run, you need to ensure `/usr/sbin/cron` has Full Disk Access.
 System Settings > Privacy & Security > Full Disk Access > + > /usr/sbin/cron.
+
+### Free disk space
+
+Delete developer caches (Bazel, Go, uv, npm, bun, Homebrew, Nix, ...) that rebuild on demand:
+
+```bash
+scripts/clean_caches.sh        # Preview what would be deleted and its size.
+scripts/clean_caches.sh --yes  # Delete.
+```

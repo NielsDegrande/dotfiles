@@ -62,14 +62,8 @@ Configured in each app's own preferences (sandboxed plists are backed up via
 | Hotkey | App | Action |
 | --- | --- | --- |
 | hyper v | Maccy | Open clipboard history popup |
-| hyper i | Ice | Toggle hidden menu bar section |
 | hyper m | MeetingBar | Join the next meeting |
-| hyper e | espanso | Open search bar (set in [`espanso/config/default.yml`](mackup/Library/Application%20Support/espanso/config/default.yml)) |
 | ⌃⇧ v | KeePassXC | Global Auto-Type |
-
-espanso also expands typed triggers (currently only the stock examples, e.g.
-`:date`) defined in
-[`espanso/match/base.yml`](mackup/Library/Application%20Support/espanso/match/base.yml).
 
 Within the Maccy popup (paste-by-default is enabled, so ⏎ pastes):
 

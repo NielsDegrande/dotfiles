@@ -18,3 +18,9 @@ user_pref("ui.prefersReducedMotion", 1);
 
 // Disable the translucent blur in Zen's toolbar and sidebar.
 user_pref("zen.theme.acrylic-elements", false);
+
+// Keep Slack links in the browser instead of handing slack:// to the desktop app.
+user_pref("network.protocol-handler.external.slack", false);
+
+// Disable the Library panel (spaces/downloads/media hub).
+user_pref("zen.library.enabled", false);

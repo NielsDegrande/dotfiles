@@ -1,12 +1,9 @@
 {
   "chat.disableAIFeatures": true,
   "claudeCode.preferredLocation": "panel",
-  "dataWrangler.experiments.copilot.enabled": true,
   "debug.toolBarLocation": "commandCenter",
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": true,
-  "docker.extension.enableComposeLanguageServer": false,
-  "editor.aiStats.enabled": true,
   "editor.accessibilitySupport": "off",
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
@@ -17,7 +14,6 @@
   "editor.inlineSuggest.showToolbar": "always",
   "editor.lineHeight": 20,
   "editor.stickyScroll.enabled": true,
-  "editor.suggestSelection": "first",
   "editor.unicodeHighlight.invisibleCharacters": false,
   "errorLens.excludePatterns": [
     "**/*.{md}"
@@ -28,12 +24,6 @@
     "*.Brewfile": "shellscript"
   },
   "files.autoSave": "afterDelay",
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
-  },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
@@ -46,8 +36,6 @@
   "git.mergeEditor": true,
   "gitlens.graph.layout": "editor",
   "gitlens.telemetry.enabled": false,
-  "inlineChat.enableV2": true,
-  "inlineChat.hideOnRequest": true,
   "jupyter.askForKernelRestart": false,
   "jupyter.interactiveWindow.textEditor.executeSelection": true,
   "notebook.cellExecutionTimeVerbosity": "verbose",
@@ -57,7 +45,6 @@
   },
   "redhat.telemetry.enabled": false,
   "search.exclude": {
-    "**/bower_components": true,
     "**/env": true,
     "**/node_modules": true,
     "**/venv": true
@@ -65,14 +52,10 @@
   "security.workspace.trust.enabled": false,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.stickyScroll.enabled": true,
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.commandCenter": true,
   "window.title": "${rootName}${separator}(${folderPath})",
   "workbench.colorTheme": "One Dark Pro Flat",
   "workbench.activityBar.location": "top",
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
-  },
   "workbench.editor.decorations.colors": false,
   "workbench.editor.decorations.badges": false,
   "workbench.editor.empty.hint": "hidden",
@@ -280,7 +263,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
   },
   "[dockercompose]": {
     "editor.insertSpaces": true,
@@ -299,7 +282,7 @@
   },
   "[javascript]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascriptreact]": {
     "editor.tabSize": 2,
@@ -321,7 +304,7 @@
       72,
       79
     ],
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "python.analysis.autoFormatStrings": true,
   "python.analysis.autoImportCompletions": true,
@@ -397,11 +380,5 @@
     "!Select sequence",
     "!Split",
     "!Split sequence"
-  ],
-  "chat.hookFilesLocations": {
-    "~/.copilot/hooks": true,
-    ".claude/settings.json": false,
-    ".claude/settings.local.json": false,
-    "~/.claude/settings.json": false
-  }
+  ]
 }

@@ -79,9 +79,8 @@ command -v mise >/dev/null && mise install --yes
 # install an empty crontab.
 (crontab -l 2>/dev/null | grep -v notes_archiver.sh || true; echo "0 11 * * * $HOME/git/dotfiles/scripts/notes_archiver.sh") | crontab -
 
-# Install Alacritty terminfo.
-# TODO: Required? Test before.
-curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
+# Install Alacritty and its terminfo from GitHub releases (Homebrew cask is disabled).
+bash "$HOME/git/dotfiles/scripts/update_alacritty.sh" || echo "Skipped Alacritty install, see above."
 
 # Compile and install VerticalMonitorLayout.
 # Source: https://github.com/alin23/mac-utils (MIT, Alin Panaitiu).

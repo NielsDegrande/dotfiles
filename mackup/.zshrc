@@ -113,7 +113,8 @@ source "$ZSH/oh-my-zsh.sh"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Load starship theme.
+# Load starship theme. Only log errors, not git timeout warnings.
+export STARSHIP_LOG=error
 eval "$(starship init zsh)"
 
 # Source aliases and paths.
@@ -139,5 +140,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5c6370'
 # Export additional environment variables.
 # Ensure ESC does not wait by setting key time out to 0.01s.
 export KEYTIMEOUT=1
+# Hide the lovable devShell banner.
+export LOVABLE_SILENT=1
 # Centralize Python cached files.
 export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"

@@ -28,6 +28,10 @@ command -v brew >/dev/null || eval "$(/opt/homebrew/bin/brew shellenv)"
 brew update
 brew upgrade # Step required: if formulae not up-to-date, then brew returns non-0 upon re-install below.
 
+# Third-party taps must be trusted before brew loads their formulae.
+brew tap lovablelabs/tap git@github.com:lovablelabs/homebrew-tap.git
+brew trust --tap lovablelabs/tap
+
 # Install brew bundles.
 brew bundle install --file brew/base.Brewfile
 
@@ -72,12 +76,19 @@ gh extension list 2>/dev/null | grep -q "dlvhdr/gh-dash" || gh extension install
 # Install runtimes pinned in the global mise config (linked by mackup).
 command -v mise >/dev/null && mise install --yes
 
-# Add cron jobs (preserve unrelated entries, replace any previous archiver line).
+# Add cron jobs (preserve unrelated entries, replace any previous lines for these scripts).
 # Requires additional permissions to give /usr/sbin/cron full disk access.
 # The `|| true` matters: under set -e, a failing grep (no crontab yet, or no
 # other entries) would otherwise abort the subshell before the echo and
 # install an empty crontab.
-(crontab -l 2>/dev/null | grep -v notes_archiver.sh || true; echo "0 11 * * * $HOME/git/dotfiles/scripts/notes_archiver.sh") | crontab -
+# Cron's default PATH is /usr/bin:/bin, so the cache cleaner gets one that
+# includes brew, nix and pnpm.
+cron_path="$HOME/.local/share/mise/shims:/opt/homebrew/bin:/nix/var/nix/profiles/default/bin:/usr/bin:/bin"
+(
+  crontab -l 2>/dev/null | grep -v -e notes_archiver.sh -e clean_caches.sh || true
+  echo "0 11 * * * $HOME/git/dotfiles/scripts/notes_archiver.sh"
+  echo "0 13 */3 * * PATH=$cron_path $HOME/git/dotfiles/scripts/clean_caches.sh --yes >> $HOME/Library/Logs/clean_caches.log 2>&1"
+) | crontab -
 
 # Install Alacritty and its terminfo from GitHub releases (Homebrew cask is disabled).
 bash "$HOME/git/dotfiles/scripts/update_alacritty.sh" || echo "Skipped Alacritty install, see above."

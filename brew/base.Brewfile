@@ -2,6 +2,7 @@
 
 # Taps.
 tap "asmvik/formulae"
+tap "lovablelabs/tap", "git@github.com:lovablelabs/homebrew-tap.git" # Private, needs gcloud auth and eng@.
 
 # Binaries.
 # brew "awscli"
@@ -39,6 +40,7 @@ brew "htop"
 brew "asmvik/formulae/skhd"
 brew "asmvik/formulae/yabai"
 brew "lazygit"
+brew "lovablelabs/tap/lov" # Lovable ops CLI, self-updating release build.
 brew "mackup"
 brew "mas"
 brew "mise" # Global runtime versions (node).

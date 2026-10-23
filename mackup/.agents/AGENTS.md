@@ -16,7 +16,7 @@ A feature or fix request does not authorize framework changes, shared infrastruc
   - If it is a bot (bugbot, Claude, cursor, depthfirst, etc.), reply with a comment and resolve the thread.
   - If it is a human, do NOT comment or resolve the thread.
 - When you are reviewing a PR, NEVER comment on the PR.
-- NEVER post `@claude review always` on a PR. When a claude[bot] review is needed, post `@claude review once` instead (no push subscription).
+- The claude[bot] review runs automatically when a PR is created. After that, decide yourself when to re-run it (one-off `@claude review`) to get the PR green and merge-ready, e.g. after fixing its findings or making significant changes. No need to ask me. Don't post `@claude review always`.
 - When writing PR descriptions, do not mention "testing in staging".
 - Keep PR bodies simple, short and human readable. Include examples and evidence (e.g., data) where possible.
 - When making significant changes to a PR, update the PR description to reflect the current state.

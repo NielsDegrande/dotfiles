@@ -12,5 +12,8 @@ command -v mise >/dev/null && eval "$(mise activate zsh)"
 # Python / uv.
 export PATH="/Users/niels/.local/bin:$PATH"
 
+# Lovable: the repo's bin/lov runs the brew-installed lov instead of building it with Bazel.
+export LOV_USE_INSTALLED=1
+
 # Rust.
 export PATH="$PATH:$HOME/.cargo/bin"

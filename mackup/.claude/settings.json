@@ -1,5 +1,10 @@
 {
   "agentPushNotifEnabled": true,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "cleanupPeriodDays": 365,
   "editorMode": "vim",
   "effortLevel": "high",

@@ -144,3 +144,6 @@ export KEYTIMEOUT=1
 export LOVABLE_SILENT=1
 # Centralize Python cached files.
 export PYTHONPYCACHEPREFIX="${HOME}/.cache/python"
+
+# Use macOS sytem check.
+export CURL_SSL_BACKEND=secure-transport

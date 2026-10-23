@@ -12,7 +12,10 @@
 #   - Bazel disk caches: every `--disk_cache=` path found in ~/.bazelrc and
 #     /etc/bazel.bazelrc, plus the Lovable monorepo's (set in its .bazelrc).
 #   - Go: build cache (GOCACHE) and module cache (GOMODCACHE).
-#   - uv, npm, bun and gopls caches; Homebrew downloads and old versions.
+#   - gopls, goimports, staticcheck and golangci-lint caches.
+#   - uv, npm, npx, bun and pnpm metadata caches; Homebrew downloads and old
+#     versions.
+#   - Python bytecode under PYTHONPYCACHEPREFIX (~/.cache/python).
 #   - pnpm: unreferenced packages only (`pnpm store prune`). The store itself is
 #     kept because node_modules folders can link into it.
 #   - Playwright browsers and Xcode DerivedData.
@@ -94,15 +97,28 @@ if command -v go >/dev/null 2>&1; then
   remove_dir "$(go env GOCACHE)" "Go build cache"
   remove_dir "$(go env GOMODCACHE)" "Go module cache"
 fi
-for dir in "$HOME/Library/Caches/go-build" "$HOME/.cache/go-build" "$HOME/go/pkg/mod" "$HOME/.cache/go/pkg/mod"; do
+# `go` is often only on PATH inside a project's devenv, so also try the env and default paths.
+remove_dir "${GOCACHE:-}" "Go build cache"
+remove_dir "${GOMODCACHE:-}" "Go module cache"
+remove_dir "${GOPATH:+$GOPATH/pkg/mod}" "Go module cache"
+for dir in "$HOME/Library/Caches/go-build" "$HOME/.cache/go-build" "$HOME/go/pkg/mod" "$HOME/.go/pkg/mod" "$HOME/.cache/go/pkg/mod"; do
   remove_dir "$dir" "Go cache"
 done
 remove_dir "$HOME/Library/Caches/gopls" "gopls cache"
+remove_dir "$HOME/Library/Caches/goimports" "goimports cache"
+remove_dir "$HOME/.cache/staticcheck" "staticcheck cache"
+remove_dir "$HOME/Library/Caches/staticcheck" "staticcheck cache"
+remove_dir "$HOME/.cache/golangci-lint" "golangci-lint cache"
+remove_dir "$HOME/Library/Caches/golangci-lint" "golangci-lint cache"
 
 echo "== Other toolchains"
 remove_dir "$HOME/.cache/uv" "uv cache"
 remove_dir "$HOME/.npm/_cacache" "npm cache"
+remove_dir "$HOME/.npm/_npx" "npx packages"
 remove_dir "$HOME/.bun/install/cache" "bun cache"
+remove_dir "$HOME/Library/Caches/bun" "bun cache"
+remove_dir "$HOME/Library/Caches/pnpm" "pnpm metadata cache"
+remove_dir "${PYTHONPYCACHEPREFIX:-$HOME/.cache/python}" "Python bytecode cache"
 remove_dir "$HOME/Library/Caches/ms-playwright" "Playwright browsers"
 remove_dir "$HOME/Library/Developer/Xcode/DerivedData" "Xcode DerivedData"
 run_tool "pnpm unreferenced packages" pnpm store prune

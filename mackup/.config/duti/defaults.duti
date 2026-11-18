@@ -5,6 +5,7 @@
 # error -50; set those once via Finder > Get Info > Open with > Change All.
 com.microsoft.VSCode  .js          all
 com.microsoft.VSCode  .json        all
+com.microsoft.VSCode  .markdown    all
 com.microsoft.VSCode  .md          all
 com.microsoft.VSCode  .py          all
 com.microsoft.VSCode  .sh          all
@@ -13,7 +14,8 @@ com.microsoft.VSCode  .ts          all
 com.microsoft.VSCode  .txt         all
 com.microsoft.VSCode  .yaml        all
 
-# Types.
+# Types. Apps like Notion claim these on install/update, so set them explicitly.
+com.microsoft.VSCode  net.daringfireball.markdown  all
 com.microsoft.VSCode  public.make-source   all
 com.microsoft.VSCode  public.plain-text    all
 com.microsoft.VSCode  public.shell-script  all

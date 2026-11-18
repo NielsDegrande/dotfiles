@@ -143,6 +143,12 @@ In Tmux, press `prefix` + `I` to install plugins.
 
 - `.ssh` keys.
 - `.secrets` file.
+- `~/.agents/skills` (agent skills). Never commit them here: this repo is public and most skills hold work-internal or personal details.
+  - Back up: Google Drive (work account) > Settings > My Computer > Add folder > `~/.agents/skills` (press Cmd+Shift+. to show hidden folders).
+  - Restore: copy the folder back from Drive before starting an agent. `install.sh` links `~/.claude/skills` to it.
+  - Skip `synced/` and `.trash/`: the Claude app manages them.
+  - Reinstall `agent-browser` with `npx skills add vercel-labs/agent-browser`.
+  - `mind` is a symlink into the private `mind` repo: clone that instead.
 
 ### Shortcuts
 
@@ -158,6 +164,12 @@ Search and replace if needed.
 
 To allow the cron job to run, you need to ensure `/usr/sbin/cron` has Full Disk Access.
 System Settings > Privacy & Security > Full Disk Access > + > /usr/sbin/cron.
+
+### Spotlight
+
+Exclude `~/git` so builds and worktrees don't keep Spotlight indexing.
+System Settings > Spotlight > Search Privacy > + > `~/git`.
+`~/Library/Caches` (Bazel, Go, ...) is excluded by default.
 
 ### Free disk space
 

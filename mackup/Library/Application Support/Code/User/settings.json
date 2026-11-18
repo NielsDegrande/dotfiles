@@ -262,9 +262,6 @@
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
-  },
   "[dockercompose]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
@@ -327,10 +324,6 @@
     "--no-cov"
   ],
   "python.testing.pytestEnabled": true,
-  "autoDocstring.docstringFormat": "sphinx-notypes",
-  "autoDocstring.guessTypes": false,
-  "autoDocstring.startOnNewLine": true,
-  "autoDocstring.customTemplatePath": "/Users/niels/git/dotfiles/mackup/.vscode/sphinx_no_types.mustache",
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
@@ -338,8 +331,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[sql]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+    "editor.tabSize": 2
   },
   "[typescript]": {
     "editor.tabSize": 2,

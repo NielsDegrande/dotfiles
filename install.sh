@@ -118,11 +118,3 @@ if [ ! -d "$HOME/.claude/skills" ] || [ -L "$HOME/.claude/skills" ] || rmdir "$H
 else
   echo "Skipped ~/.claude/skills symlink: existing non-empty directory."
 fi
-
-# Share personal instructions with Pi; preserve any separate Pi instructions.
-mkdir -p "$HOME/.pi/agent"
-if [ ! -e "$HOME/.pi/agent/AGENTS.md" ] || [ -L "$HOME/.pi/agent/AGENTS.md" ]; then
-  ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.pi/agent/AGENTS.md"
-else
-  echo "Skipped ~/.pi/agent/AGENTS.md symlink: existing non-symlink path."
-fi
